@@ -1,0 +1,25 @@
+package create_snp_context_sequence;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class create_snp_context_sequence_app {
+	public static void main(String[] args) {
+		/*
+		if (args.length > 0) {
+			String filename = args[0];
+			File file = new File(filename);
+		}
+		*/
+		
+		try {
+			BufferedReader lineReader = new BufferedReader(new FileReader(args[0]));
+			System.out.println(lineReader);
+		} catch (IOException e) {
+			System.err.println("Error happened: " + e);
+		}
+		
+	} // end of main method
+}

@@ -1,0 +1,11 @@
+package create_snp_context_sequence;
+
+public class create_snp_context_sequence_app {
+	public static void main(String[] args) {
+		if (args.length > 0) {
+			String filename = args[0];
+			File file = new File(filename);
+		}
+	}
+
+}

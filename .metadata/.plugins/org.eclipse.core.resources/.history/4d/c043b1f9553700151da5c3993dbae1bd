@@ -1,0 +1,20 @@
+package create_snp_context_sequence;
+
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class create_snp_context_sequence_app {
+	public static void main(String[] args) {
+
+		try {
+			//BufferedReader lineReader = new BufferedReader("/Users/emanuellangit/Desktop/work/rs_test.fasta");
+			BufferedReader lineReader = new BufferedReader("c:/test.txt");
+			System.out.println(lineReader);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	} // end of main method
+}
