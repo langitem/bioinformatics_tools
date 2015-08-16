@@ -1,0 +1,7 @@
+package fasta2tbl;
+
+public class NucleotideSequenceEntry {
+	String defline;
+	String nucleotideSequence;
+
+}

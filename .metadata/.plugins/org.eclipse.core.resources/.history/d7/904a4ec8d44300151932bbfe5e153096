@@ -1,0 +1,9 @@
+package fasta2tbl;
+
+public class ReadFastaFileTest {
+	
+	public static void main(String[] args) {
+		
+	}
+
+}

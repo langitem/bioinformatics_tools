@@ -1,0 +1,5 @@
+package fasta2tbl;
+
+public class NucleotideSequence {
+
+}
