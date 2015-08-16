@@ -40,8 +40,8 @@ public class ReadFastaFile {
 					
 					if (!(nucSeqEntry.getDefline().contentEquals(""))) {
 						String sequenceLine = line.replaceAll(" ", "");
-						nucSeqEntry.append2nucleotideSequence(sequenceLine);
-						System.out.printf("%s", sequenceLine);
+						nucSeqEntry.append2nucleotideSequence("sequenceLine");
+						//System.out.printf("%s\n", sequenceLine);
 					}
 				}
 				

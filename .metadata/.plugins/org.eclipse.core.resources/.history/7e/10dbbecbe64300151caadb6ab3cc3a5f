@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
+import java.util.regex;
 
 
 public class ReadFastaFile {
@@ -38,10 +39,10 @@ public class ReadFastaFile {
 					System.out.printf("\n%s\t", nucSeqEntry.getDefline());
 				} else {
 					
-					if (!(nucSeqEntry.getDefline().contentEquals(""))) {
+					if ((!(nucSeqEntry.getDefline().contentEquals(""))) && (line.matches("\w"))) {
+						//System.out.println("flag1");
 						String sequenceLine = line.replaceAll(" ", "");
-						nucSeqEntry.append2nucleotideSequence(sequenceLine);
-						System.out.printf("%s", sequenceLine);
+						System.out.printf("%s\n", sequenceLine);
 					}
 				}
 				

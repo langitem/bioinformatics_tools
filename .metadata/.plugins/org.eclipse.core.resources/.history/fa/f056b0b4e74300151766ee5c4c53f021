@@ -39,9 +39,9 @@ public class ReadFastaFile {
 				} else {
 					
 					if (!(nucSeqEntry.getDefline().contentEquals(""))) {
+						//System.out.println("flag1");
 						String sequenceLine = line.replaceAll(" ", "");
-						nucSeqEntry.append2nucleotideSequence(sequenceLine);
-						System.out.printf("%s", sequenceLine);
+						System.out.printf("%s\n", sequenceLine);
 					}
 				}
 				
