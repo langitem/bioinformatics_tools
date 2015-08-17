@@ -10,9 +10,10 @@ public class ReadFastaFile {
 	private Scanner input;
 	
 	// open fasta file
-	public void openFastaFile() {
+	public void openFastaFile(String fastaFilename) {
 		try {
-			input = new Scanner(new File("/Users/emanuellangit/Documents/coding_practice/sequence.fasta"));
+			// input = new Scanner(new File("/Users/emanuellangit/Documents/coding_practice/sequence.fasta"));
+			input = new Scanner(new File(fastaFilename));
 		} catch(FileNotFoundException fileNotFoundException) {
 			System.err.println("Error opening file");
 			System.exit(1);

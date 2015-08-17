@@ -1,0 +1,18 @@
+package fasta2tbl;
+
+public class Fasta2TblApp {
+	public static void main(String[] args) {
+		String filename;
+		if (args.length == 1) {
+			filename = args[0];
+			System.out.println(filename);
+		} else {
+			System.out.println("Input one argument for the fasta file!");
+			System.exit(0);
+		}
+		
+		
+		
+	} // end main
+
+}

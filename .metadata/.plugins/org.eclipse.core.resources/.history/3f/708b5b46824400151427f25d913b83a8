@@ -1,0 +1,8 @@
+package fasta2tbl;
+
+public class Fasta2TblApp {
+	public static void main(String[] args) {
+		
+	}
+
+}
