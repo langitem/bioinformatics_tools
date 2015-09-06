@@ -1,5 +1,6 @@
 package reverse_complement;
 
+
 public class NucleotideSequenceEntry {
 	private String defline;
 	private String nucleotideSequence;
@@ -49,11 +50,28 @@ public class NucleotideSequenceEntry {
 		
 		
 		// Complement each nucleotide in the string:
-		String nuclSeqRevCompl = nucSeqReversed.replace("A", "T")
-													.replace("T", "A")
-													.replace("G", "C")
-													.replace("C", "G");
-		return nuclSeqRevCompl;
+		StringBuilder nuclSeqRevCompl = new StringBuilder();
+		for (int i=0; i < nucSeqReversed.length(); ++ i) {
+			char nucleotide = nucSeqReversed.charAt(i);
+			switch(nucleotide) {
+			case 'A':
+				nuclSeqRevCompl.append('T');
+				break;
+			case 'C':
+				nuclSeqRevCompl.append('G');
+				break;
+			case 'G':
+				nuclSeqRevCompl.append('C');
+				break;
+			case 'T':
+				nuclSeqRevCompl.append('A');
+				break;
+			} // end switch
+			
+		}
+		
+		
+		return nuclSeqRevCompl.toString();
 	} // end of getReverseComplement method
 
 }
