@@ -1,9 +1,0 @@
-package reverse_complement;
-
-public class NucleotideSequenceEntry {
-	String defline;
-	String nucleotideSequence;
-	
-	
-
-}
