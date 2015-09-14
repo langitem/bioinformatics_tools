@@ -14,4 +14,4 @@ for line in tblFile:
 	revisedLine2 = revisedLine1.replace("\t", "\n")
 	print(">" + revisedLine2) 
 
-tblFile.close();
+tblFile.close()
