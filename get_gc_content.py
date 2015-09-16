@@ -2,6 +2,9 @@
 """
 Script that takes a sequence file in FASTA format and returns
 the GC content of each sequence entry
+
+Author: Emanuel Langit
+email: emanuel.langit@fastmail.fm
 """
 
 from __future__ import division

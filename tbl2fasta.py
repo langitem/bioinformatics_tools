@@ -2,6 +2,9 @@
 """
 Script to convert a tab-delimitted file into a fasta file.
 The first field is the defline, and the second field is the sequence
+
+Author: Emanuel Langit
+email: emanuel.langit@fastmail.fm
 """
 import sys
 

@@ -5,7 +5,937 @@
   <link rel="self" href="https://spring.io/blog.atom" />
   <id>http://spring.io/blog.atom</id>
   <icon>https://spring.io/favicon.ico</icon>
-  <updated>2015-09-04T08:01:00Z</updated>
+  <updated>2015-09-15T13:34:12Z</updated>
+  <entry>
+    <title>React.js and Spring Data REST: Part 2 - Hypermedia</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/09/15/react-js-and-spring-data-rest-part-2-hypermedia" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Greg Turnquist</name>
+    </author>
+    <id>tag:spring.io,2015-09-15:2236</id>
+    <updated>2015-09-15T13:34:12Z</updated>
+    <content type="html">&lt;div id="preamble"&gt;&#xD;
+&lt;div class="sectionbody"&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;In the &lt;a href="https://spring.io/blog/2015/09/01/react-js-and-spring-data-rest-part-1-basic-features"&gt;previous session&lt;/a&gt;, you found out how to stand up a backend payroll service to store employee data using Spring Data REST. A key feature it lacked was using the hypermedia controls and navigation by links. Instead, it hard coded the path to find data.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Feel free to &lt;a href="https://github.com/gregturn/react-and-spring-data-rest/tree/master/hypermedia"&gt;grab the code&lt;/a&gt; from this repository and follow along. This session is based on the previous session&amp;#8217;s app with extra things added.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;&#xD;
+&lt;h2 id="_in_the_beginning_there_was_data_and_then_there_was_rest"&gt;In the beginning there was data&amp;#8230;&amp;#8203;and then there was REST&lt;/h2&gt;&#xD;
+&lt;div class="sectionbody"&gt;&#xD;
+&lt;div class="quoteblock"&gt;&#xD;
+&lt;blockquote&gt;&#xD;
+I am getting frustrated by the number of people calling any HTTP-based interface a REST API. Todayís example is the SocialSite REST API. That is RPC. It screams RPC&amp;#8230;&amp;#8203;.What needs to be done to make the REST architectural style clear on the notion that hypertext is a constraint? In other words, if the engine of application state (and hence the API) is not being driven by hypertext, then it cannot be RESTful and cannot be a REST API. Period. Is there some broken manual somewhere that needs to be fixed?&#xD;
+&lt;/blockquote&gt;&#xD;
+&lt;div class="attribution"&gt;&#xD;
+&amp;#8212; &lt;a href="http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven"&gt;Roy T. Fielding&lt;/a&gt;&lt;br&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;So, what exactly ARE hypermedia controls, i.e. hypertext, and how can you use them? To find out, let&amp;#8217;s take a step back and look at the core mission of REST.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;The concept of REST was to borrow ideas that made the web so successful and apply them to APIs. Despite the web&amp;#8217;s vast size, dynamic nature, and low rate that clients, i.e. browsers, are updated, the web is an amazing success. Roy Fielding sought to use some of its constraints and features and see if that would afford similar expansion of API production and consumption.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;One of the constraints is to limit the number of verbs. For REST, the primary ones are GET, POST, PUT, DELETE, and PATCH. There are others, but we won&amp;#8217;t get into them here.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="ulist"&gt;&#xD;
+&lt;ul&gt;&#xD;
+&lt;li&gt;&#xD;
+GET - fetch the state of a resource without altering the system&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+POST - create a new resource without saying where&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+PUT - replace an existing resource, overwriting whatever else is already there (if anything)&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+DELETE - remove an existing resource&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+PATCH - alter an existing resource partially&#xD;
+&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;These are standardized HTTP verbs with well written specs. By picking up and using already coined HTTP operations, we don&amp;#8217;t have to invent a new language and educate the industry.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Another constraint of REST is to use media types to define the format of data. Instead of everyone writing their own dialect for the exchange of information, it would be prudent to develop some media types. One of the most popular ones to be accepted is HAL, media type application/hal+json. It is Spring Data REST&amp;#8217;s default media type. A keen value is that there is no centralized, single media type for REST. Instead, people can develop media types and plug them in. Try them out. As different needs become available, the industry can flexibly move.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;A key feature of REST is to include links to relevant resources. For example, if you were looking at an order, a RESTful API would include a link to the related customer, links to the catalog of items, and perhaps a link to the store from which the order was placed. In this session, you will introduce paging, and see how to also use navigational paging links.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;&#xD;
+&lt;h2 id="_turning_on_paging_from_the_backend"&gt;Turning on paging from the backend&lt;/h2&gt;&#xD;
+&lt;div class="sectionbody"&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;To get underway with using frontend hypermedia controls, you need to turn on some extra controls. Spring Data REST provides paging support. To use it, just tweak the repository definition:&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="title"&gt;src/main/java/com/greglturnquist/payroll/EmployeeRepository.java&lt;/div&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-java" data-lang="java"&gt;public interface EmployeeRepository extends PagingAndSortingRepository&amp;lt;Employee, Long&amp;gt; {&#xD;
+&#xD;
+}&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Your interface now extends &lt;code&gt;PagingAndSortingRepository&lt;/code&gt; which adds extra options to set page size, and also adds navigational links to hop from page to page. The rest of the backend is the same (exception for some &lt;a href="https://github.com/gregturn/react-and-spring-data-rest/blob/master/hypermedia/src/main/java/com/greglturnquist/payroll/DatabaseLoader.java"&gt;extra pre-loaded data&lt;/a&gt; to make things interesting).&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Restart the application (&lt;code&gt;./mvnw spring-boot:run&lt;/code&gt;) and see how it works.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre&gt;$ curl localhost:8080/api/employees?size=2&#xD;
+{&#xD;
+  "_links" : {&#xD;
+    "first" : {&#xD;
+      "href" : "http://localhost:8080/api/employees?page=0&amp;amp;size=2"&#xD;
+    },&#xD;
+    "self" : {&#xD;
+      "href" : "http://localhost:8080/api/employees"&#xD;
+    },&#xD;
+    "next" : {&#xD;
+      "href" : "http://localhost:8080/api/employees?page=1&amp;amp;size=2"&#xD;
+    },&#xD;
+    "last" : {&#xD;
+      "href" : "http://localhost:8080/api/employees?page=2&amp;amp;size=2"&#xD;
+    }&#xD;
+  },&#xD;
+  "_embedded" : {&#xD;
+    "employees" : [ {&#xD;
+      "firstName" : "Frodo",&#xD;
+      "lastName" : "Baggins",&#xD;
+      "description" : "ring bearer",&#xD;
+      "_links" : {&#xD;
+        "self" : {&#xD;
+          "href" : "http://localhost:8080/api/employees/1"&#xD;
+        }&#xD;
+      }&#xD;
+    }, {&#xD;
+      "firstName" : "Bilbo",&#xD;
+      "lastName" : "Baggins",&#xD;
+      "description" : "burglar",&#xD;
+      "_links" : {&#xD;
+        "self" : {&#xD;
+          "href" : "http://localhost:8080/api/employees/2"&#xD;
+        }&#xD;
+      }&#xD;
+    } ]&#xD;
+  },&#xD;
+  "page" : {&#xD;
+    "size" : 2,&#xD;
+    "totalElements" : 6,&#xD;
+    "totalPages" : 3,&#xD;
+    "number" : 0&#xD;
+  }&#xD;
+}&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;The default page size is 20, so to see it in action, &lt;code&gt;?size=2&lt;/code&gt; applied. As expected, only two employees are listed. In addition, there is also a &lt;strong&gt;first&lt;/strong&gt;, &lt;strong&gt;next&lt;/strong&gt;, and &lt;strong&gt;last&lt;/strong&gt; link. There is also the &lt;strong&gt;self&lt;/strong&gt; link, free of context &lt;em&gt;including page parameters&lt;/em&gt;.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;If you navigate to the &lt;strong&gt;next&lt;/strong&gt; link, you&amp;#8217;ll then see a &lt;strong&gt;prev&lt;/strong&gt; link as well:&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre&gt;$ curl "http://localhost:8080/api/employees?page=1&amp;amp;size=2"&#xD;
+{&#xD;
+  "_links" : {&#xD;
+    "first" : {&#xD;
+      "href" : "http://localhost:8080/api/employees?page=0&amp;amp;size=2"&#xD;
+    },&#xD;
+    "prev" : {&#xD;
+      "href" : "http://localhost:8080/api/employees?page=0&amp;amp;size=2"&#xD;
+    },&#xD;
+    "self" : {&#xD;
+      "href" : "http://localhost:8080/api/employees"&#xD;
+    },&#xD;
+    "next" : {&#xD;
+      "href" : "http://localhost:8080/api/employees?page=2&amp;amp;size=2"&#xD;
+    },&#xD;
+    "last" : {&#xD;
+      "href" : "http://localhost:8080/api/employees?page=2&amp;amp;size=2"&#xD;
+    }&#xD;
+  },&#xD;
+...&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="admonitionblock note"&gt;&#xD;
+&lt;table&gt;&#xD;
+&lt;tr&gt;&#xD;
+&lt;td class="icon"&gt;&#xD;
+&lt;div class="title"&gt;Note&lt;/div&gt;&#xD;
+&lt;/td&gt;&#xD;
+&lt;td class="content"&gt;&#xD;
+When using "&amp;amp;" in URL query parameters, the command line thinks it&amp;#8217;s a line break. Wrap the whole URL with quotation marks to bypass that.&#xD;
+&lt;/td&gt;&#xD;
+&lt;/tr&gt;&#xD;
+&lt;/table&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;That looks neat, but it will be even better when you update the frontend to take advantage of that.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;&#xD;
+&lt;h2 id="_navigating_by_relationship"&gt;Navigating by relationship&lt;/h2&gt;&#xD;
+&lt;div class="sectionbody"&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;That&amp;#8217;s it! No more changes are needed on the backend to start using the hypermedia controls Spring Data REST provides out of the box. You can switch to working on the frontend. (That&amp;#8217;s part of the beauty of Spring Data REST. No messy controller updates!)&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="admonitionblock note"&gt;&#xD;
+&lt;table&gt;&#xD;
+&lt;tr&gt;&#xD;
+&lt;td class="icon"&gt;&#xD;
+&lt;div class="title"&gt;Note&lt;/div&gt;&#xD;
+&lt;/td&gt;&#xD;
+&lt;td class="content"&gt;&#xD;
+It&amp;#8217;s important to point out, this application isn&amp;#8217;t "Spring Data REST-specific." Instead, it uses &lt;a href="http://stateless.co/hal_specification.html"&gt;HAL&lt;/a&gt;, &lt;a href="https://tools.ietf.org/html/rfc6570"&gt;URI Templates&lt;/a&gt;, and other standards. That&amp;#8217;s how using rest.js is a snap: that library comes with HAL support.&#xD;
+&lt;/td&gt;&#xD;
+&lt;/tr&gt;&#xD;
+&lt;/table&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;In the previous session, you hardcoded the path to &lt;code&gt;/api/employees&lt;/code&gt;. Instead, the ONLY path you should hardcode is the root.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;...&#xD;
+var root = '/api';&#xD;
+...&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;With a handy little &lt;a href="https://github.com/gregturn/react-and-spring-data-rest/blob/master/hypermedia/src/main/resources/static/follow.js"&gt;&lt;code&gt;follow()&lt;/code&gt; function&lt;/a&gt;, you can now start from the root and navigate to where you need!&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;componentDidMount: function () {&#xD;
+    this.loadFromServer(this.state.pageSize);&#xD;
+},&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;In the previous session, the loading was done directly inside &lt;code&gt;componentDidMount()&lt;/code&gt;. In this session, we are making it possible to reload the entire list of employees when the page size is updated. To do so, we have moved things into &lt;code&gt;loadFromServer()&lt;/code&gt;.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;loadFromServer: function (pageSize) {&#xD;
+    follow(client, root, [&#xD;
+        {rel: 'employees', params: {size: pageSize}}]&#xD;
+    ).then(employeeCollection =&amp;gt; {&#xD;
+        return client({&#xD;
+            method: 'GET',&#xD;
+            path: employeeCollection.entity._links.profile.href,&#xD;
+            headers: {'Accept': 'application/schema+json'}&#xD;
+        }).then(schema =&amp;gt; {&#xD;
+            this.schema = schema.entity;&#xD;
+            return employeeCollection;&#xD;
+        });&#xD;
+    }).done(employeeCollection =&amp;gt; {&#xD;
+        this.setState({&#xD;
+            employees: employeeCollection.entity._embedded.employees,&#xD;
+            attributes: Object.keys(this.schema.properties),&#xD;
+            pageSize: pageSize,&#xD;
+            links: employeeCollection.entity._links});&#xD;
+    });&#xD;
+},&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;&lt;code&gt;loadFromServer&lt;/code&gt; is very similar the previous session, but instead if uses &lt;code&gt;follow()&lt;/code&gt;:&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="ulist"&gt;&#xD;
+&lt;ul&gt;&#xD;
+&lt;li&gt;&#xD;
+The first argument to the follow() function is the &lt;code&gt;client&lt;/code&gt; object used to make REST calls.&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+The second argument is the root URI to start from.&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+The third argument is an array of relationships to navigate along. Each one can be a string or an object.&#xD;
+&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;The array of relationships can be as simple as &lt;code&gt;["employees"]&lt;/code&gt;, meaning when the first call is made, look in &lt;strong&gt;_links&lt;/strong&gt; for the relationship (or &lt;strong&gt;rel&lt;/strong&gt;) named &lt;strong&gt;employees&lt;/strong&gt;. Find its &lt;strong&gt;href&lt;/strong&gt; and navigate to it. If there is another relationship in the array, rinse and repeat.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Sometimes, a rel by itself isn&amp;#8217;t enough. In this fragment of code, it also plugs in a query parameter of &lt;strong&gt;?size=&amp;lt;pageSize&amp;gt;&lt;/strong&gt;. There are other options that can be supplied, as you&amp;#8217;ll see further along.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;&#xD;
+&lt;h2 id="_grabbing_json_schema_metadata"&gt;Grabbing JSON Schema metadata&lt;/h2&gt;&#xD;
+&lt;div class="sectionbody"&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;After navigating to &lt;strong&gt;employees&lt;/strong&gt; with the size-based query, the &lt;strong&gt;employeeCollection&lt;/strong&gt; is at your fingertips. In the previous session, we called it day and displayed that data inside &lt;code&gt;&amp;lt;EmployeeList /&amp;gt;&lt;/code&gt;. Today, you are performing another call to grab some &lt;a href="http://json-schema.org/"&gt;JSON Schema metadata&lt;/a&gt; found a &lt;code&gt;/api/employees/schema&lt;/code&gt;.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;You can see the data yourself:&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre&gt;$ curl http://localhost:8080/api/employees/schema&#xD;
+{&#xD;
+  "title" : "com.greglturnquist.payroll.Employee",&#xD;
+  "properties" : {&#xD;
+    "firstName" : {&#xD;
+      "readOnly" : false,&#xD;
+      "type" : "string"&#xD;
+    },&#xD;
+    "lastName" : {&#xD;
+      "readOnly" : false,&#xD;
+      "type" : "string"&#xD;
+    },&#xD;
+    "description" : {&#xD;
+      "readOnly" : false,&#xD;
+      "type" : "string"&#xD;
+    }&#xD;
+  },&#xD;
+  "descriptors" : { },&#xD;
+  "type" : "object",&#xD;
+  "$schema" : "http://json-schema.org/draft-04/schema#"&#xD;
+}&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="admonitionblock note"&gt;&#xD;
+&lt;table&gt;&#xD;
+&lt;tr&gt;&#xD;
+&lt;td class="icon"&gt;&#xD;
+&lt;div class="title"&gt;Note&lt;/div&gt;&#xD;
+&lt;/td&gt;&#xD;
+&lt;td class="content"&gt;&#xD;
+Navigating to the JSON Schema metadata requires hand editing the URI. There are plans underway to add a navigable link in the future to Spring Data REST to best use hypermedia concepts.&#xD;
+&lt;/td&gt;&#xD;
+&lt;/tr&gt;&#xD;
+&lt;/table&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;By capturing this information in the`&amp;lt;App /&amp;gt;` component&amp;#8217;s state, you can make good use of it later on when building input forms.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;&#xD;
+&lt;h2 id="creating-new-records"&gt;Creating new records&lt;/h2&gt;&#xD;
+&lt;div class="sectionbody"&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Equipped with this metadata, you can now add some extra controls to the UI. Create a new React component, &lt;code&gt;&amp;lt;CreateDialog /&amp;gt;&lt;/code&gt;.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;var CreateDialog = React.createClass({&#xD;
+&#xD;
+    handleSubmit: function (e) {&#xD;
+        e.preventDefault();&#xD;
+        var newEmployee = {};&#xD;
+        this.props.attributes.forEach(attribute =&amp;gt; {&#xD;
+            newEmployee[attribute] = React.findDOMNode(this.refs[attribute]).value.trim();&#xD;
+        });&#xD;
+        this.props.onCreate(newEmployee);&#xD;
+&#xD;
+        // clear out the dialog's inputs&#xD;
+        this.props.attributes.forEach(attribute =&amp;gt; {&#xD;
+            React.findDOMNode(this.refs[attribute]).value = '';&#xD;
+        });&#xD;
+&#xD;
+        // Navigate away from the dialog to hide it.&#xD;
+        window.location = "#";&#xD;
+    },&#xD;
+&#xD;
+    render: function () {&#xD;
+        var inputs = this.props.attributes.map(attribute =&amp;gt;&#xD;
+            &amp;lt;p key={attribute}&amp;gt;&#xD;
+                &amp;lt;input type="text" placeholder={attribute} ref={attribute} className="field" /&amp;gt;&#xD;
+            &amp;lt;/p&amp;gt;&#xD;
+        );&#xD;
+&#xD;
+        return (&#xD;
+            &amp;lt;div&amp;gt;&#xD;
+                &amp;lt;a href="#createEmployee"&amp;gt;Create&amp;lt;/a&amp;gt;&#xD;
+&#xD;
+                &amp;lt;div id="createEmployee" className="modalDialog"&amp;gt;&#xD;
+                    &amp;lt;div&amp;gt;&#xD;
+                        &amp;lt;a href="#" title="Close" className="close"&amp;gt;X&amp;lt;/a&amp;gt;&#xD;
+&#xD;
+                        &amp;lt;h2&amp;gt;Create new employee&amp;lt;/h2&amp;gt;&#xD;
+&#xD;
+                        &amp;lt;form&amp;gt;&#xD;
+                            {inputs}&#xD;
+                            &amp;lt;button onClick={this.handleSubmit}&amp;gt;Create&amp;lt;/button&amp;gt;&#xD;
+                        &amp;lt;/form&amp;gt;&#xD;
+                    &amp;lt;/div&amp;gt;&#xD;
+                &amp;lt;/div&amp;gt;&#xD;
+            &amp;lt;/div&amp;gt;&#xD;
+        )&#xD;
+    }&#xD;
+&#xD;
+});&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;This new component has both a &lt;code&gt;handleSubmit()&lt;/code&gt; function as well as the expected &lt;code&gt;render()&lt;/code&gt; function.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Let&amp;#8217;s dig into these functions in reverse order, and first look at the &lt;code&gt;render()&lt;/code&gt; function.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="sect2"&gt;&#xD;
+&lt;h3 id="hypermedia-rendering"&gt;Rendering&lt;/h3&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Your code maps over the JSON Schema data found in the &lt;strong&gt;attributes&lt;/strong&gt; property and converts it into an array of &lt;code&gt;&amp;lt;p&amp;gt;&amp;lt;input&amp;gt;&amp;lt;/p&amp;gt;&lt;/code&gt; elements.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="ulist"&gt;&#xD;
+&lt;ul&gt;&#xD;
+&lt;li&gt;&#xD;
+&lt;strong&gt;key&lt;/strong&gt; is again needed by React to distinguish between multiple child nodes.&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+It&amp;#8217;s a simple text-based entry field.&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+&lt;strong&gt;placeholder&lt;/strong&gt; is where we can show the user with field is which.&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+You may used to having a &lt;strong&gt;name&lt;/strong&gt; attribute, but it&amp;#8217;s not necessary. With React, &lt;strong&gt;ref&lt;/strong&gt; is the mechanism to grab a particular DOM node (as you&amp;#8217;ll soon see).&#xD;
+&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;This represents the dynamic nature of the component, driven by loading data from the server.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Inside this component&amp;#8217;s top-level &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; is an anchor tag and another &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt;. The anchor tag is the button to open the dialog. And the nested &lt;code&gt;&amp;lt;div&amp;gt;&lt;/code&gt; is the hidden dialog itself. In this example, you are use pure HTML5 and CSS3. No JavaScript at all! You can &lt;a href="https://github.com/gregturn/react-and-spring-data-rest/blob/master/hypermedia/src/main/resources/static/main.css"&gt;see the CSS code&lt;/a&gt; used to show/hide the dialog. We won&amp;#8217;t dive into that here.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Nestled inside &lt;code&gt;&amp;lt;div id="createEmployee"&amp;gt;&lt;/code&gt; is a form where your dynamic list of input fields are injected followed by the &lt;strong&gt;Create&lt;/strong&gt; button. That button has an &lt;code&gt;onClick={this.handleSubmit}&lt;/code&gt; event handler. This is the React way of registering an event handler.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="admonitionblock note"&gt;&#xD;
+&lt;table&gt;&#xD;
+&lt;tr&gt;&#xD;
+&lt;td class="icon"&gt;&#xD;
+&lt;div class="title"&gt;Note&lt;/div&gt;&#xD;
+&lt;/td&gt;&#xD;
+&lt;td class="content"&gt;&#xD;
+React doesn&amp;#8217;t create a fistful of event handlers on every DOM element. Instead, it has a &lt;a href="https://facebook.github.io/react/docs/interactivity-and-dynamic-uis.html#under-the-hood-autobinding-and-event-delegation"&gt;much more performant and sophisticated&lt;/a&gt; solution. The point being you don&amp;#8217;t have to manage that infrastructure and can instead focus on writing functional code.&#xD;
+&lt;/td&gt;&#xD;
+&lt;/tr&gt;&#xD;
+&lt;/table&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="sect2"&gt;&#xD;
+&lt;h3 id="_handling_user_input"&gt;Handling user input&lt;/h3&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;The &lt;code&gt;handleSubmit()&lt;/code&gt; function first stops the event from bubbling further up the hierarchy. It then uses the same JSON Schema attribute property to find each &lt;code&gt;&amp;lt;input&amp;gt;&lt;/code&gt; using &lt;code&gt;React.findDOMNode(this.refs[attribute])&lt;/code&gt;.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;&lt;code&gt;this.refs&lt;/code&gt; is a way to reach out and grab a particular React component by name. In that sense, you are ONLY getting the virtual DOM component. To grab the actual DOM element you need to use &lt;code&gt;React.findDOMNode()&lt;/code&gt;.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;After iterating over every input and building up the &lt;code&gt;newEmployee&lt;/code&gt; object, we invoke a callback to &lt;code&gt;onCreate()&lt;/code&gt; the new employee. This function is up top inside &lt;code&gt;App.onCreate&lt;/code&gt; and was provided to this React component as another property. Look at how that top-level function operates:&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;onCreate: function (newEmployee) {&#xD;
+    follow(client, root, ['employees']).then(employeeCollection =&amp;gt; {&#xD;
+        return client({&#xD;
+            method: 'POST',&#xD;
+            path: employeeCollection.entity._links.self.href,&#xD;
+            entity: newEmployee,&#xD;
+            headers: {'Content-Type': 'application/json'}&#xD;
+        })&#xD;
+    }).then(response =&amp;gt; {&#xD;
+        return follow(client, root, [&#xD;
+            {rel: 'employees', params: {'size': this.state.pageSize}}]);&#xD;
+    }).done(response =&amp;gt; {&#xD;
+        this.onNavigate(response.entity._links.last.href);&#xD;
+    });&#xD;
+},&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Once again, use the &lt;code&gt;follow()&lt;/code&gt; function to navigate to the &lt;strong&gt;employees&lt;/strong&gt; resource where POST operations are performed. In this case, there was no need to apply any parameters, so the string-based array of rels is fine. In this situation, the POST call is returned. This allows the next &lt;code&gt;then()&lt;/code&gt; clause to handle processing the outcome of the POST.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;New records are typically added to the end of the dataset. Since you are looking at a certain page, it&amp;#8217;s logical to expect the new employee record to not be on the current page. To handle this, you need to fetch a new batch of data with the same page size applied. That promise is returned for the final clause inside &lt;code&gt;done()&lt;/code&gt;.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Since the user probably wants to see the newly created employee, you can then use the hypermedia controls and navigate to the &lt;strong&gt;last&lt;/strong&gt; entry.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;This introduces the concept of paging in our UI. Let&amp;#8217;s tackle that next!&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div id="NOTE" class="exampleblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;First time using a promise-based API? &lt;a href="https://promisesaplus.com/"&gt;Promises&lt;/a&gt; are a way to kick of asynchronous operations and then register a function to respond when the task is done. Promises are designed to be chained together to avoid "callback hell". Look at the following flow:&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;when.promise(async_func_call())&#xD;
+	.then(function(results) {&#xD;
+		/* process the outcome of async_func_call */&#xD;
+	})&#xD;
+	.then(function(more_results) {&#xD;
+		/* process the previous then() return value */&#xD;
+	})&#xD;
+	.done(function(yet_more) {&#xD;
+		/* process the previous then() and wrap things up */&#xD;
+	});&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;For more details, check out &lt;a href="http://know.cujojs.com/tutorials/promises/consuming-promises"&gt;this tutorial on promises&lt;/a&gt;.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;The secret thing to remember with promises is that &lt;code&gt;then()&lt;/code&gt; functions &lt;em&gt;need&lt;/em&gt; to return something, whether it&amp;#8217;s a value or another promise.  &lt;code&gt;done()&lt;/code&gt; functions do NOT return anything, and you don&amp;#8217;t chain anything after it. In case you haven&amp;#8217;t noticed yet, &lt;code&gt;client&lt;/code&gt; (which is an instance of &lt;code&gt;rest&lt;/code&gt; from rest.js) as well as the &lt;code&gt;follow&lt;/code&gt; function return promises.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;&#xD;
+&lt;h2 id="_paging_through_data"&gt;Paging through data&lt;/h2&gt;&#xD;
+&lt;div class="sectionbody"&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;You set up paging on the backend and have already starting taking advantage of it when creating new employees.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;In &lt;a href="#creating-new-records"&gt;the previous section&lt;/a&gt;, you used the page controls to jump to the &lt;strong&gt;last&lt;/strong&gt; page. It would be really handy to dynamically apply it to the UI and let the user navigate as desired. Adjusting the controls dynamically based on available navigation links would be great.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;First, let&amp;#8217;s check out the &lt;code&gt;onNavigate()&lt;/code&gt; function you used.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;onNavigate: function(navUri) {&#xD;
+    client({method: 'GET', path: navUri}).done(employeeCollection =&amp;gt; {&#xD;
+        this.setState({&#xD;
+            employees: employeeCollection.entity._embedded.employees,&#xD;
+            attributes: this.state.attributes,&#xD;
+            pageSize: this.state.pageSize,&#xD;
+            links: employeeCollection.entity._links&#xD;
+        });&#xD;
+    });&#xD;
+},&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;This is defined at the top, inside &lt;code&gt;App.onNavigate&lt;/code&gt;. Again, this is to allow managing the state of the UI in the top component. After passing &lt;code&gt;onNavigate()&lt;/code&gt; down to the &lt;code&gt;&amp;lt;EmployeeList /&amp;gt;&lt;/code&gt; React component, the following handlers are coded up to handle clicking on some buttons:&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;handleNavFirst: function(e){&#xD;
+    e.preventDefault();&#xD;
+    this.props.onNavigate(this.props.links.first.href);&#xD;
+},&#xD;
+handleNavPrev: function(e) {&#xD;
+    e.preventDefault();&#xD;
+    this.props.onNavigate(this.props.links.prev.href);&#xD;
+},&#xD;
+handleNavNext: function(e) {&#xD;
+    e.preventDefault();&#xD;
+    this.props.onNavigate(this.props.links.next.href);&#xD;
+},&#xD;
+handleNavLast: function(e) {&#xD;
+    e.preventDefault();&#xD;
+    this.props.onNavigate(this.props.links.last.href);&#xD;
+},&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Each of these functions intercepts the default event and stops it from bubbling up. Then it invokes the &lt;code&gt;onNavigate()&lt;/code&gt; function with the proper hypermedia link.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Now conditionally display the controls based on which links appear in the hypermedia links in &lt;code&gt;EmployeeList.render&lt;/code&gt;:&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;render: function () {&#xD;
+    var employees = this.props.employees.map(employee =&amp;gt;&#xD;
+        &amp;lt;Employee key={employee._links.self.href} employee={employee} onDelete={this.props.onDelete}/&amp;gt;&#xD;
+    );&#xD;
+&#xD;
+    var navLinks = [];&#xD;
+    if ("first" in this.props.links) {&#xD;
+        navLinks.push(&amp;lt;button key="first" onClick={this.handleNavFirst}&amp;gt;&amp;amp;lt;&amp;amp;lt;&amp;lt;/button&amp;gt;);&#xD;
+    }&#xD;
+    if ("prev" in this.props.links) {&#xD;
+        navLinks.push(&amp;lt;button key="prev" onClick={this.handleNavPrev}&amp;gt;&amp;amp;lt;&amp;lt;/button&amp;gt;);&#xD;
+    }&#xD;
+    if ("next" in this.props.links) {&#xD;
+        navLinks.push(&amp;lt;button key="next" onClick={this.handleNavNext}&amp;gt;&amp;amp;gt;&amp;lt;/button&amp;gt;);&#xD;
+    }&#xD;
+    if ("last" in this.props.links) {&#xD;
+        navLinks.push(&amp;lt;button key="last" onClick={this.handleNavLast}&amp;gt;&amp;amp;gt;&amp;amp;gt;&amp;lt;/button&amp;gt;);&#xD;
+    }&#xD;
+&#xD;
+    return (&#xD;
+        &amp;lt;div&amp;gt;&#xD;
+            &amp;lt;input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}/&amp;gt;&#xD;
+            &amp;lt;table&amp;gt;&#xD;
+                &amp;lt;tr&amp;gt;&#xD;
+                    &amp;lt;th&amp;gt;First Name&amp;lt;/th&amp;gt;&#xD;
+                    &amp;lt;th&amp;gt;Last Name&amp;lt;/th&amp;gt;&#xD;
+                    &amp;lt;th&amp;gt;Description&amp;lt;/th&amp;gt;&#xD;
+                    &amp;lt;th&amp;gt;&amp;lt;/th&amp;gt;&#xD;
+                &amp;lt;/tr&amp;gt;&#xD;
+                {employees}&#xD;
+            &amp;lt;/table&amp;gt;&#xD;
+            &amp;lt;div&amp;gt;&#xD;
+                {navLinks}&#xD;
+            &amp;lt;/div&amp;gt;&#xD;
+        &amp;lt;/div&amp;gt;&#xD;
+    )&#xD;
+}&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;As in the previous session, it still transforms &lt;code&gt;this.props.employees&lt;/code&gt; into an array of &lt;code&gt;&amp;lt;Element /&amp;gt;&lt;/code&gt; components. Then it builds up an array of &lt;code&gt;navLinks&lt;/code&gt;, an array of HTML buttons.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="admonitionblock note"&gt;&#xD;
+&lt;table&gt;&#xD;
+&lt;tr&gt;&#xD;
+&lt;td class="icon"&gt;&#xD;
+&lt;div class="title"&gt;Note&lt;/div&gt;&#xD;
+&lt;/td&gt;&#xD;
+&lt;td class="content"&gt;&#xD;
+Because React is based on XML, you can&amp;#8217;t put "&amp;lt;" inside the &lt;code&gt;&amp;lt;button&amp;gt;&lt;/code&gt; element. You must instead use the encoded version.&#xD;
+&lt;/td&gt;&#xD;
+&lt;/tr&gt;&#xD;
+&lt;/table&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Then you can see &lt;code&gt;{navLinks}&lt;/code&gt; inserted towards the bottom of the returned HTML.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;&#xD;
+&lt;h2 id="_deleting_existing_records"&gt;Deleting existing records&lt;/h2&gt;&#xD;
+&lt;div class="sectionbody"&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Deleting entries is much easier. Get a hold of its HAL-based record and apply &lt;strong&gt;DELETE&lt;/strong&gt; to its &lt;strong&gt;self&lt;/strong&gt; link.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;var Employee = React.createClass({&#xD;
+    handleDelete: function () {&#xD;
+        this.props.onDelete(this.props.employee);&#xD;
+    },&#xD;
+    render: function () {&#xD;
+        return (&#xD;
+            &amp;lt;tr&amp;gt;&#xD;
+                &amp;lt;td&amp;gt;{this.props.employee.firstName}&amp;lt;/td&amp;gt;&#xD;
+                &amp;lt;td&amp;gt;{this.props.employee.lastName}&amp;lt;/td&amp;gt;&#xD;
+                &amp;lt;td&amp;gt;{this.props.employee.description}&amp;lt;/td&amp;gt;&#xD;
+                &amp;lt;td&amp;gt;&#xD;
+                    &amp;lt;button onClick={this.handleDelete}&amp;gt;Delete&amp;lt;/button&amp;gt;&#xD;
+                &amp;lt;/td&amp;gt;&#xD;
+            &amp;lt;/tr&amp;gt;&#xD;
+        )&#xD;
+    }&#xD;
+})&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;This updated version of the Employee component shows an extra entry at the end of the row, a delete button. It is registered to invoke &lt;code&gt;this.handleDelete&lt;/code&gt; when clicked upon. The &lt;code&gt;handleDelete()&lt;/code&gt; function can then invoke the callback passed down while supplying the contextually important &lt;code&gt;this.props.employee&lt;/code&gt; record.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="admonitionblock important"&gt;&#xD;
+&lt;table&gt;&#xD;
+&lt;tr&gt;&#xD;
+&lt;td class="icon"&gt;&#xD;
+&lt;div class="title"&gt;Important&lt;/div&gt;&#xD;
+&lt;/td&gt;&#xD;
+&lt;td class="content"&gt;&#xD;
+This shows again that it is easiest to manage state in the top component, in one place. This might not &lt;em&gt;always&lt;/em&gt; be the case, but oftentimes, managing state in one place makes it easier to keep straight and simpler. By invoking the callback with component-specific details (&lt;code&gt;this.props.onDelete(this.props.employee)&lt;/code&gt;), it is very easy to orchestrate behavior between components.&#xD;
+&lt;/td&gt;&#xD;
+&lt;/tr&gt;&#xD;
+&lt;/table&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Tracing the &lt;code&gt;onDelete()&lt;/code&gt; function back to the top at &lt;code&gt;App.onDelete&lt;/code&gt;, you can see how it operates:&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;onDelete: function (employee) {&#xD;
+    client({method: 'DELETE', path: employee._links.self.href}).done(response =&amp;gt; {&#xD;
+        this.loadFromServer(this.state.pageSize);&#xD;
+    });&#xD;
+},&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;The behavior to apply after deleting a record with a page-based UI is a bit tricky. In this case, it reloads the whole data from the server, applying the same page size. Then it shows the first page.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;If you are deleting the last record on the last page, it will jump to the first page.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;&#xD;
+&lt;h2 id="_adjusting_the_page_size"&gt;Adjusting the page size&lt;/h2&gt;&#xD;
+&lt;div class="sectionbody"&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;One way to see how hypermedia really shines is to update the page size. Spring Data REST fluidly updates the navigational links based on the page size.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;There is an HTML element at the top of &lt;code&gt;ElementList.render&lt;/code&gt;: &lt;code&gt;&amp;lt;input ref="pageSize" defaultValue={this.props.pageSize} onInput={this.handleInput}/&amp;gt;&lt;/code&gt;.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="ulist"&gt;&#xD;
+&lt;ul&gt;&#xD;
+&lt;li&gt;&#xD;
+&lt;code&gt;ref="pageSize"&lt;/code&gt; makes it easy to grab that element via this.refs.pageSize.&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+&lt;code&gt;defaultValue&lt;/code&gt; initializes it with the state&amp;#8217;s &lt;strong&gt;pageSize&lt;/strong&gt;.&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+&lt;code&gt;onInput&lt;/code&gt; registers a handler as shown below.&#xD;
+&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;handleInput: function (e) {&#xD;
+    e.preventDefault();&#xD;
+    var pageSize = React.findDOMNode(this.refs.pageSize).value;&#xD;
+    if (/^[0-9]+$/.test(pageSize)) {&#xD;
+        this.props.updatePageSize(pageSize);&#xD;
+    } else {&#xD;
+        React.findDOMNode(this.refs.pageSize).value =&#xD;
+            pageSize.substring(0, pageSize.length - 1);&#xD;
+    }&#xD;
+},&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;It stops the event from bubbling up. Then it uses the &lt;strong&gt;ref&lt;/strong&gt; attribute of the &lt;code&gt;&amp;lt;input&amp;gt;&lt;/code&gt; to find the DOM node and extract its value, all through React&amp;#8217;s &lt;code&gt;findDOMNode()&lt;/code&gt; helper function. It tests if the input is really a number by checking if it&amp;#8217;s a string of digits. If so, it invokes the callback, sending the new page size to the &lt;code&gt;App&lt;/code&gt; React component. If not, the character just entered is stripped off the input.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;What does &lt;code&gt;App&lt;/code&gt; do when it gets a &lt;code&gt;updatePageSize()&lt;/code&gt;? Check it out:&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="listingblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;pre class="highlight"&gt;&lt;code class="language-javascript" data-lang="javascript"&gt;updatePageSize: function (pageSize) {&#xD;
+    if (pageSize !== this.state.pageSize) {&#xD;
+        this.loadFromServer(pageSize);&#xD;
+    }&#xD;
+},&lt;/code&gt;&lt;/pre&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Because a new page size causes changes to all the navigation links, it&amp;#8217;s best to refetch the data and start from the beginning.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;&#xD;
+&lt;h2 id="_putting_it_all_together"&gt;Putting it all together&lt;/h2&gt;&#xD;
+&lt;div class="sectionbody"&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;With all these nice additions, you now have a really vamped up UI.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="imageblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;img src="https://github.com/gregturn/react-and-spring-data-rest/raw/master/hypermedia/images/hypermedia-1.png" alt="hypermedia 1"&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;You can see the page size setting at the top, the delete buttons on each row, and the navigational buttons at the bottom. The navigational buttons illustrate a powerful feature of hypermedia controls.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Down below, you can see the &lt;code&gt;CreateDialog&lt;/code&gt; with the metadata plugged into the HTML input placeholders.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="imageblock"&gt;&#xD;
+&lt;div class="content"&gt;&#xD;
+&lt;img src="https://github.com/gregturn/react-and-spring-data-rest/raw/master/hypermedia/images/hypermedia-2.png" alt="hypermedia 2"&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;This really shows the power of using hypermedia coupled with domain-driven metadata (JSON Schema). The web page doesn&amp;#8217;t have to know which field is which. Instead, the user can &lt;em&gt;see&lt;/em&gt; it and know how to use it. If you added another field to the &lt;code&gt;Employee&lt;/code&gt; domain object, this pop-up would automatically display it.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;
+&lt;div class="sect1"&gt;&#xD;
+&lt;h2 id="_review"&gt;Review&lt;/h2&gt;&#xD;
+&lt;div class="sectionbody"&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;In this session:&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="ulist"&gt;&#xD;
+&lt;ul&gt;&#xD;
+&lt;li&gt;&#xD;
+You turned on Spring Data REST&amp;#8217;s paging feature.&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+You threw out hardcoded URI paths and started using the root URI combined with relationship names or "rels".&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+You updated the UI to dynamically use page-based hypermedia controls.&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+You added the ability to create &amp;amp; delete employees and update the UI as needed.&#xD;
+&lt;/li&gt;&#xD;
+&lt;li&gt;&#xD;
+You made it possible to change the page size and have the UI flexibly respond.&#xD;
+&lt;/li&gt;&#xD;
+&lt;/ul&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;Issues?&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;You made the webpage dynamic. But open another browser tab and point it at the same app. Changes in one tab won&amp;#8217;t update anything in the other.&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;div class="paragraph"&gt;&#xD;
+&lt;p&gt;That is something we can address in the next session. Until then, happy coding!&lt;/p&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;&#xD;
+&lt;/div&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Integration 4.2 Release is Available</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/09/10/spring-integration-4-2-release-is-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Gary Russell</name>
+    </author>
+    <id>tag:spring.io,2015-09-10:2233</id>
+    <updated>2015-09-10T12:47:47Z</updated>
+    <content type="html">&lt;p&gt;We are pleased to announce that the 4.2.0.RELEASE of Spring Integration is now available.&lt;/p&gt;&lt;p&gt;See the &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10121&amp;version=15213"&gt;release notes&lt;/a&gt; for a few changes that have been applied since the release candidate was announced.&lt;/p&gt;&lt;p&gt;See the &lt;a href="https://spring.io/blog/2015/08/17/spring-integration-4-2-release-candidate-is-available"&gt;release candidate announcement&lt;/a&gt; and the &lt;a href="http://docs.spring.io/spring-integration/docs/4.2.0.RELEASE/reference/html/whats-new.html"&gt;reference document what&amp;rsquo;s new&lt;/a&gt; for complete details of the release content.&lt;/p&gt;&lt;p&gt;See the &lt;a href="http://projects.spring.io/spring-integration/"&gt;project page&lt;/a&gt; for links to downloads, documentation etc.&lt;/p&gt;&lt;h2&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h2&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com/"&gt;SpringOne2GX in Washington, DC next week&lt;/a&gt;. Itís simply the best opportunity to find out first hand all thatís going on and to provide direct feedback.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring AMQP 1.5.0 Release Available</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/09/10/spring-amqp-1-5-0-release-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Gary Russell</name>
+    </author>
+    <id>tag:spring.io,2015-09-10:2232</id>
+    <updated>2015-09-10T12:40:03Z</updated>
+    <content type="html">&lt;p&gt;We are pleased to announce that the 1.5.0.RELEASE of Spring AMQP is now available.&lt;/p&gt;&lt;p&gt;See the &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10450&amp;version=15283"&gt;release notes&lt;/a&gt; for a few changes that have been applied since the release candidate was announced.&lt;/p&gt;&lt;p&gt;See the &lt;a href="https://spring.io/blog/2015/08/14/spring-amqp-1-5-0-release-candidate-available"&gt;release candidate announcement&lt;/a&gt; and the &lt;a href="http://docs.spring.io/spring-amqp/docs/latest-ga/reference/html/_introduction.html#whats-new"&gt;reference document what&amp;rsquo;s new&lt;/a&gt; for complete details of the release content.&lt;/p&gt;&lt;p&gt;See the &lt;a href="http://projects.spring.io/spring-amqp/"&gt;project page&lt;/a&gt; for links to downloads, documentation etc.&lt;/p&gt;&lt;h2&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h2&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com/"&gt;SpringOne2GX in Washington, DC next week&lt;/a&gt;. Itís simply the best opportunity to find out first hand all thatís going on and to provide direct feedback.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring Integration Java DSL 1.1 M2 is Available</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/09/10/spring-integration-java-dsl-1-1-m2-is-available" />
+    <category term="releases" label="Releases" />
+    <author>
+      <name>Artem Bilan</name>
+    </author>
+    <id>tag:spring.io,2015-09-10:2234</id>
+    <updated>2015-09-10T11:24:00Z</updated>
+    <content type="html">&lt;p&gt;We are pleased to announce that the Milestone 2 of Spring Integration Java DSL is now available from the &lt;a href="https://repo.spring.io/milestone/"&gt;Milestone Repository&lt;/a&gt;:&lt;/p&gt;&lt;p&gt;For Gradle use this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;compile &amp;quot;org.springframework.integration:spring-integration-java-dsl:1.1.0.M2&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;For Maven this:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint"&gt;&amp;lt;dependency&amp;gt;&#xD;
+     &amp;lt;groupId&amp;gt;org.springframework.integration&amp;lt;/groupId&amp;gt;&#xD;
+     &amp;lt;artifactId&amp;gt;spring-integration-java-dsl&amp;lt;/artifactId&amp;gt;&#xD;
+     &amp;lt;version&amp;gt;1.1.0.M2&amp;lt;/version&amp;gt;&#xD;
+&amp;lt;/dependency&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;There are not many new features since &lt;a href="https://spring.io/blog/2015/04/15/spring-integration-java-dsl-1-1-m1-is-available"&gt;Milestone 1&lt;/a&gt;, but here are the most important things to which to pay attention:&lt;/p&gt;&lt;h2&gt;&lt;a href="#spring-integration-4-2-foundation" class="anchor" name="spring-integration-4-2-foundation"&gt;&lt;/a&gt;Spring Integration 4.2 foundation&lt;/h2&gt;&lt;p&gt;The Spring Integration Java DSL 1.1 is now based on &lt;a href="https://spring.io/blog/2015/09/10/spring-integration-4-2-release-is-available"&gt;Spring Integration 4.2&lt;/a&gt; to become part of the upcoming &lt;a href="http://platform.spring.io/platform/"&gt;Spring IO 2.0&lt;/a&gt;. The 1.1 version of the Java DSL is no longer compatible with Spring Integration 4.1.x. &lt;/p&gt;&lt;h2&gt;&lt;a href="#spring-integration-kafka-1-2-x-upgrade" class="anchor" name="spring-integration-kafka-1-2-x-upgrade"&gt;&lt;/a&gt;Spring Integration Kafka 1.2.x upgrade&lt;/h2&gt;&lt;p&gt;We now provide the &lt;code&gt;Kafka&lt;/code&gt; Namespace Factory for the Spring Integration Kafka Adapters. The new Spring Integration Kafka 1.2 &lt;a href="https://spring.io/blog/2015/06/19/spring-integration-kafka-1-2-is-available-with-0-8-2-support-and-performance-enhancements"&gt;release&lt;/a&gt; together with the upgrade to Apache Kafka &lt;code&gt;0.8.2&lt;/code&gt; brings a number of breaking changes. Hence this Java DSL Milestone 2 of 1.1 is no longer compatible with the previous version of Spring Integration Kafka and Apache Kafka respectively.&lt;/p&gt;&lt;h2&gt;&lt;a href="#http-namespace-factory" class="anchor" name="http-namespace-factory"&gt;&lt;/a&gt;HTTP Namespace Factory&lt;/h2&gt;&lt;p&gt;The Spring Integration HTTP Adapters are now covered with their specific &lt;code&gt;Http&lt;/code&gt; Namespace Factory. Please, meet our classical HTTP Proxy sample, but on Java DSL already:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;@Bean&#xD;
+public IntegrationFlow httpProxyFlow() {&#xD;
+    return IntegrationFlows&#xD;
+        .from((MessagingGateways g) -&amp;gt;&#xD;
+               g.httpGateway(&amp;quot;/proxy&amp;quot;)&#xD;
+                     .requestMapping(r -&amp;gt; r.params(&amp;quot;name&amp;quot;))&#xD;
+                     .payloadFunction(httpEntity -&amp;gt;&#xD;
+                           ((ServletRequestAttributes) RequestContextHolder&#xD;
+                                                     .currentRequestAttributes())&#xD;
+						.getRequest()&#xD;
+						.getQueryString()))&#xD;
+        .handleWithAdapter(a -&amp;gt;&#xD;
+              a.httpGateway(m -&amp;gt;&#xD;
+                   String.format(&amp;quot;http://target/service?%s&amp;quot;, m.getPayload()))&#xD;
+                              .expectedResponseType(String.class))&#xD;
+        .get();&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a href="#reactive-streams-support" class="anchor" name="reactive-streams-support"&gt;&lt;/a&gt;Reactive Streams Support&lt;/h2&gt;&lt;p&gt;We are pleased to announce that Spring Integration is beginning to provide integration with &lt;a href="http://www.reactive-streams.org/"&gt;Reactive Streams&lt;/a&gt; and support for &lt;code&gt;Publisher&lt;/code&gt; is presented in the Java DSL directly:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;@Bean&#xD;
+public Publisher&amp;lt;Message&amp;lt;String&amp;gt;&amp;gt; reactiveFlow() {&#xD;
+	return IntegrationFlows&#xD;
+		.from(() -&amp;gt; new GenericMessage&amp;lt;&amp;gt;(&amp;quot;a,b,c,d,e,f&amp;quot;))&#xD;
+		.split(String.class, p -&amp;gt; p.split(&amp;quot;,&amp;quot;))&#xD;
+		.toReactivePublisher();&#xD;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;As you see it is simple to go from the Spring Integration world to the Reactive Streams world. The &lt;code&gt;org.reactivestreams.Publisher&lt;/code&gt; bean can be used afterwards as an event source for the Reactive program, e.g. using the &lt;a href="http://projectreactor.io/"&gt;Project Reactor&lt;/a&gt; implementation:&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;@Autowired&#xD;
+@Qualifier(&amp;quot;reactiveFlow&amp;quot;)&#xD;
+private Publisher&amp;lt;Message&amp;lt;String&amp;gt;&amp;gt; publisher;&#xD;
+....&#xD;
+List&amp;lt;String&amp;gt; results = new ArrayList&amp;lt;&amp;gt;();&#xD;
+CountDownLatch latch = new CountDownLatch(6);&#xD;
+Streams.wrap(this.publisher)&#xD;
+	.map(m -&amp;gt; m.getPayload().toUpperCase())&#xD;
+	.consume(p -&amp;gt; {&#xD;
+			results.add(p);&#xD;
+			latch.countDown();&#xD;
+		});
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The other direction - from Reactive Stream to the Spring Integration - is simple enough, too (from Reactor perspective):&lt;/p&gt;
+&lt;pre&gt;&lt;code class="prettyprint java"&gt;.consume(v -&amp;gt; messagingTemplate().convertAndSend(reactorStreamResult(), v));
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We will consider some &lt;code&gt;org.reactivestreams.Subscriber&lt;/code&gt; option for the &lt;code&gt;MessageChannel&lt;/code&gt; implementation in the future release.&lt;/p&gt;&lt;h2&gt;&lt;a href="#other-changes" class="anchor" name="other-changes"&gt;&lt;/a&gt;Other changes&lt;/h2&gt;&lt;p&gt;There have been done other important refactoring and deprecations to make the DSL more fluent, convenient and flexible, such as: &lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;code&gt;Files.splitter()&lt;/code&gt; factory method for the &lt;code&gt;FileSplitter&lt;/code&gt; component;&lt;/li&gt;
+  &lt;li&gt;The &lt;code&gt;(S)Ftp.outboundGateway()&lt;/code&gt; for new &lt;code&gt;MessageSessionCallback&lt;/code&gt; (a Spring Integration 4.2 feature);&lt;/li&gt;
+  &lt;li&gt;Refactored and improved &lt;code&gt;.aggregate()&lt;/code&gt; and &lt;code&gt;.resequence()&lt;/code&gt; EIP-methods etc.&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h2&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com/"&gt;SpringOne2GX in Washington, DC next week&lt;/a&gt;. Itís simply the best opportunity to find out first hand all thatís going on and to provide direct feedback.&lt;/p&gt;&lt;p&gt;Come to my &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/spring_integration_java_dsl.html"&gt;talk&lt;/a&gt; to get more information from the first hands of Spring Integration Java DSL and help me to make this Framework better!&lt;/p&gt;&lt;p&gt;&lt;a href="https://github.com/spring-projects/spring-integration-java-dsl"&gt;Project Page&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/INTEXT"&gt;JIRA&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-integration-java-dsl/issues"&gt;Issues&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-integration/blob/master/CONTRIBUTING.md"&gt;Contributions&lt;/a&gt; | &lt;a href="http://stackoverflow.com"&gt;StackOverflow&lt;/a&gt; (&lt;code&gt;spring-integration&lt;/code&gt; tag)&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>Spring REST Docs 1.0.0.RC1</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/09/08/spring-rest-docs-1-0-0-rc1" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Andy Wilkinson</name>
+    </author>
+    <id>tag:spring.io,2015-09-08:2231</id>
+    <updated>2015-09-08T15:51:00Z</updated>
+    <content type="html">&lt;p&gt;I&amp;rsquo;m delighted to announce that &lt;a href="https://github.com/spring-projects/spring-restdocs"&gt;Spring REST Docs&lt;/a&gt; 1.0.0.RC1 has been released and is available from our &lt;a href="https://repo.spring.io/milestone"&gt;milestone repository&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;If you&amp;rsquo;d like to see some examples of what can be produced with Spring REST Docs, please take a look at the &lt;a href="http://docs.spring.io/spring-restdocs/docs/1.0.0.BUILD-SNAPSHOT/samples/restful-notes/"&gt;sample documentation&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-new" class="anchor" name="what-rsquo-s-new"&gt;&lt;/a&gt;What&amp;rsquo;s new&lt;/h2&gt;
+&lt;ul&gt;
+  &lt;li&gt;Support for &lt;a href="http://docs.spring.io/spring-restdocs/docs/1.0.0.RC1/reference/html5/#documenting-your-api-path-parameters"&gt;documenting path parameters&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Support for documenting multipart requests&lt;/li&gt;
+  &lt;li&gt;Support for &lt;a href="http://docs.spring.io/spring-restdocs/docs/1.0.0.RC1/reference/html5/#documenting-your-api-constraints"&gt;documenting constraints declared using the Bean Validation API&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Improved extensibility&lt;/li&gt;
+  &lt;li&gt;Improved configurability, including &lt;a href="http://docs.spring.io/spring-restdocs/docs/1.0.0.RC1/reference/html5/#documenting-your-api-customizing"&gt;template-based snippet rendering that allows you to take complete control over the generated snippets&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;h2&gt;&lt;a href="#getting-started" class="anchor" name="getting-started"&gt;&lt;/a&gt;Getting started&lt;/h2&gt;&lt;p&gt;To get started with Spring REST Docs, please refer to the &lt;a href="http://docs.spring.io/spring-restdocs/docs/1.0.0.RC1/reference/html5/#getting-started"&gt;getting started section&lt;/a&gt; of the &lt;a href="http://docs.spring.io/spring-restdocs/docs/1.0.0.RC1/reference/html5/"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#upgrading" class="anchor" name="upgrading"&gt;&lt;/a&gt;Upgrading&lt;/h2&gt;&lt;p&gt;If you&amp;rsquo;re upgrading to Spring REST Docs from 1.0.0.M1, you&amp;rsquo;ll need to change your dependency from &lt;code&gt;spring-restdocs&lt;/code&gt; to &lt;code&gt;spring-restdocs-mockmvc&lt;/code&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#schedule" class="anchor" name="schedule"&gt;&lt;/a&gt;Schedule&lt;/h2&gt;&lt;p&gt;Spring REST Docs 1.0.0.RELEASE is planned for early October. Please grab the RC and &lt;a href="https://github.com/spring-projects/spring-restdocs/issues"&gt;let us know&lt;/a&gt; about any problems you encounter.&lt;/p&gt;&lt;h2&gt;&lt;a href="#springone-2015" class="anchor" name="springone-2015"&gt;&lt;/a&gt;SpringOne 2015&lt;/h2&gt;&lt;p&gt;I&amp;rsquo;ll be talking about &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/documenting_restful_apis.html"&gt;documenting RESTful APIs&lt;/a&gt;, including some live coding with Spring REST Docs, at this year&amp;rsquo;s &lt;a href="http://springone2gx.com"&gt;SpringOne&lt;/a&gt; in Washington, DC. I&amp;rsquo;d love to see you there.&lt;/p&gt;</content>
+  </entry>
+  <entry>
+    <title>This Week in Spring - September 8, 2015</title>
+    <link rel="alternate" href="https://spring.io/blog/2015/09/08/this-week-in-spring-september-8-2015" />
+    <category term="engineering" label="Engineering" />
+    <author>
+      <name>Josh Long</name>
+    </author>
+    <id>tag:spring.io,2015-09-08:2229</id>
+    <updated>2015-09-08T06:00:00Z</updated>
+    <content type="html">&lt;p&gt;Welcome to another installation of &lt;em&gt;This Week in Spring&lt;/em&gt;! This week I left Tokyo, Japan, and have been in Shanghai, China, speaking to a few large-scale startups - including &lt;a href="http://Ele.me"&gt;Ele.me&lt;/a&gt;, the largest food delivery service and application in a &lt;em&gt;very&lt;/em&gt; crowded Chinese market with more than 2 million orders every day - about building cloud-native applications using Spring Boot, Spring Cloud and Cloud Foundry! Tomorrow, it&amp;rsquo;s off to Oslo, Norway, &lt;a href="http://2015.javazone.no/"&gt;for the amazing JavaZone&lt;/a&gt; conference. I love this conference and have, in the last two years, been unable to attend because it was concurrent with SpringOne2GX! Happily, this year it is not, and I&amp;rsquo;ll be passing through on my way to Washington DC and SpringOne2GX 2015, this Monday!&lt;/p&gt;&lt;p&gt;The Spring team is hard at work this week &lt;a href="http://springone2gx.com/"&gt;preparing for SpringOne2GX 2015&lt;/a&gt;, starting next Monday, and so this week&amp;rsquo;s seen a &lt;em&gt;ton&lt;/em&gt; of exciting new releases! We&amp;rsquo;re all excited for the next week and we hope to see you there!&lt;/p&gt;&lt;p&gt;Finally, it is my pleasure to share that my dear friend Kenny Bastani, who I asked to be the co-author of the upcoming book, O&amp;rsquo;Reilly&amp;rsquo;s upcoming &lt;a href="http://shop.oreilly.com/product/0636920038252.do"&gt;&lt;em&gt;Cloud Native Java&lt;/em&gt;&lt;/a&gt;, joins my team this week as the first new Spring Developer Advocate. I hope &lt;a href="http://twitter.com/kennybastani"&gt;you&amp;rsquo;ll join me in welcoming him to the community and family&lt;/a&gt;!&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Spring Data ninja Christoph Strobl put together a nice post on &lt;a href="http://spring.io/blog/2015/09/04/what-s-new-in-spring-data-release-gosling"&gt;what&amp;rsquo;s coming in Spring Data Gosling &lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring ninja StÈphane Nicoll just &lt;a href="http://spring.io/blog/2015/09/01/spring-framework-4-2-1-available-now"&gt;announced Spring framework 4.2.1 is now available&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;Spring Boot co-founder and all around nice guy &lt;a href="http://spring.io/blog/2015/09/04/spring-boot-1-3-0-m5-available-now"&gt;Phil Webb just announced that Spring Boot 1.3.0 M5 is now available&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Security lead &lt;a href="http://spring.io/blog/2015/09/02/spring-ldap-2-0-4-released"&gt;Rob Winch just announced some updates to Spring Security LDAP&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Web ninja &lt;a href="http://spring.io/blog/2015/09/01/spring-web-flow-2-4-2-released"&gt;Rossen Stoyanchev announced Spring Web Flow 2.4.2&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Spring Statemachine lead Janne Valkealahti &lt;a href="http://spring.io/blog/2015/09/01/spring-statemachine-1-0-0-rc1-released"&gt;just announced 1.0.0.RC1 - get the bits and kick the tires&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;Our pal Ken Kreuger has put &lt;a href="https://www.udemy.com/microservices-with-spring-cloud/"&gt;together a Spring Cloud tutorial on Udemy&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;Dave Burke&amp;rsquo;s put together a nice post on one of &lt;a href="http://nixmash.com/java/using-spring-boot-commandlinerunner/"&gt;my favorite Spring Boot features, &lt;code&gt;CommandLineRunner&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;This Czech-language post on running Spring Boot &lt;a href="http://www.java-skoleni.cz/novinky/jak-spustit-spring-boot-aplikaci-na-openshift.html"&gt;applications on Openshift looks pretty interesting!&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;Speaking of which, Red Hat &lt;em&gt;also&lt;/em&gt; did a blog on &lt;a href="https://blog.openshift.com/using-openshift-enterprise-grade-spring-boot-deployments/"&gt;running Spring Boot applications on Openshift this week&lt;/a&gt;! It is nice to see the likes of Red Hat talking about our cloud native technology stack.&lt;/li&gt;
+  &lt;li&gt;Tomasz Nurkiewicz has put together a really cool &lt;a href="http://www.nurkiewicz.com/2015/09/displaying-progress-of-spring.html"&gt;blog on monitoring the startup progress of a Spring Boot application&lt;/a&gt;. Of course Spring Boot applications typically take less than three seconds from &lt;code&gt;java -jar ..&lt;/code&gt; to handling requests, as he points out, but it can be helpful to get visibility into this progress!&lt;/li&gt;
+  &lt;li&gt;This video on &lt;a href="https://www.youtube.com/watch?v=pgQ9Bs-6l2k"&gt;Spring Boot web looked pretty interesting&lt;/a&gt;!&lt;/li&gt;
+&lt;/ul&gt;</content>
+  </entry>
   <entry>
     <title>What's New In Spring Data Release Gosling?</title>
     <link rel="alternate" href="https://spring.io/blog/2015/09/04/what-s-new-in-spring-data-release-gosling" />
@@ -33,7 +963,7 @@ interface ProductRepository extends Repository&amp;lt;Customer, Long&amp;gt; {&#
   @EntityGraph(&amp;quot;with-tags&amp;quot;)&#xD;
   Product findOneById(Long id);&#xD;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The Gosling release now takes our JPA 2.1 story one step forward, extending it to ad-hoc fetch graph definitions. By explicitly specifying properties via &lt;code&gt;@EntityGraph(attributePaths = ‚Ä¶)&lt;/code&gt; on the query method you don&amp;rsquo;t need to have the &lt;code&gt;NamedEntityGraph&lt;/code&gt; annotation on your entity.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The Gosling release now takes our JPA 2.1 story one step forward, extending it to ad-hoc fetch graph definitions. By explicitly specifying properties via &lt;code&gt;@EntityGraph(attributePaths = Ö)&lt;/code&gt; on the query method you don&amp;rsquo;t need to have the &lt;code&gt;NamedEntityGraph&lt;/code&gt; annotation on your entity.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="prettyprint java"&gt;@Entity&#xD;
 class Product {&#xD;
 &#xD;
@@ -48,7 +978,7 @@ interface ProductRepository extends Repository&amp;lt;Customer, Long&amp;gt; {&#
   @EntityGraph(attributePaths = {&amp;quot;tags&amp;quot;})&#xD;
   Product findOneById(Long id);&#xD;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a href="#querydsl-web-support" class="anchor" name="querydsl-web-support"&gt;&lt;/a&gt;Querydsl web support&lt;/h2&gt;&lt;p&gt;The Spring Data web support already lets you declare parameters of type &lt;code&gt;Pageable&lt;/code&gt; in your controller handler methods. The newly introduced Querydsl integration extends that to allow you to receive a ready to use &lt;code&gt;Predicate&lt;/code&gt; derived directly from the HTTP request&amp;rsquo;s query string. The feature is automatically enabled when &lt;code&gt;@EnableSpringDataWebSupport&lt;/code&gt; is configured and Querydsl is found on the classpath.&lt;/p&gt;&lt;p&gt;If &lt;code&gt;Predicate&lt;/code&gt; is used without further configuration we&amp;rsquo;ll try to resolve the root type for &lt;code&gt;Predicate&lt;/code&gt; resolution from the method&amp;rsquo;s return type, although in most cases it might be better to explicitly declare the desired type reference via &lt;code&gt;@QuerydslPredicate(root = ‚Ä¶)&lt;/code&gt;. Having that in place, query string attributes are bound to matching properties of the type which creates e.g.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;h2&gt;&lt;a href="#querydsl-web-support" class="anchor" name="querydsl-web-support"&gt;&lt;/a&gt;Querydsl web support&lt;/h2&gt;&lt;p&gt;The Spring Data web support already lets you declare parameters of type &lt;code&gt;Pageable&lt;/code&gt; in your controller handler methods. The newly introduced Querydsl integration extends that to allow you to receive a ready to use &lt;code&gt;Predicate&lt;/code&gt; derived directly from the HTTP request&amp;rsquo;s query string. The feature is automatically enabled when &lt;code&gt;@EnableSpringDataWebSupport&lt;/code&gt; is configured and Querydsl is found on the classpath.&lt;/p&gt;&lt;p&gt;If &lt;code&gt;Predicate&lt;/code&gt; is used without further configuration we&amp;rsquo;ll try to resolve the root type for &lt;code&gt;Predicate&lt;/code&gt; resolution from the method&amp;rsquo;s return type, although in most cases it might be better to explicitly declare the desired type reference via &lt;code&gt;@QuerydslPredicate(root = Ö)&lt;/code&gt;. Having that in place, query string attributes are bound to matching properties of the type which creates e.g.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="prettyprint java"&gt;QUser.user.firstname.eq(&amp;quot;Dave&amp;quot;).and(QUser.user.lastname.eq(&amp;quot;Matthews&amp;quot;)) 
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;from &lt;code&gt;?firstname=Dave&amp;amp;lastname=Matthews&lt;/code&gt; using the default property type dependent binding.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="prettyprint java"&gt;@SpringBootApplication&#xD;
@@ -74,7 +1004,7 @@ public class Application {&#xD;
     }&#xD;
   }&#xD;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now it does not always make sense to use the default (equals) binding, but rather a dedicated binding per property or a type specific one. To achieve this just override the defaults by providing a &lt;code&gt;QuerydslBinderCustomizer&lt;/code&gt; that can either be registered via &lt;code&gt;@QuerydslPredicate(bindings = ‚Ä¶)&lt;/code&gt; or is simply implemented by to the repository.&lt;/p&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Now it does not always make sense to use the default (equals) binding, but rather a dedicated binding per property or a type specific one. To achieve this just override the defaults by providing a &lt;code&gt;QuerydslBinderCustomizer&lt;/code&gt; that can either be registered via &lt;code&gt;@QuerydslPredicate(bindings = Ö)&lt;/code&gt; or is simply implemented by to the repository.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="prettyprint java"&gt;interface UserRepository extends CrudRepository&amp;lt;User, String&amp;gt;,&#xD;
     QueryDslPredicateExecutor&amp;lt;User&amp;gt;,&#xD;
     QuerydslBinderCustomizer&amp;lt;QUser&amp;gt; {&#xD;
@@ -99,7 +1029,7 @@ public class Application {&#xD;
         &amp;quot;stores&amp;quot;: [&#xD;
             {&#xD;
                 &amp;quot;_links&amp;quot;: {&#xD;
-                    ‚Ä¶&#xD;
+                    Ö&#xD;
                 }, &#xD;
                 &amp;quot;address&amp;quot;: {&#xD;
                     &amp;quot;city&amp;quot;: &amp;quot;New York&amp;quot;, &#xD;
@@ -111,7 +1041,7 @@ public class Application {&#xD;
             }, &#xD;
             {&#xD;
                 &amp;quot;_links&amp;quot;: {&#xD;
-                    ‚Ä¶&#xD;
+                    Ö&#xD;
                 }, &#xD;
                 &amp;quot;address&amp;quot;: {&#xD;
                     &amp;quot;city&amp;quot;: &amp;quot;New York&amp;quot;, &#xD;
@@ -121,11 +1051,11 @@ public class Application {&#xD;
                 }, &#xD;
                 &amp;quot;name&amp;quot;: &amp;quot;168th &amp;amp; Broadway&amp;quot;&#xD;
             }, &#xD;
-            ‚Ä¶&#xD;
+            Ö&#xD;
         ]&#xD;
     }, &#xD;
     &amp;quot;_links&amp;quot;: {&#xD;
-        ‚Ä¶&#xD;
+        Ö&#xD;
     }, &#xD;
     &amp;quot;page&amp;quot;: {&#xD;
         &amp;quot;number&amp;quot;: 0, &#xD;
@@ -135,28 +1065,28 @@ public class Application {&#xD;
     }&#xD;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Note how only returns stores whose city ends with &amp;ldquo;York&amp;rdquo;, just as defined in the implementation of &lt;code&gt;QuerydslBinderCustomizer&lt;/code&gt; in &lt;code&gt;StoresRepository&lt;/code&gt;.&lt;/p&gt;&lt;p&gt;We&amp;rsquo;re currently looking into options to advertise this querying mechanism more obviously, e.g. using template variables and even provide advanced mapping facilities to customize the request parameter names to be used.&lt;/p&gt;&lt;h3&gt;&lt;a href="#custom-hal-browser" class="anchor" name="custom-hal-browser"&gt;&lt;/a&gt;Custom HAL Browser&lt;/h3&gt;&lt;p&gt;The Gosling release of Spring Data REST ships with an additional module that wraps Mike Kelly&amp;rsquo;s &lt;a href="https://github.com/mikekelly/hal-browser"&gt;HAL browser&lt;/a&gt; and tweaks it with a few customizations to leverage the API metadata we expose. To use the browser with your application simply add the &lt;code&gt;spring-data-rest-hal-browser&lt;/code&gt; module to your project and your API root will serve the browser for requests accepting &lt;code&gt;text/html&lt;/code&gt;. The standard HAL responses are of course still served by default or if you use a JSON based &lt;code&gt;Accept&lt;/code&gt; header.&lt;/p&gt;&lt;p&gt;&lt;a href="https://raw.githubusercontent.com/spring-projects/spring-data-docs/master/whats-new-in-spring-data-gosling/hal-browser.png?token=AAH2Qd7efEBIcN92b1sItqsWewiO8-SOks5V8n76wA%3D%3D"&gt;&lt;br/&gt;&lt;img src="https://raw.githubusercontent.com/spring-projects/spring-data-docs/master/whats-new-in-spring-data-gosling/hal-browser.png?token=AAH2Qd7efEBIcN92b1sItqsWewiO8-SOks5V8n76wA%3D%3D" alt="HAL browser" title="HAL browser" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style="text-align: center; font-size: 0.9em"&gt;Fig 1. - HAL Browser (click to enlarge)&lt;/p&gt;&lt;p&gt;While the Spring Data REST module makes it easy to add the browser to your app, it also tweaks the browser slightly. When you click the button to trigger a non-&lt;code&gt;GET&lt;/code&gt; request, the browser would normally open a modal dialogue that expects some raw JSON input. While that&amp;rsquo;s of course great if you know what you&amp;rsquo;re doing, it&amp;rsquo;s a bit error prone and not really convenient, as you have to know about the data structure the server expects.&lt;/p&gt;&lt;p&gt;Spring Data REST exposes JSON schema documents for the types exposed by the system leveraging the &lt;code&gt;profile&lt;/code&gt; link relation which makes the schema generically discoverable without tying the discovery logic to Spring Data REST itself. The browser instance we ship will lookup that schema metadata and ‚Äì if it can find some ‚Äì hand this to JSON Editor to replace the default dialogue with a form completely derived from the JSON Schema.&lt;/p&gt;&lt;p&gt;&lt;a href="https://raw.githubusercontent.com/spring-projects/spring-data-docs/master/whats-new-in-spring-data-gosling/json-editor-post-form.png?token=AAH2QeqM7VMT-M7dDkod9Tmp1EtKrAgVks5V8n_lwA%3D%3D"&gt;&lt;br/&gt;&lt;img src="https://raw.githubusercontent.com/spring-projects/spring-data-docs/master/whats-new-in-spring-data-gosling/json-editor-post-form.png?token=AAH2QeqM7VMT-M7dDkod9Tmp1EtKrAgVks5V8n_lwA%3D%3D" alt="JSON Editor based POST form" title="JSON Editor based POST form" /&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;p style="text-align: center; font-size: 0.9em"&gt;Fig 2. - JSON Editor based POST for (click to enlarge)&lt;/p&gt;&lt;p&gt;See how the form allows adding line items as the schema exposes it to be an array. The price and order date fields are marked as read-only, the location field allows choosing values from an enumeration with internationalized values.&lt;/p&gt;&lt;p&gt;The sample project can be found &lt;a href="https://github.com/olivergierke/spring-restbucks"&gt;on GitHub&lt;/a&gt;.&lt;/p&gt;&lt;h3&gt;&lt;a href="#internationalizing-links-and-enums" class="anchor" name="internationalizing-links-and-enums"&gt;&lt;/a&gt;Internationalizing links and enums&lt;/h3&gt;&lt;p&gt;As you could see in the screenshots above the &lt;code&gt;restbucks:orders&lt;/code&gt; link was accompanied by a human readable description. The descriptions are pulled from an optional resource bundle &lt;code&gt;rest-messages&lt;/code&gt; using &lt;code&gt;_links.$rel.title&lt;/code&gt; keys to define a readable value. The sample uses a &lt;code&gt;rest-messages.properties&lt;/code&gt; as a fallback resource bundle but also contains a &lt;code&gt;rest-messages_de.properties&lt;/code&gt; to return German labels for clients that send an &lt;code&gt;Accept-Language&lt;/code&gt; header set to &lt;code&gt;de&lt;/code&gt;.&lt;/p&gt;&lt;p&gt;The same resource bundle can be used to internationalize enum values so that they can be used on the client in a human readable manner. To not break existing applications, this has to be explicitly activated via &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.4.0.RELEASE/api/org/springframework/data/rest/core/config/RepositoryRestConfiguration.html#setEnableEnumTranslation-boolean-"&gt;&lt;code&gt;RepositoryRestConfiguration.setEnableEnumTranslation(‚Ä¶)&lt;/code&gt;&lt;/a&gt;. Details about the translation can be configured on &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.4.0.RELEASE/api/org/springframework/data/rest/core/config/EnumTranslationConfiguration.html"&gt;&lt;code&gt;EnumTranslationConfiguration&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#spring-data-gemfire-amp-apache-geode" class="anchor" name="spring-data-gemfire-amp-apache-geode"&gt;&lt;/a&gt;Spring Data GemFire &amp;amp; Apache Geode&lt;/h2&gt;&lt;p&gt;Support for Pivotal GemFire 8.1 and Apache Geode are the most notable additions to Spring Data GemFire 1.7. Pivotal GemFire was submitted to the &lt;a href="https://wiki.apache.org/incubator/GeodeProposal"&gt;Apache Incubator&lt;/a&gt; earlier this year and the Spring Data team responded quickly to include &lt;a href="https://spring.io/blog/2015/06/12/spring-data-gemfire-supports-apache-geode"&gt;support&lt;/a&gt; in Spring Data GemFire.&lt;/p&gt;&lt;p&gt;In addition, several other features were added to simplify the development of GemFire and Apache Geode applications using Spring. For instance, developers can now define application domain object specific expiration policies using annotations:&lt;/p&gt;
+&lt;p style="text-align: center; font-size: 0.9em"&gt;Fig 1. - HAL Browser (click to enlarge)&lt;/p&gt;&lt;p&gt;While the Spring Data REST module makes it easy to add the browser to your app, it also tweaks the browser slightly. When you click the button to trigger a non-&lt;code&gt;GET&lt;/code&gt; request, the browser would normally open a modal dialogue that expects some raw JSON input. While that&amp;rsquo;s of course great if you know what you&amp;rsquo;re doing, it&amp;rsquo;s a bit error prone and not really convenient, as you have to know about the data structure the server expects.&lt;/p&gt;&lt;p&gt;Spring Data REST exposes JSON schema documents for the types exposed by the system leveraging the &lt;code&gt;profile&lt;/code&gt; link relation which makes the schema generically discoverable without tying the discovery logic to Spring Data REST itself. The browser instance we ship will lookup that schema metadata and ñ if it can find some ñ hand this to JSON Editor to replace the default dialogue with a form completely derived from the JSON Schema.&lt;/p&gt;&lt;p&gt;&lt;a href="https://raw.githubusercontent.com/spring-projects/spring-data-docs/master/whats-new-in-spring-data-gosling/json-editor-post-form.png?token=AAH2QeqM7VMT-M7dDkod9Tmp1EtKrAgVks5V8n_lwA%3D%3D"&gt;&lt;br/&gt;&lt;img src="https://raw.githubusercontent.com/spring-projects/spring-data-docs/master/whats-new-in-spring-data-gosling/json-editor-post-form.png?token=AAH2QeqM7VMT-M7dDkod9Tmp1EtKrAgVks5V8n_lwA%3D%3D" alt="JSON Editor based POST form" title="JSON Editor based POST form" /&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style="text-align: center; font-size: 0.9em"&gt;Fig 2. - JSON Editor based POST for (click to enlarge)&lt;/p&gt;&lt;p&gt;See how the form allows adding line items as the schema exposes it to be an array. The price and order date fields are marked as read-only, the location field allows choosing values from an enumeration with internationalized values.&lt;/p&gt;&lt;p&gt;The sample project can be found &lt;a href="https://github.com/olivergierke/spring-restbucks"&gt;on GitHub&lt;/a&gt;.&lt;/p&gt;&lt;h3&gt;&lt;a href="#internationalizing-links-and-enums" class="anchor" name="internationalizing-links-and-enums"&gt;&lt;/a&gt;Internationalizing links and enums&lt;/h3&gt;&lt;p&gt;As you could see in the screenshots above the &lt;code&gt;restbucks:orders&lt;/code&gt; link was accompanied by a human readable description. The descriptions are pulled from an optional resource bundle &lt;code&gt;rest-messages&lt;/code&gt; using &lt;code&gt;_links.$rel.title&lt;/code&gt; keys to define a readable value. The sample uses a &lt;code&gt;rest-messages.properties&lt;/code&gt; as a fallback resource bundle but also contains a &lt;code&gt;rest-messages_de.properties&lt;/code&gt; to return German labels for clients that send an &lt;code&gt;Accept-Language&lt;/code&gt; header set to &lt;code&gt;de&lt;/code&gt;.&lt;/p&gt;&lt;p&gt;The same resource bundle can be used to internationalize enum values so that they can be used on the client in a human readable manner. To not break existing applications, this has to be explicitly activated via &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.4.0.RELEASE/api/org/springframework/data/rest/core/config/RepositoryRestConfiguration.html#setEnableEnumTranslation-boolean-"&gt;&lt;code&gt;RepositoryRestConfiguration.setEnableEnumTranslation(Ö)&lt;/code&gt;&lt;/a&gt;. Details about the translation can be configured on &lt;a href="http://docs.spring.io/spring-data/rest/docs/2.4.0.RELEASE/api/org/springframework/data/rest/core/config/EnumTranslationConfiguration.html"&gt;&lt;code&gt;EnumTranslationConfiguration&lt;/code&gt;&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#spring-data-gemfire-amp-apache-geode" class="anchor" name="spring-data-gemfire-amp-apache-geode"&gt;&lt;/a&gt;Spring Data GemFire &amp;amp; Apache Geode&lt;/h2&gt;&lt;p&gt;Support for Pivotal GemFire 8.1 and Apache Geode are the most notable additions to Spring Data GemFire 1.7. Pivotal GemFire was submitted to the &lt;a href="https://wiki.apache.org/incubator/GeodeProposal"&gt;Apache Incubator&lt;/a&gt; earlier this year and the Spring Data team responded quickly to include &lt;a href="https://spring.io/blog/2015/06/12/spring-data-gemfire-supports-apache-geode"&gt;support&lt;/a&gt; in Spring Data GemFire.&lt;/p&gt;&lt;p&gt;In addition, several other features were added to simplify the development of GemFire and Apache Geode applications using Spring. For instance, developers can now define application domain object specific expiration policies using annotations:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="prettyprint java"&gt;@TimeToLiveExpiration(&#xD;
   timeout = &amp;quot;@expirationSettings[&amp;#39;spel.defined.timeout&amp;#39;]&amp;quot; action=&amp;quot;DESTROY&amp;quot;)&#xD;
 @IdleTimeoutExpiration(&#xD;
   timeout = &amp;quot;1800&amp;quot; action=&amp;quot;${property.placeholder.defined.action}&amp;quot;)&#xD;
-class ApplicationDomainObject { ‚Ä¶ }
+class ApplicationDomainObject { Ö }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The expiration-based annotations support both &lt;a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/htmlsingle/#expressions"&gt;SpEL&lt;/a&gt; and Spring &lt;a href="http://docs.spring.io/spring/docs/1.7.0.RELEASE/spring-framework-reference/htmlsingle/#beans-factory-placeholderconfigurer"&gt;Property Placeholder&lt;/a&gt; values. To enable annotation-based expiration policies, you only need configure Spring Data GemFire&amp;rsquo;s &lt;a href="http://gemfire.docs.pivotal.io/latest/javadocs/japi/com/gemstone/gemfire/cache/CustomExpiry.html"&gt;CustomExpiry&lt;/a&gt; implementation, &lt;a href="http://docs.spring.io/spring-data-gemfire/docs/1.7.0.RELEASE/api/org/springframework/data/gemfire/support/AnnotationBasedExpiration.html"&gt;AnnotationBasedExpiration&lt;/a&gt;, on your GemFire regions for either, or both, TTL and TTI:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint xml"&gt;&amp;lt;gfe:partitioned-region id=&amp;quot;Example&amp;quot; persistent=&amp;quot;false&amp;quot; ‚Ä¶&amp;gt;&#xD;
+&lt;pre&gt;&lt;code class="prettyprint xml"&gt;&amp;lt;gfe:partitioned-region id=&amp;quot;Example&amp;quot; persistent=&amp;quot;false&amp;quot; Ö&amp;gt;&#xD;
   &amp;lt;gfe:custom-entry-ttl&amp;gt;&#xD;
-    &amp;lt;bean class=&amp;quot;‚Ä¶.gemfire.support.AnnotationBasedExpiration&amp;quot; factory-method=&amp;quot;forTimeToLive&amp;quot;/&amp;gt;&#xD;
+    &amp;lt;bean class=&amp;quot;Ö.gemfire.support.AnnotationBasedExpiration&amp;quot; factory-method=&amp;quot;forTimeToLive&amp;quot;/&amp;gt;&#xD;
   &amp;lt;/gfe:custom-entry-ttl&amp;gt;&#xD;
   &amp;lt;gfe:custom-entry-tti ref=&amp;quot;ttiExpiration&amp;quot;/&amp;gt;&#xD;
 &amp;lt;/gfe:partitioned-region&amp;gt;&#xD;
 &#xD;
-&amp;lt;bean id=&amp;quot;ttiExpiration&amp;quot; class=&amp;quot;‚Ä¶.gemfire.support.AnnotationBasedExpiration&amp;quot; factory-method=&amp;quot;forIdleTimeout&amp;quot;&amp;gt;&#xD;
+&amp;lt;bean id=&amp;quot;ttiExpiration&amp;quot; class=&amp;quot;Ö.gemfire.support.AnnotationBasedExpiration&amp;quot; factory-method=&amp;quot;forIdleTimeout&amp;quot;&amp;gt;&#xD;
   &amp;lt;constructor-arg ref=&amp;quot;defaultExpirationAttributes&amp;quot;/&amp;gt;&#xD;
 &amp;lt;/bean&amp;gt;&#xD;
 &#xD;
-&amp;lt;bean id=&amp;quot;defaultExpirationAttributes&amp;quot; class=&amp;quot;‚Ä¶.ExpirationAttributes&amp;quot;&amp;gt;&#xD;
+&amp;lt;bean id=&amp;quot;defaultExpirationAttributes&amp;quot; class=&amp;quot;Ö.ExpirationAttributes&amp;quot;&amp;gt;&#xD;
   &amp;lt;constructor-arg value=&amp;quot;600&amp;quot;/&amp;gt;&#xD;
-  &amp;lt;constructor-arg value=&amp;quot;#{T(‚Ä¶.ExpirationAction).DESTROY}&amp;quot;/&amp;gt;&#xD;
+  &amp;lt;constructor-arg value=&amp;quot;#{T(Ö.ExpirationAction).DESTROY}&amp;quot;/&amp;gt;&#xD;
 &amp;lt;/bean&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;See the reference guide to &lt;a href="http://docs.spring.io/spring-data-gemfire/docs/1.7.0.RELEASE/reference/html/#bootstrap:region:expiration"&gt;learn more&lt;/a&gt;. Next, support was added for repository query method OQL extensions via annotations:&lt;/p&gt;
 &lt;pre&gt;&lt;code class="prettyprint java"&gt;interface CustomerRepository implements CrudRepository&amp;lt;Cutomer, Long&amp;gt; {&#xD;
@@ -168,7 +1098,7 @@ class ApplicationDomainObject { ‚Ä¶ }
   List&amp;lt;Customer&amp;gt; findByLastNameOrderByLastNameAsc(String lastName);&#xD;
 }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;code&gt;@Trace&lt;/code&gt; enables individual OQL statement debugging. &lt;code&gt;@Limit&lt;/code&gt; restrains the number of results in the query result set and &lt;code&gt;@Import&lt;/code&gt; enables applications to distinguish between similarly named object types. For example, your application might define both &lt;code&gt;org.example.app.core.Customer&lt;/code&gt; and &lt;code&gt;org.example.app.vendor.xyz.Customer&lt;/code&gt; types. See GemFire&amp;rsquo;s &lt;a href="http://gemfire81.docs.pivotal.io/latest/userguide/index.html#developing/query_select/the_import_statement.html#concept_2E9F15B2FE9041238B54736103396BF7"&gt;doc&lt;/a&gt; for more details. &lt;code&gt;@Hint&lt;/code&gt; enables the use of OQL hints to identify indexes applicable to the query. Learn more about OQL extensions &lt;a href="http://docs.spring.io/spring-data-gemfire/docs/1.7.0.RELEASE/reference/html/#gemfire-repositories.oql-extension"&gt;here&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Finally, Spring Data GemFire offers support for GemFire &lt;a href="http://gemfire81.docs.pivotal.io/latest/userguide/index.html#managing/cache_snapshots/chapter_overview.html"&gt;Cache and Region Snapshots&lt;/a&gt; using the Spring Data GemFire XML Data Namespace:&lt;/p&gt;
-&lt;pre&gt;&lt;code class="prettyprint xml"&gt;&amp;lt;gfe:partitioned-region id=&amp;quot;Example&amp;quot; persistent=&amp;quot;false&amp;quot; ‚Ä¶ /&amp;gt;&#xD;
+&lt;pre&gt;&lt;code class="prettyprint xml"&gt;&amp;lt;gfe:partitioned-region id=&amp;quot;Example&amp;quot; persistent=&amp;quot;false&amp;quot; Ö /&amp;gt;&#xD;
 &#xD;
 &amp;lt;gfe-data:snapshot-service id=&amp;quot;exampleRegionSnapshotService&amp;quot; region-ref=&amp;quot;Example&amp;quot;&amp;gt;&#xD;
   &amp;lt;gfe-data:snapshot-import location=&amp;quot;/path/to/import/example.snapshot&amp;quot;/&amp;gt;&#xD;
@@ -177,7 +1107,7 @@ class ApplicationDomainObject { ‚Ä¶ }
 &lt;/code&gt;&lt;/pre&gt;&lt;p&gt;You can learn more about how Spring Data GemFire supports ZIP files on import, the use of Spring &lt;code&gt;ApplicationEvents&lt;/code&gt; to trigger import and export snapshots as well as how to appropriately filter data imported and exported &lt;a href="http://docs.spring.io/spring-data-gemfire/docs/1.7.0.RELEASE/reference/html/#bootstrap:snapshot"&gt;here&lt;/a&gt;.&lt;/p&gt;
 &lt;!--&#xD;
 That is all on the GemFire side for now.  See the [changelog](https://github.com/spring-projects/spring-data-gemfire/blob/master/docs/src/info/changelog.txt) for more specifics. As always, contributions and feedback are welcomed on GitHub ([PR](https://github.com/spring-projects/spring-data-gemfire/pulls)), in [JIRA](https://jira.spring.io/browse/SGF) and on the [forums](http://stackoverflow.com/questions/tagged/spring-data-gemfire).&#xD;
---&gt;&lt;h2&gt;&lt;a href="#spring-data-keyvalue-amp-map-based-repositories" class="anchor" name="spring-data-keyvalue-amp-map-based-repositories"&gt;&lt;/a&gt;Spring Data KeyValue &amp;amp; Map based repositories&lt;/h2&gt;&lt;p&gt;It&amp;rsquo;s been quite a long time since we&amp;rsquo;ve been asked to provide a very simple &lt;code&gt;Map&lt;/code&gt; based implementation for Spring Data repositories for various ‚Äì mostly testing ‚Äì purposes. The requests eventually concluded in revitalizing the &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.0.0.RELEASE/reference/html/"&gt;KeyValue module&lt;/a&gt; in a slightly different way than it existed in before.&lt;/p&gt;&lt;p&gt;Spring Data KeyValue now consists of a basic &lt;code&gt;Map&lt;/code&gt; based repository implementation that will use Spring Expression Language (SpEL) for querying values by default, provide sorting, pagination and Querydsl integration based on its collection module. It also exposes dedicated APIs to allow key-value stores to leverage store specific optimizations in storage, retrieval and most importantly query execution if needed.&lt;/p&gt;&lt;p&gt;The default query mechanism used by Spring Data KeyValue repositories is based on SpEL and allows you to define and run complex queries. This approach shows off its real power when run in &lt;a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html#expressions-spel-compilation"&gt;&lt;code&gt;COMPILED&lt;/code&gt; mode&lt;/a&gt; as it effectively compiles the filter expressions to be executed on the values. Alternatively you also can use Querydsl expressions for typesafe querying.&lt;/p&gt;
+--&gt;&lt;h2&gt;&lt;a href="#spring-data-keyvalue-amp-map-based-repositories" class="anchor" name="spring-data-keyvalue-amp-map-based-repositories"&gt;&lt;/a&gt;Spring Data KeyValue &amp;amp; Map based repositories&lt;/h2&gt;&lt;p&gt;It&amp;rsquo;s been quite a long time since we&amp;rsquo;ve been asked to provide a very simple &lt;code&gt;Map&lt;/code&gt; based implementation for Spring Data repositories for various ñ mostly testing ñ purposes. The requests eventually concluded in revitalizing the &lt;a href="http://docs.spring.io/spring-data/keyvalue/docs/1.0.0.RELEASE/reference/html/"&gt;KeyValue module&lt;/a&gt; in a slightly different way than it existed in before.&lt;/p&gt;&lt;p&gt;Spring Data KeyValue now consists of a basic &lt;code&gt;Map&lt;/code&gt; based repository implementation that will use Spring Expression Language (SpEL) for querying values by default, provide sorting, pagination and Querydsl integration based on its collection module. It also exposes dedicated APIs to allow key-value stores to leverage store specific optimizations in storage, retrieval and most importantly query execution if needed.&lt;/p&gt;&lt;p&gt;The default query mechanism used by Spring Data KeyValue repositories is based on SpEL and allows you to define and run complex queries. This approach shows off its real power when run in &lt;a href="http://docs.spring.io/spring/docs/current/spring-framework-reference/html/expressions.html#expressions-spel-compilation"&gt;&lt;code&gt;COMPILED&lt;/code&gt; mode&lt;/a&gt; as it effectively compiles the filter expressions to be executed on the values. Alternatively you also can use Querydsl expressions for typesafe querying.&lt;/p&gt;
 &lt;pre&gt;&lt;code class="prettyprint java"&gt;@Configuration&#xD;
 @EnableMapRepositories(&amp;quot;com.acme.repositories&amp;quot;)&#xD;
 class AppConfig {}&#xD;
@@ -192,7 +1122,7 @@ class User {&#xD;
 interface UserRepository extends CrudRepository&amp;lt;User, String&amp;gt; {&#xD;
   List&amp;lt;String&amp;gt; findByFirstnameStartingWith(String firstname);&#xD;
 }
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We currently have extensions of that API cooking for Ehcache, &lt;a href="https://github.com/hazelcast-incubator/spring-data-integrations-commons/tree/develop"&gt;Hazelcast&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-data-aerospike"&gt;Aerospike&lt;/a&gt; and are looking forward to evaluate options to also integrate Redis and maybe port some of the Gemfire APIs to use that.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-next" class="anchor" name="what-rsquo-s-next"&gt;&lt;/a&gt;What&amp;rsquo;s next?&lt;/h2&gt;&lt;p&gt;Up next is &lt;a href="http://www.springone2gx.com/"&gt;SpringOne2GX in Washington, DC&lt;/a&gt;- we&amp;rsquo;d be happy to see you there - the best place to get in touch with the team, learn about new features and simply have a good time. Meanwhile we are already preparing the next service release for the Fowler Release Train and started working on new features for the Hopper release train (Sshh&amp;hellip; We&amp;rsquo;ll give a sneak peak on Hopper in the &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/what_s_new_in_2015_for_spring_data.html"&gt;‚ÄúWhat‚Äôs new in Spring Data?‚Äù talk&lt;/a&gt; at SpringOne).&lt;/p&gt;</content>
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;We currently have extensions of that API cooking for Ehcache, &lt;a href="https://github.com/hazelcast-incubator/spring-data-integrations-commons/tree/develop"&gt;Hazelcast&lt;/a&gt; and &lt;a href="https://github.com/spring-projects/spring-data-aerospike"&gt;Aerospike&lt;/a&gt; and are looking forward to evaluate options to also integrate Redis and maybe port some of the Gemfire APIs to use that.&lt;/p&gt;&lt;h2&gt;&lt;a href="#what-rsquo-s-next" class="anchor" name="what-rsquo-s-next"&gt;&lt;/a&gt;What&amp;rsquo;s next?&lt;/h2&gt;&lt;p&gt;Up next is &lt;a href="http://www.springone2gx.com/"&gt;SpringOne2GX in Washington, DC&lt;/a&gt;- we&amp;rsquo;d be happy to see you there - the best place to get in touch with the team, learn about new features and simply have a good time. Meanwhile we are already preparing the next service release for the Fowler Release Train and started working on new features for the Hopper release train (Sshh&amp;hellip; We&amp;rsquo;ll give a sneak peak on Hopper in the &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/what_s_new_in_2015_for_spring_data.html"&gt;ìWhatís new in Spring Data?î talk&lt;/a&gt; at SpringOne).&lt;/p&gt;</content>
   </entry>
   <entry>
     <title>Spring Boot 1.3.0.M5 Available Now</title>
@@ -209,7 +1139,7 @@ interface UserRepository extends CrudRepository&amp;lt;User, String&amp;gt; {&#x
   &lt;li&gt;Support for javax &lt;code&gt;@WebServlet&lt;/code&gt;, &lt;code&gt;@WebFilter&lt;/code&gt; and &lt;code&gt;@WebListener&lt;/code&gt; annotations&lt;/li&gt;
   &lt;li&gt;Auto-configuration for Hazelcast&lt;/li&gt;
   &lt;li&gt;Improved &amp;ldquo;root first&amp;rdquo; exception logging&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;For a complete list of changes, and upgrade instructions, see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.3-Release-Notes"&gt;Spring Boot 1.3 Release Notes&lt;/a&gt; on the wiki and the updated &lt;a href="http://docs.spring.io/spring-boot/docs/1.3.0.M5/reference/htmlsingle/"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;&lt;h1&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h1&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC&lt;/a&gt; soon. It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback. Join Brian and St√©phane for an &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/intro_to_spring_boot_for_the_web_tier.html"&gt;intro to Spring Boot for the web tier&lt;/a&gt;.&lt;/p&gt;</content>
+&lt;/ul&gt;&lt;p&gt;For a complete list of changes, and upgrade instructions, see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.3-Release-Notes"&gt;Spring Boot 1.3 Release Notes&lt;/a&gt; on the wiki and the updated &lt;a href="http://docs.spring.io/spring-boot/docs/1.3.0.M5/reference/htmlsingle/"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;&lt;h1&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h1&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC&lt;/a&gt; soon. It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback. Join Brian and StÈphane for an &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/intro_to_spring_boot_for_the_web_tier.html"&gt;intro to Spring Boot for the web tier&lt;/a&gt;.&lt;/p&gt;</content>
   </entry>
   <entry>
     <title>Spring LDAP 2.0.4 Released</title>
@@ -220,7 +1150,7 @@ interface UserRepository extends CrudRepository&amp;lt;User, String&amp;gt; {&#x
     </author>
     <id>tag:spring.io,2015-09-02:2226</id>
     <updated>2015-09-02T16:20:52Z</updated>
-    <content type="html">&lt;p&gt;I‚Äôm pleased to announce the release of Spring LDAP 2.0.4.RELEASE. The highlights of this release include:&lt;/p&gt;&lt;p&gt;&lt;a href="https://jira.spring.io/browse/LDAP-333"&gt;LDAP-333&lt;/a&gt; - Support for Spring Data Commons 1.11 (Spring Data Gosling)&lt;br/&gt;&lt;a href="https://jira.spring.io/browse/LDAP-334"&gt;LDAP-334 &lt;/a&gt; - Compatibility with Spring IO Platform 2.0&lt;br/&gt;&lt;a href="https://jira.spring.io/browse/LDAP-335"&gt;LDAP-335&lt;/a&gt; - Fix NoClassDefFoundError: RepositoryConfigurationExtension&lt;/p&gt;&lt;p&gt;For additional information on the release, refer to the &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10071&amp;version=15001"&gt;changelog&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;a href="http://projects.spring.io/spring-ldap/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-ldap/docs/2.0.4.RELEASE/reference/"&gt;Reference&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/LDAP"&gt;Issues&lt;/a&gt;&lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;Iím pleased to announce the release of Spring LDAP 2.0.4.RELEASE. The highlights of this release include:&lt;/p&gt;&lt;p&gt;&lt;a href="https://jira.spring.io/browse/LDAP-333"&gt;LDAP-333&lt;/a&gt; - Support for Spring Data Commons 1.11 (Spring Data Gosling)&lt;br/&gt;&lt;a href="https://jira.spring.io/browse/LDAP-334"&gt;LDAP-334 &lt;/a&gt; - Compatibility with Spring IO Platform 2.0&lt;br/&gt;&lt;a href="https://jira.spring.io/browse/LDAP-335"&gt;LDAP-335&lt;/a&gt; - Fix NoClassDefFoundError: RepositoryConfigurationExtension&lt;/p&gt;&lt;p&gt;For additional information on the release, refer to the &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10071&amp;version=15001"&gt;changelog&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;a href="http://projects.spring.io/spring-ldap/"&gt;Project Site&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-ldap/docs/2.0.4.RELEASE/reference/"&gt;Reference&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/LDAP"&gt;Issues&lt;/a&gt;&lt;/p&gt;</content>
   </entry>
   <entry>
     <title>Spring Web Flow 2.4.2 released</title>
@@ -242,7 +1172,7 @@ interface UserRepository extends CrudRepository&amp;lt;User, String&amp;gt; {&#x
     </author>
     <id>tag:spring.io,2015-08-31:2221</id>
     <updated>2015-09-01T12:31:39Z</updated>
-    <content type="html">&lt;p&gt;We‚Äôre pleased to announce a first release candicate of &lt;a href="http://projects.spring.io/spring-statemachine/"&gt;Spring Statemachine&lt;/a&gt; 1.0.0.RC1.&lt;/p&gt;&lt;p&gt;Focus of this release is to get core framework more stable and finally add jepsen tests for a distributed state machine. We also added a first version of a testing support. Resolved github tickets can be found from &lt;a href="https://github.com/spring-projects/spring-statemachine/issues?q=milestone%3A1.0.0.RC1+is%3Aclosed"&gt;RC1 issues&lt;/a&gt;. We&amp;rsquo;re relatively close to issue a release version, meaning if nothing major pop-up, next release will be a &lt;code&gt;1.0.0.RELEASE&lt;/code&gt;. If something urgent turns up we will do &lt;code&gt;1.0.0.RC2&lt;/code&gt; prior to a release.&lt;/p&gt;&lt;p&gt;Now that we&amp;rsquo;re here, let&amp;rsquo;s crack it and see what new features we have in this release.&lt;/p&gt;&lt;p&gt;Beyond usual bug fixes here is a list of main new features:&lt;/p&gt;
+    <content type="html">&lt;p&gt;Weíre pleased to announce a first release candicate of &lt;a href="http://projects.spring.io/spring-statemachine/"&gt;Spring Statemachine&lt;/a&gt; 1.0.0.RC1.&lt;/p&gt;&lt;p&gt;Focus of this release is to get core framework more stable and finally add jepsen tests for a distributed state machine. We also added a first version of a testing support. Resolved github tickets can be found from &lt;a href="https://github.com/spring-projects/spring-statemachine/issues?q=milestone%3A1.0.0.RC1+is%3Aclosed"&gt;RC1 issues&lt;/a&gt;. We&amp;rsquo;re relatively close to issue a release version, meaning if nothing major pop-up, next release will be a &lt;code&gt;1.0.0.RELEASE&lt;/code&gt;. If something urgent turns up we will do &lt;code&gt;1.0.0.RC2&lt;/code&gt; prior to a release.&lt;/p&gt;&lt;p&gt;Now that we&amp;rsquo;re here, let&amp;rsquo;s crack it and see what new features we have in this release.&lt;/p&gt;&lt;p&gt;Beyond usual bug fixes here is a list of main new features:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Testing support&lt;/li&gt;
   &lt;li&gt;Jepsen tests for a Distributed State Machine&lt;/li&gt;
@@ -293,11 +1223,11 @@ plan.test();&#xD;
     <link rel="alternate" href="https://spring.io/blog/2015/09/01/spring-framework-4-2-1-available-now" />
     <category term="releases" label="Releases" />
     <author>
-      <name>St√©phane Nicoll</name>
+      <name>StÈphane Nicoll</name>
     </author>
     <id>tag:spring.io,2015-09-01:2224</id>
     <updated>2015-09-01T12:25:00Z</updated>
-    <content type="html">&lt;p&gt;It is my pleasure to announce that Spring Framework 4.2.1 is available from repo.spring.io and Maven Central. This first maintenance release in the 4.2 line contains &lt;a href="https://jira.spring.io/secure/ReleaseNote.jspa?projectId=10000&amp;version=15226"&gt;a wide range of fixes for regressions and other issues&lt;/a&gt; reported against 4.2 GA.&lt;/p&gt;&lt;p&gt;4.2.1 also contains minor enhancements: refinement of our Jackson support (see &lt;a href="https://spring.io/blog/2014/12/02/latest-jackson-integration-improvements-in-spring"&gt;S√©bastien&amp;rsquo;s updated blog post&lt;/a&gt;), meta-annotation processing improvements (&lt;code&gt;@AliasFor&lt;/code&gt;), third-party dependencies alignment (including Hibernate 5.0 GA).&lt;/p&gt;&lt;p&gt;We strongly recommend an immediate upgrade to 4.2.1 for all 4.x users. The Spring Framework team is now working towards Spring Framework 4.2.2 in early October, which will be the foundation for the upcoming Spring Boot 1.3 GA release. We will also release 4.1.8 at the same time: if there is anything you‚Äôd like to get fixed in the 4.1.x branch still, now is the time to raise it!&lt;/p&gt;&lt;p&gt;&lt;a href="http://projects.spring.io/spring-framework/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework"&gt;GitHub&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/SPR"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/htmlsingle/"&gt;Documentation&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Join Sam Brannen and Nicolas Fr√§nkel to discover &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/get_the_most_out_of_testing_with_spring_4_2.html"&gt;what&amp;rsquo;s new in Spring Framework 4.2&amp;rsquo;s testing support&lt;/a&gt; at SpringOne2GX in Washington in two weeks. It&amp;rsquo;s not too late to get a ticket if you want to learn about all of the latest and greatest first hand.&lt;/p&gt;</content>
+    <content type="html">&lt;p&gt;It is my pleasure to announce that Spring Framework 4.2.1 is available from repo.spring.io and Maven Central. This first maintenance release in the 4.2 line contains &lt;a href="https://jira.spring.io/secure/ReleaseNote.jspa?projectId=10000&amp;version=15226"&gt;a wide range of fixes for regressions and other issues&lt;/a&gt; reported against 4.2 GA.&lt;/p&gt;&lt;p&gt;4.2.1 also contains minor enhancements: refinement of our Jackson support (see &lt;a href="https://spring.io/blog/2014/12/02/latest-jackson-integration-improvements-in-spring"&gt;SÈbastien&amp;rsquo;s updated blog post&lt;/a&gt;), meta-annotation processing improvements (&lt;code&gt;@AliasFor&lt;/code&gt;), third-party dependencies alignment (including Hibernate 5.0 GA).&lt;/p&gt;&lt;p&gt;We strongly recommend an immediate upgrade to 4.2.1 for all 4.x users. The Spring Framework team is now working towards Spring Framework 4.2.2 in early October, which will be the foundation for the upcoming Spring Boot 1.3 GA release. We will also release 4.1.8 at the same time: if there is anything youíd like to get fixed in the 4.1.x branch still, now is the time to raise it!&lt;/p&gt;&lt;p&gt;&lt;a href="http://projects.spring.io/spring-framework/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-framework"&gt;GitHub&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/SPR"&gt;Issues&lt;/a&gt; | &lt;a href="https://docs.spring.io/spring-framework/docs/current/spring-framework-reference/htmlsingle/"&gt;Documentation&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Join Sam Brannen and Nicolas Fr‰nkel to discover &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/get_the_most_out_of_testing_with_spring_4_2.html"&gt;what&amp;rsquo;s new in Spring Framework 4.2&amp;rsquo;s testing support&lt;/a&gt; at SpringOne2GX in Washington in two weeks. It&amp;rsquo;s not too late to get a ticket if you want to learn about all of the latest and greatest first hand.&lt;/p&gt;</content>
   </entry>
   <entry>
     <title>This Week in Spring - September 1, 2015</title>
@@ -344,7 +1274,7 @@ plan.test();&#xD;
   &lt;li&gt;A &lt;a href="https://docs.spring.io/spring-data/keyvalue/docs/1.0.0.RELEASE/reference/html/"&gt;new Spring Data KeyValue module&lt;/a&gt; for &lt;code&gt;Map&lt;/code&gt;-backed repositories using SpEL as query language.&lt;/li&gt;
   &lt;li&gt;Improved POST forms for the HAL browser in Spring Data REST.&lt;/li&gt;
   &lt;li&gt;Support for internationalization of enum values and link titles in Spring Data REST.&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;The &lt;a href="https://github.com/spring-projects/spring-data-examples"&gt;Spring Data examples&lt;/a&gt; have already been upgraded to the new version. Find a more detailed list of what has change in this train in &lt;a href="https://github.com/spring-projects/spring-data-commons/wiki/Release-Train-Gosling"&gt;our wiki&lt;/a&gt;. Spring Data ninja Christoph Strobl has a &lt;a href="https://spring.io/blog/2015/09/04/what-s-new-in-spring-data-release-gosling"&gt;blog post&lt;/a&gt; covering some of the introduced features in more depth.&lt;/p&gt;&lt;p&gt;To upgrade to the new release train use the BOM we ship as described in our &lt;a href="https://github.com/spring-projects/spring-data-examples/tree/master/bom"&gt;examples repository&lt;/a&gt; and configure its version to &lt;code&gt;Gosling-RELEASE&lt;/code&gt;. If you&amp;rsquo;re using Spring Boot, upgrading to the release train is as easy as setting the Maven property &lt;code&gt;spring-data-releasetrain.version&lt;/code&gt; to that version. Note, that to use Spring Data REST with Boot 1.2, you also need to upgrade to Spring HATEOAS 0.19.0.RELEASE (by setting the &lt;code&gt;spring-hateoas.version&lt;/code&gt; property).&lt;/p&gt;&lt;p&gt;The &lt;a href="https://github.com/spring-projects/spring-data-commons/wiki/Release-Train-Hopper"&gt;next release train&lt;/a&gt; is going to be named &lt;a href="https://en.wikipedia.org/wiki/Grace_Hopper"&gt;Hopper&lt;/a&gt; and include the new major versions of the Neo4j, Couchbase and Solr modules. Target release time is mid autumn.&lt;/p&gt;&lt;p&gt;For reference, here is the list of all modules of the train:&lt;/p&gt;
+&lt;/ul&gt;&lt;p&gt;The &lt;a href="https://github.com/spring-projects/spring-data-examples"&gt;Spring Data examples&lt;/a&gt; have already been upgraded to the new version. Find a more detailed list of what has change in this train in &lt;a href="https://github.com/spring-projects/spring-data-commons/wiki/Release-Train-Gosling"&gt;our wiki&lt;/a&gt;. Spring Data ninja Christoph Strobl has a &lt;a href="https://spring.io/blog/2015/09/04/what-s-new-in-spring-data-release-gosling"&gt;blog post&lt;/a&gt; covering some of the introduced features in more depth.&lt;/p&gt;&lt;p&gt;To upgrade to the new release train use the BOM we ship as described in our &lt;a href="https://github.com/spring-projects/spring-data-examples/tree/master/bom"&gt;examples repository&lt;/a&gt; and configure its version to &lt;code&gt;Gosling-RELEASE&lt;/code&gt;. If you&amp;rsquo;re using Spring Boot, upgrading to the release train is as easy as setting the Maven property &lt;code&gt;spring-data-releasetrain.version&lt;/code&gt; to that version. Note, that to use Spring Data REST with Boot 1.2, you also need to upgrade to Spring HATEOAS 0.19.0.RELEASE (by setting the &lt;code&gt;spring-hateoas.version&lt;/code&gt; property) and Jackson 2.5 or better (current 2.6.1 preferred, via the &lt;code&gt;jackson.version&lt;/code&gt; property).&lt;/p&gt;&lt;p&gt;The &lt;a href="https://github.com/spring-projects/spring-data-commons/wiki/Release-Train-Hopper"&gt;next release train&lt;/a&gt; is going to be named &lt;a href="https://en.wikipedia.org/wiki/Grace_Hopper"&gt;Hopper&lt;/a&gt; and include the new major versions of the Neo4j, Couchbase and Solr modules. Target release time is mid autumn.&lt;/p&gt;&lt;p&gt;For reference, here is the list of all modules of the train:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Spring Data Commons 1.11 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-commons/1.11.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="https://docs.spring.io/spring-data/commons/docs/1.11.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="https://docs.spring.io/spring-data/commons/docs/1.11.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="https://docs.spring.io/spring-data/commons/docs/1.11.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Spring Data JPA 1.9 GA - &lt;a href="https://repo.spring.io/libs-release/org/springframework/data/spring-data-jpa/1.9.0.RELEASE"&gt;Artifacts&lt;/a&gt; - &lt;a href="https://docs.spring.io/spring-data/jpa/docs/1.9.0.RELEASE/api"&gt;JavaDocs&lt;/a&gt; - &lt;a href="https://docs.spring.io/spring-data/jpa/docs/1.9.0.RELEASE/reference/html"&gt;Documentation&lt;/a&gt; - &lt;a href="https://docs.spring.io/spring-data/jpa/docs/1.9.0.RELEASE/changelog.txt"&gt;Changelog&lt;/a&gt;&lt;/li&gt;
@@ -1359,11 +2289,11 @@ var OwnerController = [&amp;#39;$scope&amp;#39;,&amp;#39;$state&amp;#39;,&amp;#3
     </author>
     <id>tag:spring.io,2015-08-19:2215</id>
     <updated>2015-08-19T00:26:46Z</updated>
-    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! As usual, we&amp;rsquo;ve got a lot to cover so let&amp;rsquo;s get to it! This week I&amp;rsquo;m back in S√£o Paulo, Brazil, to visit customers, then it&amp;rsquo;s off &lt;a href="http://qconrio.com/"&gt;to Rio for QCon Rio&lt;/a&gt;! If you&amp;rsquo;re in either city, message me on Twitter &lt;a href="http://twitter.com/starbuxman"&gt;and let&amp;rsquo;s grab a coffee&lt;/a&gt;!&lt;/p&gt;
+    <content type="html">&lt;p&gt;Welcome to another installment of &lt;em&gt;This Week in Spring&lt;/em&gt;! As usual, we&amp;rsquo;ve got a lot to cover so let&amp;rsquo;s get to it! This week I&amp;rsquo;m back in S„o Paulo, Brazil, to visit customers, then it&amp;rsquo;s off &lt;a href="http://qconrio.com/"&gt;to Rio for QCon Rio&lt;/a&gt;! If you&amp;rsquo;re in either city, message me on Twitter &lt;a href="http://twitter.com/starbuxman"&gt;and let&amp;rsquo;s grab a coffee&lt;/a&gt;!&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;Today, Pivotal CEO Paul Maritz stepped down [and welcomed Pivotal Labs founder Rob Mee as the new CEO. There&amp;rsquo;s a post by &lt;a href="http://blog.pivotal.io/pivotal/news-2/how-far-weve-come"&gt;Paul&lt;/a&gt; and by &lt;a href="http://blog.pivotal.io/pivotal/news-2/we-transform-how-the-world-builds-software"&gt;Rob&lt;/a&gt;. Thank you, Paul, and welcome Rob!&lt;/li&gt;
   &lt;li&gt;the amazing Scott Frederick just announced the &lt;a href="http://spring.io/blog/2015/07/29/spring-cloud-connectors-1-2-0-released"&gt;general availability of Spring Cloud Connectors 1.2.0!&lt;/a&gt; - check this out!&lt;/li&gt;
-  &lt;li&gt;Spring ninja St√©phane Nicoll just announced Spring Boot 1.3M4, &lt;a href="https://spring.io/blog/2015/08/18/spring-boot-1-3-0-m4-available-now"&gt;with fixes and improvements aplenty&lt;/a&gt;!&lt;/li&gt;
+  &lt;li&gt;Spring ninja StÈphane Nicoll just announced Spring Boot 1.3M4, &lt;a href="https://spring.io/blog/2015/08/18/spring-boot-1-3-0-m4-available-now"&gt;with fixes and improvements aplenty&lt;/a&gt;!&lt;/li&gt;
   &lt;li&gt;Spring Integration lead Gary Russell just announced a CRAZY packed new Spring Integration 4.2 release including, but not limited to, support for security Context Propagation, STOMP client channel adapters, metrics, new Spring Framework 4.2 event channel adapters, a process barrier component, last modified file list filters, codec, JMS shared subscriptions, (S)FTP improvements, SOAP Action Propagation, &lt;a href="http://spring.io/blog/2015/08/17/spring-integration-4-2-release-candidate-is-available"&gt;and much more&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;Not resting on his laurels, Spring Integration and Spring AMQP lead Gary Russel &lt;a href="http://spring.io/blog/2015/08/14/spring-amqp-1-5-0-release-candidate-available"&gt;&lt;em&gt;also&lt;/em&gt; announced Spring AMQP 1.5.0 has been released&lt;/a&gt;!&lt;/li&gt;
   &lt;li&gt;the SPR blog has a nice post that looks at &lt;a href="http://spr.com/part-4-internationalization-in-spring-boot/"&gt;internationalization in a Spring Boot application&lt;/a&gt;&lt;/li&gt;
@@ -1379,127 +2309,10 @@ var OwnerController = [&amp;#39;$scope&amp;#39;,&amp;#39;$state&amp;#39;,&amp;#3
     <link rel="alternate" href="https://spring.io/blog/2015/08/18/spring-boot-1-3-0-m4-available-now" />
     <category term="releases" label="Releases" />
     <author>
-      <name>St√©phane Nicoll</name>
+      <name>StÈphane Nicoll</name>
     </author>
     <id>tag:spring.io,2015-08-18:2214</id>
     <updated>2015-08-18T09:16:25Z</updated>
     <content type="html">&lt;p&gt;We&amp;rsquo;ve just released Spring Boot v1.3.0.M4 as we found an annoying regression with CloudFoundry deployment. This release includes &lt;a href="https://github.com/spring-projects/spring-boot/issues?q=milestone%3A1.3.0.M4+is%3Aissue+is%3Aclosed"&gt;additional fixes and improvements&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;For a complete list of changes, see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.3-Release-Notes"&gt;Spring Boot 1.3 Release Notes&lt;/a&gt; on the wiki and the updated &lt;a href="http://docs.spring.io/spring-boot/docs/1.3.0.M4/reference/htmlsingle/"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;&lt;h1&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h1&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC&lt;/a&gt; soon. It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Integration 4.2 Release Candidate is Available</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/08/17/spring-integration-4-2-release-candidate-is-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Gary Russell</name>
-    </author>
-    <id>tag:spring.io,2015-08-13:2212</id>
-    <updated>2015-08-17T09:27:00Z</updated>
-    <content type="html">&lt;p&gt;We are pleased to announce that the final release candidate for Spring Integration 4.2 (&lt;code&gt;4.2.0.RC1&lt;/code&gt;) is now available in the &lt;a href="https://repo.spring.io/milestone/"&gt;spring milestone repository&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Features of this release include:&lt;/p&gt;&lt;h2&gt;&lt;a href="#security-context-propagation" class="anchor" name="security-context-propagation"&gt;&lt;/a&gt;Security Context Propagation&lt;/h2&gt;&lt;p&gt;The security context can now be propagated across &lt;code&gt;ExecutorChannel&lt;/code&gt; and &lt;code&gt;QueueChannel&lt;/code&gt;s. The framework takes care of clearing the inherited security context when the downstream flow completes.&lt;/p&gt;&lt;h2&gt;&lt;a href="#stomp-client-channel-adapters" class="anchor" name="stomp-client-channel-adapters"&gt;&lt;/a&gt;STOMP Client Channel Adapters&lt;/h2&gt;&lt;p&gt;STOMP client-side channel adapters based on the support in Spring Framework 4.2 are now available (the initial work announced in milestone 1 is now complete).&lt;/p&gt;&lt;h2&gt;&lt;a href="#metrics" class="anchor" name="metrics"&gt;&lt;/a&gt;Metrics&lt;/h2&gt;&lt;p&gt;&lt;code&gt;MessageChannel&lt;/code&gt;, &lt;code&gt;MessageSource&lt;/code&gt; and &lt;code&gt;MessageHandler&lt;/code&gt; metrics can now be enabled independently of JMX.&lt;/p&gt;&lt;h2&gt;&lt;a href="#file-scanner" class="anchor" name="file-scanner"&gt;&lt;/a&gt;File Scanner&lt;/h2&gt;&lt;p&gt;A new directory scanner is available to more efficiently scan directory hierarchies by reacting to file system events rather than scanning the whole tree on every poll. (Requires Java 7)&lt;/p&gt;&lt;h2&gt;&lt;a href="#event-channel-adapters" class="anchor" name="event-channel-adapters"&gt;&lt;/a&gt;Event Channel Adapters&lt;/h2&gt;&lt;p&gt;The event channel adapters now support the new POJO &lt;code&gt;ApplicationEvent&lt;/code&gt; support in Spring Framework 4.2.&lt;/p&gt;&lt;h2&gt;&lt;a href="#process-barrier" class="anchor" name="process-barrier"&gt;&lt;/a&gt;Process Barrier&lt;/h2&gt;&lt;p&gt;A new component has been introduced allowing an integration flow to be suspended until some asynchronous event occurs. (&lt;a href="https://github.com/spring-projects/spring-integration-samples/pull/141"&gt;Sample app coming soon&lt;/a&gt; where we wait for RabbitMQ publisher confirms before returning an HTTP response).&lt;/p&gt;&lt;h2&gt;&lt;a href="#last-modified-file-list-filter" class="anchor" name="last-modified-file-list-filter"&gt;&lt;/a&gt;Last Modified File List Filter&lt;/h2&gt;&lt;p&gt;A common problem with polling directories is if the file producer creates the file &amp;ldquo;in-place&amp;rdquo;; the file can be picked up while it is still being written. It is generally recommended to create the file with a temporary name and rename it when it is complete. If that cannot be done, however, this new filter prevents a file from being processed until it hasn&amp;rsquo;t been modified for some time period.&lt;/p&gt;&lt;h2&gt;&lt;a href="#codec" class="anchor" name="codec"&gt;&lt;/a&gt;Codec&lt;/h2&gt;&lt;p&gt;A codec abstraction (including a Kryo implementation) has been introduced as an alternative to java serialization.&lt;/p&gt;&lt;h2&gt;&lt;a href="#jms-shared-subscriptions" class="anchor" name="jms-shared-subscriptions"&gt;&lt;/a&gt;JMS Shared Subscriptions&lt;/h2&gt;&lt;p&gt;JMS 2.0 shared subscriptions are now supported by the namespace, simplifying configuration when using XML.&lt;/p&gt;&lt;h2&gt;&lt;a href="#s-ftp-improvements" class="anchor" name="s-ftp-improvements"&gt;&lt;/a&gt;(S)FTP improvements&lt;/h2&gt;&lt;p&gt;Inbound channel adapters can now use an expression for the remote directory.&lt;/p&gt;&lt;h2&gt;&lt;a href="#soap-action-propagation" class="anchor" name="soap-action-propagation"&gt;&lt;/a&gt;SOAP Action Propagation&lt;/h2&gt;&lt;p&gt;It is now easier to implement a web service proxy using Spring Integration.&lt;/p&gt;&lt;h2&gt;&lt;a href="#previous-milestones" class="anchor" name="previous-milestones"&gt;&lt;/a&gt;Previous Milestones&lt;/h2&gt;&lt;p&gt;A reminder of features already announced that were in the &lt;a href="https://spring.io/blog/2015/05/28/spring-integration-4-2-milestone-1-is-available"&gt;milestone 1&lt;/a&gt; and &lt;a href="https://spring.io/blog/2015/07/07/spring-integration-4-2-milestone-2-is-available-and-4-1-6"&gt;milestone 2&lt;/a&gt; releases:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;A significant overhaul of the JMX support in the framework, providing performance and other improvements when JMX is enabled&lt;/li&gt;
-  &lt;li&gt;A mongodb metadata store&lt;/li&gt;
-  &lt;li&gt;&lt;code&gt;@SecuredChannel&lt;/code&gt; annotation&lt;/li&gt;
-  &lt;li&gt;Conditional Pollers - the polling interval can be adjusted dynamically, based on the results of (or before executing) the current poll&lt;/li&gt;
-  &lt;li&gt;Cross Origin Resource Sharing (CORS) support in the http inbound gateway&lt;/li&gt;
-  &lt;li&gt;Zookeeper Support for leadership, locks, and metadata&lt;/li&gt;
-  &lt;li&gt;CompletableFuture gateway method return values&lt;/li&gt;
-  &lt;li&gt;Aggregator improvements&lt;/li&gt;
-  &lt;li&gt;(S)FTP improvements&lt;/li&gt;
-  &lt;li&gt;Some performance bottlenecks have been identified and corrected.&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;For complete contents of the milestone releases, see the JIRA release notes for &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10121&amp;version=14855"&gt;M1&lt;/a&gt; and &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10121&amp;version=15106"&gt;M2&lt;/a&gt;&lt;/p&gt;&lt;p&gt;For complete contents of this release candidate, see the &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10121&amp;version=15231"&gt;release notes&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Also refer to the &lt;a href="http://docs.spring.io/spring-integration/docs/4.2.0.RC1/reference/html/whats-new.html"&gt;reference documentation &amp;ldquo;what&amp;rsquo;s new&amp;rdquo; chapter&lt;/a&gt;&lt;/p&gt;&lt;p&gt;See &lt;a href="http://projects.spring.io/spring-integration/"&gt;the project page&lt;/a&gt; for links to documentation, samples and download information.&lt;/p&gt;&lt;p&gt;Please try out these new features and improvements; it is your last chance for feedback before the final release planned for early September, just in time for SpringOne.&lt;/p&gt;&lt;p&gt;Also, don&amp;rsquo;t forget to check out the recent work in the &lt;strong&gt;Spring Integration Extensions projects&lt;/strong&gt; (&lt;a href="https://github.com/spring-projects/spring-integration-kafka"&gt;kafka&lt;/a&gt;, &lt;a href="https://github.com/spring-projects/spring-integration-extensions/tree/master/spring-integration-hazelcast"&gt;hazlecast&lt;/a&gt;).&lt;/p&gt;&lt;h1&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h1&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC soon&lt;/a&gt;. It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback. &lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring AMQP 1.5.0 Release Candidate Available</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/08/14/spring-amqp-1-5-0-release-candidate-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Gary Russell</name>
-    </author>
-    <id>tag:spring.io,2015-08-13:2213</id>
-    <updated>2015-08-14T16:53:00Z</updated>
-    <content type="html">&lt;p&gt;We are pleased to announce that the release candidate for the 1.5 release (&lt;code&gt;1.5.0.RC1&lt;/code&gt;) is now available.&lt;/p&gt;&lt;p&gt;New features and improvements in this release include:&lt;/p&gt;&lt;h2&gt;&lt;a href="#enhanced-ha-queue-support" class="anchor" name="enhanced-ha-queue-support"&gt;&lt;/a&gt;Enhanced HA Queue Support&lt;/h2&gt;&lt;p&gt;The high availability queue support has been enhanced in that you can configure a listener container to connect to the broker that is currently the master for the container&amp;rsquo;s queue. If the connection is lost, the new master is determined and a connection to that broker is established.&lt;/p&gt;&lt;h2&gt;&lt;a href="#rabbittemplate-blocking-receive" class="anchor" name="rabbittemplate-blocking-receive"&gt;&lt;/a&gt;RabbitTemplate Blocking Receive&lt;/h2&gt;&lt;p&gt;It is now possible to use the the &lt;code&gt;RabbitTemplate&lt;/code&gt; to receive ad-hoc messages. Previously, only a non-blocking &lt;code&gt;receive()&lt;/code&gt; was available.&lt;/p&gt;&lt;h2&gt;&lt;a href="#sendandreceive-operations-returns" class="anchor" name="sendandreceive-operations-returns"&gt;&lt;/a&gt;SendAndReceive Operations (returns)&lt;/h2&gt;&lt;p&gt;It is now possible to configure the &lt;code&gt;RabbitTemplate&lt;/code&gt; to throw an exception while waiting for a reply if a message is returned by the broker.&lt;/p&gt;&lt;h2&gt;&lt;a href="#messagelisteneradapter" class="anchor" name="messagelisteneradapter"&gt;&lt;/a&gt;MessageListenerAdapter&lt;/h2&gt;&lt;p&gt;The &lt;code&gt;MessageListenerAdapter&lt;/code&gt; can be configured to invoke different methods, based on the queue the message was received from.&lt;/p&gt;&lt;h2&gt;&lt;a href="#milestone" class="anchor" name="milestone"&gt;&lt;/a&gt;Milestone&lt;/h2&gt;&lt;p&gt;As a reminder, the following new features were previously announced when &lt;a href="https://spring.io/blog/2015/05/08/spring-amqp-1-4-5-release-and-1-5-0-m1-available"&gt;milestone 1&lt;/a&gt; was released:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Class-level &lt;code&gt;@RabbitListener&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Auto-Declare Queues and Bindings for &lt;code&gt;@RabbitListener&lt;/code&gt;&lt;/li&gt;
-  &lt;li&gt;Configurable Exchange/Routing Key for Replies&lt;/li&gt;
-  &lt;li&gt;RabbitManagementTemplate REST abstraction&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;Complete information about the contents of this release can be seen in the &lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10450&amp;version=15010"&gt;JIRA release notes&lt;/a&gt;. Also see the &lt;a href="http://docs.spring.io/spring-amqp/docs/1.5.0.RC1/reference/html/_introduction.html#_changes_in_1_5_since_1_4"&gt;&amp;ldquo;what&amp;rsquo;s new&amp;rdquo; section in the reference manual&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;Please try out these new features and improvements; it is your last chance for feedback before the final release planned for early September, just in time for SpringOne.&lt;/p&gt;&lt;h1&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h1&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC soon&lt;/a&gt;. It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback. &lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>This Week in Spring - August 11, 2015</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/08/12/this-week-in-spring-august-11-2015" />
-    <category term="engineering" label="Engineering" />
-    <author>
-      <name>Josh Long</name>
-    </author>
-    <id>tag:spring.io,2015-08-12:2211</id>
-    <updated>2015-08-12T03:40:12Z</updated>
-    <content type="html">&lt;p&gt;Welcome to another installation of &lt;em&gt;This Week in Spring&lt;/em&gt;! As usual, we&amp;rsquo;ve got a lot to cover so let&amp;rsquo;s get to it!&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Spring ninja Stephane Nicoll just announced &lt;a href="http://spring.io/blog/2015/08/11/spring-boot-1-3-0-m3-available-now"&gt;Spring Boot 1.3.0.M3&lt;/a&gt;, chock full of great features including HTTP session persistence, JMS and AMQP improvements, logging improvements, and auto-configurations for the H2 Database console and embedded MongoDB.&lt;/li&gt;
-  &lt;li&gt;Spring Batch lead &lt;a href="http://spring.io/blog/2015/08/10/spring-batch-3-0-5-release-is-now-available"&gt;Michael Minella just announced Spring Batch 3.0.5&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Check out this cool look &lt;a href="http://www.javacodegeeks.com/2015/08/processing-twitter-feed-using-spring-boot.html"&gt;at using Spring Boot to process Twitter feeds with Neo4j&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;check out this interesting Chinese-language &lt;a href="http://samchu.logdown.com/posts/290211-spring-boot-yaml-uses"&gt;post on using &lt;code&gt;.yml&lt;/code&gt; with Spring Boot&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Disid corporation has &lt;a href="http://spring.io/blog/2015/08/11/spring-roo-1-3-2-rc1-maintenance-release-now-available"&gt;just announced a maintenance release for Spring Roo&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Just saw this post. Our very own &lt;a href="http://blog.pivotal.io/pivotal-cloud-foundry/pivotal-people/meet-cornelia-davis-pivotals-role-model-for-women-in-cloud"&gt;Cornelia Davis, director of platform engineering, was recognized as one of the top 10 women in cloud&lt;/a&gt; by CloudNOW! As she has for years now, &lt;a href="https://2015.event.springone2gx.com/presenters/cornelia_davis.html"&gt;she&amp;rsquo;ll be at SpringOne2GX&lt;/a&gt;..&lt;/li&gt;
-  &lt;li&gt;the All &amp;amp; Sundry blog has a cool post looking at how &lt;a href="http://www.java-allandsundry.com/2015/08/working-with-spring-cloud-and-netflix_8.html"&gt;to use Netflix&amp;rsquo;s Archaius with Spring Cloud&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Speaking of configuration management, check out this post on &lt;a href="http://blog.pivotal.io/pivotal-cloud-foundry/products/app-configuration-management-with-config-servers-in-cloud-foundry"&gt;using configuration servers, including the Spring Cloud Config Server, on Cloud Foundry&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;i dig this post on using &lt;a href="http://www.journaldev.com/8748/spring-4-mvc-security-managing-roles-example-with-in-memorywithout-web-xml-and-without-spring-xml-configuration"&gt;straight Java configuration to configure Spring Security roles&lt;/a&gt; in a Spring MVC web application.&lt;/li&gt;
-  &lt;li&gt;our very own Michael Cote asked me to record a podcast or two with him. &lt;a href="http://blog.pivotal.io/pivotal-conversations/features/injecting-cloud-native-thinking-into-java-with-spring-boot?utm_source=social&amp;account_id&amp;utm_medium=TWITTER&amp;pivotal&amp;utm_campaign=Products&amp;20150808"&gt;The first installment is now available&lt;/a&gt;.&lt;/li&gt;
-&lt;/ul&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Roo 1.3.2 RC1 maintenance release now available</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/08/11/spring-roo-1-3-2-rc1-maintenance-release-now-available" />
-    <category term="news" label="News and Events" />
-    <author>
-      <name>Pieter Humphrey</name>
-    </author>
-    <id>tag:spring.io,2015-08-11:2210</id>
-    <updated>2015-08-11T11:37:00Z</updated>
-    <content type="html">&lt;p&gt;On behalf on the Spring Roo team at DISID Corporation, I am pleased to announce&lt;br/&gt;that Spring Roo 1.3.2 RC1 released candidate is out.&lt;/p&gt;&lt;p&gt;Spring Roo is a rapid application development tool for Java,&lt;br/&gt;allowing you to create full enterprise applications in just minutes.&lt;/p&gt;&lt;p&gt;Spring Roo jar files have been published to Maven Central.&lt;br/&gt;As always, the release is available in the Spring IO repository.&lt;/p&gt;&lt;p&gt;The candidate release fixes the following issues:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Error adding InnerType constructor on ITD Generation &lt;a href="https://jira.spring.io/browse/ROO-3583"&gt;ROO-3583&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;JavaBean implementing Interface defining getters and setters &lt;a href="https://jira.spring.io/browse/ROO-3584"&gt;ROO-3584&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;JavaBean implementing Interface and overriding getter causing null pointer &lt;a href="https://jira.spring.io/browse/ROO-3585"&gt;ROO-3585&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Request loose additional parameters when change language &lt;a href="https://jira.spring.io/browse/ROO-3595"&gt;ROO-3595&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Add support to generate Generic Methods &lt;a href="https://jira.spring.io/browse/ROO-3648"&gt;ROO-3648&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Update Selenium to support later versions of Firefox &lt;a href="https://jira.spring.io/browse/ROO-3634"&gt;ROO-3634&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Add renderLabel attribute in form fields tags &lt;a href="https://jira.spring.io/browse/ROO-3639"&gt;ROO-3639&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;JpaActiveRecord entity implementing interface with getId(): double generation &lt;a href="https://jira.spring.io/browse/ROO-3587"&gt;ROO-3587&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Update Tomcat7 Maven plugin version &lt;a href="https://jira.spring.io/browse/ROO-3652"&gt;ROO-3652&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Generate command &amp;ldquo;selenium all&amp;rdquo; &lt;a href="https://jira.spring.io/browse/ROO-3636"&gt;ROO-3636&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;Add support to generate Generic Methods &lt;a href="https://jira.spring.io/browse/ROO-3648"&gt;ROO-3648&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;It is highly recommended that all Spring Roo users upgrade to this version.&lt;/p&gt;&lt;p&gt;For full details on the changes made in the release, please refer to the&lt;br/&gt;&lt;a href="https://jira.spring.io/jira/secure/ReleaseNote.jspa?projectId=10340&amp;version=15266"&gt;Release Note in Jira&lt;/a&gt;&lt;/p&gt;&lt;p&gt;For more project specific information please see the&lt;br/&gt;&lt;a href="http://projects.spring.io/spring-roo/"&gt;Site&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-roo"&gt;GitHub&lt;/a&gt; | &lt;a href="https://jira.spring.io/browse/ROO-3655"&gt;Issues in Jira&lt;/a&gt;&lt;/p&gt;&lt;p&gt;Thanks to the awesome users who came up with useful bug reports and suggestions.&lt;br/&gt;This is a candidate release, please try out the updates and provide feedback.&lt;br/&gt;As always, you&amp;rsquo;ll also find Roo on Twitter - either follow @SpringRoo or just include #SpringRoo in your tweets.&lt;/p&gt;&lt;p&gt;Stay tuned!&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Boot 1.3.0.M3 Available Now</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/08/11/spring-boot-1-3-0-m3-available-now" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>St√©phane Nicoll</name>
-    </author>
-    <id>tag:spring.io,2015-08-11:2209</id>
-    <updated>2015-08-11T11:36:09Z</updated>
-    <content type="html">&lt;p&gt;It is my pleasure to announce that Spring Boot v1.3.0.M3 is available now from the &lt;a href="http://repo.springsource.org/milestone/"&gt;Spring milestone repository&lt;/a&gt;. This release includes &lt;a href="https://github.com/spring-projects/spring-boot/issues?q=milestone%3A1.3.0.M3+is%3Aissue+is%3Aclosed"&gt;90 fixes and improvements&lt;/a&gt; and merges &lt;a href="https://github.com/spring-projects/spring-boot/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+is%3Aclosed+milestone%3A1.3.0.M3"&gt;38 pull-requests&lt;/a&gt;! Thanks &lt;em&gt;again&lt;/em&gt; to everyone that has contributed.&lt;/p&gt;&lt;p&gt;Highlights of the new release include:&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;HTTP session persistence (enabled automatically with Devtools)&lt;/li&gt;
-  &lt;li&gt;Configuration improvements for JMS and AMQP endpoints&lt;/li&gt;
-  &lt;li&gt;Various Logback and log4j 2 improvements&lt;/li&gt;
-  &lt;li&gt;Auto-configuration classes can now be excluded via configuration&lt;/li&gt;
-  &lt;li&gt;Auto-configuration for embedded MongoDB&lt;/li&gt;
-  &lt;li&gt;Auto-configuration for H2 web console&lt;/li&gt;
-&lt;/ul&gt;&lt;p&gt;For a complete list of changes, and upgrade instructions, see the &lt;a href="https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-1.3-Release-Notes"&gt;Spring Boot 1.3 Release Notes&lt;/a&gt; on the wiki and the updated &lt;a href="http://docs.spring.io/spring-boot/docs/1.3.0.M3/reference/htmlsingle/"&gt;reference documentation&lt;/a&gt;.&lt;/p&gt;&lt;p&gt;&lt;a href="http://projects.spring.io/spring-boot/"&gt;Project Page&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot"&gt;GitHub&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-boot/issues"&gt;Issues&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-boot/docs/current/reference/htmlsingle"&gt;Documentation&lt;/a&gt;&lt;/p&gt;&lt;h1&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h1&gt;&lt;p&gt;Book your place at &lt;a href="http://www.springone2gx.com"&gt;SpringOne2GX in Washington, DC&lt;/a&gt; soon. It&amp;rsquo;s simply the best opportunity to find out first hand all that&amp;rsquo;s going on and to provide direct feedback. Join Brian and myself for an &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/intro_to_spring_boot_for_the_web_tier.html"&gt;intro to Spring Boot for the web tier&lt;/a&gt;.&lt;/p&gt;</content>
-  </entry>
-  <entry>
-    <title>Spring Batch 3.0.5.RELEASE is now available</title>
-    <link rel="alternate" href="https://spring.io/blog/2015/08/10/spring-batch-3-0-5-release-is-now-available" />
-    <category term="releases" label="Releases" />
-    <author>
-      <name>Michael Minella</name>
-    </author>
-    <id>tag:spring.io,2015-08-10:2208</id>
-    <updated>2015-08-10T17:48:05Z</updated>
-    <content type="html">&lt;p&gt;We are pleased to announce that Spring Batch 3.0.5.RELEASE is now available via Maven Central, Github and the Pivotal download repository. This is the 5th maintenance release for the 3.0.x branch of Spring Batch and addresses a number of minor enhancements as well as bringing Spring Batch fully compatible with Spring Framework 4.2. Many thanks to all of those who submitted the many &lt;a href="https://github.com/spring-projects/spring-batch/pulls"&gt;pull requests&lt;/a&gt; that went into this release.&lt;/p&gt;&lt;p&gt;&lt;a href="http://spring.io/projects/spring-batch"&gt;Spring Batch Home&lt;/a&gt; | &lt;a href="https://github.com/spring-projects/spring-batch"&gt;Source on GitHub&lt;/a&gt; | &lt;a href="http://docs.spring.io/spring-batch/"&gt;Reference Documentation&lt;/a&gt;&lt;/p&gt;&lt;p&gt;We look forward to your feedback in &lt;a href="https://jira.spring.io/browse/BATCH"&gt;Jira&lt;/a&gt;, &lt;a href="http://stackoverflow.com/questions/tagged/spring-batch"&gt;StackOverflow&lt;/a&gt;, or to me directly via Twitter &lt;a href="twitter.com/michaelminella"&gt;@michaelminella&lt;/a&gt;.&lt;/p&gt;&lt;h2&gt;&lt;a href="#springone-2gx-2015-is-around-the-corner" class="anchor" name="springone-2gx-2015-is-around-the-corner"&gt;&lt;/a&gt;SpringOne 2GX 2015 is around the corner!&lt;/h2&gt;&lt;p&gt;Check out what&amp;rsquo;s new in Spring at SpringOne in Washington D.C! Learn about Spring Batch updates and how they fit into a modern architecture at &lt;a href="https://2015.event.springone2gx.com/schedule/sessions/who_needs_batch_these_days.html"&gt;Who needs batch these days?&lt;/a&gt; as well as learning about the future of batch and streaming technologies in the various Spring XD talks. Register today!&lt;/p&gt;</content>
   </entry>
 </feed>
