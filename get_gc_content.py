@@ -46,4 +46,6 @@ for line in fastaFile:
 		
 	started = 1
 
+print("\t" + str(getGcContent(nucleotideSeq)))
+
 fastaFile.close()
