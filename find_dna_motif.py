@@ -32,6 +32,11 @@ for line in inputFile:
 
 positionsList = [] # will hold list of start positions of substring
 
-for match in re.finditer(substring, string):
+for match in re.finditer(r'(?=(%s))' % re.escape(substring), string):
 	positionsList.append(match.start() + 1) # add 1 to make 1-based
-	print(str(match.start() + 1))
+#	print(str(match.start() + 1))
+
+#print(positionsList)
+
+output=" ".join(map(str, positionsList))
+print(output)
