@@ -36,7 +36,7 @@ T: 1 5 0 0 0 1 1 6
 """
 
 import sys
-import numpy
+import numpy as np
 
 inputFile = sys.argv[1]
 
@@ -55,29 +55,42 @@ for line in fastaFile:
 	if line.startswith('>'):
 		sequenceEntryNumber +=1
 
-		# if this is the first sequence entry:
+		# skip this line and go to the next if this is the first sequence entry:
 		if sequenceEntryNumber == 1:
 			continue
 		else:
-			# convert the current sequence entry into a list
+			# convert the last sequence entry into a list
+			currentSeqList = list(currentSeqEntry)
+
+			# add the list as a row to the matrix if it already exists, otherwise
+			# create the matrix
+			# NOTE: if the matrix is empty, then vstack cannot be used
+			if sequenceEntryNumber == 2:
+				sequenceMatrix = [currentSeqList]
+			else:
+				sequenceMatrix = np.vstack([sequenceMatrix, currentSeqList])
 
 
-			# add the list as a row to the matrix
-			# NOTE: if the matrix is empty, then cannot use vstack
+			# reset the current sequence entry
+			currentSeqEntry = ""
 
 			
 	else:
-		# remove any spaces from the line:
-
-
-
+		# remove all whitespace characters from the line:
+		line = ''.join(line.split())
 
 		# append the line to currentSeqEntry
+		currentSeqEntry += line
+
+# File is finished being read, still need to process the last sequence entry:
+currentSeqList = list(currentSeqEntry)
+sequenceMatrix = np.vstack([sequenceMatrix, currentSeqList])
+
+
+print(sequenceMatrix)
 
 
 
 
-
-	sequenceEntryNumber += 1
 
 fastaFile.close()
