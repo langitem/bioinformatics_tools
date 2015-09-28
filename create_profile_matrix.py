@@ -36,12 +36,48 @@ T: 1 5 0 0 0 1 1 6
 """
 
 import sys
+import numpy
 
 inputFile = sys.argv[1]
 
 fastaFile = open(inputFile)
+sequenceEntryNumber = 0
+currentSeqEntry = ""
+
+# create numpy 2d array without specifying its size:
+
+
+for line in fastaFile:
+	line = line.rstrip('\n')
+	line = line.upper()
+
+	# if the line starts with '>' skip it and go to the next line
+	if line.startswith('>'):
+		sequenceEntryNumber +=1
+
+		# if this is the first sequence entry:
+		if sequenceEntryNumber == 1:
+			continue
+		else:
+			# convert the current sequence entry into a list
+
+
+			# add the list as a row to the matrix
+			# NOTE: if the matrix is empty, then cannot use vstack
+
+			
+	else:
+		# remove any spaces from the line:
 
 
 
+
+		# append the line to currentSeqEntry
+
+
+
+
+
+	sequenceEntryNumber += 1
 
 fastaFile.close()
