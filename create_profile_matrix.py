@@ -43,6 +43,7 @@ inputFile = sys.argv[1]
 fastaFile = open(inputFile)
 sequenceEntryNumber = 0
 currentSeqEntry = ""
+sequenceLength = 0
 
 # create numpy 2d array without specifying its size:
 
@@ -66,8 +67,13 @@ for line in fastaFile:
 			# create the matrix
 			# NOTE: if the matrix is empty, then vstack cannot be used
 			if sequenceEntryNumber == 2:
+				sequenceLength = len(currentSeqEntry)
 				sequenceMatrix = [currentSeqList]
 			else:
+				if len(currentSeqEntry) != sequenceLength:
+					print("Length of sequences are not equal!")
+					sys.exit(0)
+
 				sequenceMatrix = np.vstack([sequenceMatrix, currentSeqList])
 
 
@@ -82,15 +88,45 @@ for line in fastaFile:
 		# append the line to currentSeqEntry
 		currentSeqEntry += line
 
+fastaFile.close()
+
 # File is finished being read, still need to process the last sequence entry:
 currentSeqList = list(currentSeqEntry)
 sequenceMatrix = np.vstack([sequenceMatrix, currentSeqList])
 
 
-print(sequenceMatrix)
+# Now traverse the matrix and record the number of each nucleotide for each horizontal position
+# Traversing through each column
+
+numColumns = sequenceLength
+numRows = sequenceEntryNumber
+
+aList = ([0] * numColumns)
+cList = ([0] * numColumns)
+gList = ([0] * numColumns)
+tList = ([0] * numColumns)
+
+for j in range(numColumns):
+
+	numAs, numCs, numGs, numTs = (0,)*4
+
+	for i in range(numRows):
+
+		#print(str(i) + ", " + str(j) + " " + str(sequenceMatrix[i][j]))
+
+		if sequenceMatrix[i][j] == 'A':
+			aList[j] += 1
+		elif sequenceMatrix[i][j] == 'C':
+			cList[j] += 1
+		elif sequenceMatrix[i][j] == 'G':
+			gList[j] += 1
+		elif sequenceMatrix[i][j] == 'T':
+			tList[j] += 1
 
 
+print("A: " + ' '.join(str(x) for x in aList))
+print("C: " + ' '.join(str(x) for x in cList))
+print("G: " + ' '.join(str(x) for x in gList))
+print("T: " + ' '.join(str(x) for x in tList))
 
 
-
-fastaFile.close()
