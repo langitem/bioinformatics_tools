@@ -106,7 +106,7 @@ cList = ([0] * numColumns)
 gList = ([0] * numColumns)
 tList = ([0] * numColumns)
 consensusList = [None] * numColumns
-print(consensusList)
+#print(consensusList)
 
 for j in range(numColumns):
 
@@ -128,16 +128,28 @@ for j in range(numColumns):
 			numTs += 1
 
 	# Determine consensus nucleotide for this column:
-	print(str(numAs) + " " + str(numCs) + " " + str(numGs) + " " + str(numTs))
-	count = {'A': numAs, 'C': numCs, 'G': numGs, 'T': numTs}
+	# print(str(numAs) + " " + str(numCs) + " " + str(numGs) + " " + str(numTs))
+	countDictionary = {'A': numAs, 'C': numCs, 'G': numGs, 'T': numTs}
 	consensusNucleotide = 'A'
+	highestNum = 0
+	nucleotideNumList = [numAs, numCs, numGs, numTs]
+	# Iterate through the dictionary:
+	for nucleotide, num in countDictionary.iteritems():
+		if highestNum < num:
+			highestNum = num
+			consensusNucleotide = nucleotide
+
+	consensusList[j] = consensusNucleotide
 
 
+#print the consensus sequence:
+print(''.join(str(x) for x in consensusList))
 
 # print the matrix:
 print("A: " + ' '.join(str(x) for x in aList))
 print("C: " + ' '.join(str(x) for x in cList))
 print("G: " + ' '.join(str(x) for x in gList))
 print("T: " + ' '.join(str(x) for x in tList))
+#print(consensusList)
 
 
