@@ -105,6 +105,8 @@ aList = ([0] * numColumns)
 cList = ([0] * numColumns)
 gList = ([0] * numColumns)
 tList = ([0] * numColumns)
+consensusList = [None] * numColumns
+print(consensusList)
 
 for j in range(numColumns):
 
@@ -112,18 +114,27 @@ for j in range(numColumns):
 
 	for i in range(numRows):
 
-		#print(str(i) + ", " + str(j) + " " + str(sequenceMatrix[i][j]))
-
 		if sequenceMatrix[i][j] == 'A':
 			aList[j] += 1
+			numAs += 1
 		elif sequenceMatrix[i][j] == 'C':
 			cList[j] += 1
+			numCs += 1
 		elif sequenceMatrix[i][j] == 'G':
 			gList[j] += 1
+			numGs += 1
 		elif sequenceMatrix[i][j] == 'T':
 			tList[j] += 1
+			numTs += 1
+
+	# Determine consensus nucleotide for this column:
+	print(str(numAs) + " " + str(numCs) + " " + str(numGs) + " " + str(numTs))
+	count = {'A': numAs, 'C': numCs, 'G': numGs, 'T': numTs}
+	consensusNucleotide = 'A'
 
 
+
+# print the matrix:
 print("A: " + ' '.join(str(x) for x in aList))
 print("C: " + ' '.join(str(x) for x in cList))
 print("G: " + ' '.join(str(x) for x in gList))
