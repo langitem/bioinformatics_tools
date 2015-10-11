@@ -7,15 +7,14 @@ Given: A collection of k (k<=100) DNA strings of length at most 1 kbp each in FA
 Return: A longest common substring of the collection. (If multiple solutions exist, you may return any single solution.)
 
 Sample Dataset
-
 >Rosalind_1
 GATTACA
 >Rosalind_2
 TAGACCA
 >Rosalind_3
 ATACA
-Sample Output
 
+Sample Output
 AC
 """
 
@@ -70,7 +69,7 @@ for currentSeq in sequenceList:
 	started = True
 
 
-# Create a list of all possible contiguous sequences from the shortest sequence entry
+# Create a list of all possible contiguous sequences of the shortest sequence entry
 # from largest to smallest using a sliding window algorithm:
 possibleSeqs = []
 for currentSeqLen in range(shortestSequenceLength, 0, -1):
@@ -80,3 +79,17 @@ for currentSeqLen in range(shortestSequenceLength, 0, -1):
 
 # Iterate over the list of possible sequences and check for occurrence in all of the other
 # sequence entries
+for motif in possibleSeqs:
+	score = 0
+	#print(sequenceList)
+	for sequenceEntry in sequenceList:
+		#print(motif + " " + sequenceEntry)
+		if motif in sequenceEntry:
+			#print(motif + " " + sequenceEntry)
+			score +=1
+
+
+	if score == len(sequenceList):
+		print(motif)
+		sys.exit(0)
+
