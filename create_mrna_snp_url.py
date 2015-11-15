@@ -27,6 +27,10 @@ baseUrl = 'http://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?locusId='
 for line in geneList:
 	line = line.rstrip('\n')
 	line = line.replace(" ", "")
-	url = baseUrl + line
+	if line.isdigit(): # NCBI gene IDs are numbers only
+		url = baseUrl + line # This is the URL for the web page with the mRNAs belonging to the current gene
+
+		# Now scrape the web page for the mRNAs, mRNA orientation, and contig:
+		
 
 geneList.close()
