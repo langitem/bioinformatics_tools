@@ -18,19 +18,36 @@ etc.
 
 import sys
 import urllib2
+import time
 
 geneListFile = sys.argv[1]
 geneList = open(geneListFile)
 
-baseUrl = 'http://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?locusId='
+baseUrl1 = 'http://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?locusId='
+baseUrl2 = 'http://www.ncbi.nlm.nih.gov/SNP/'
 
 for line in geneList:
 	line = line.rstrip('\n')
 	line = line.replace(" ", "")
 	if line.isdigit(): # NCBI gene IDs are numbers only
-		url = baseUrl + line # This is the URL for the web page with the mRNAs belonging to the current gene
+		url = baseUrl1 + line # This is the URL for the web page with the mRNAs belonging to the current gene
+		print url
 
 		# Now scrape the web page for the mRNAs, mRNA orientation, and contig:
-		
+		#response = urllib2.urlopen(url).read()
+		#responseList = response.split("\n")
+		response = urllib2.urlopen(url)
+		time.sleep(5)
+		data = response.read()
+		dataLines = data.split("\n")
 
+		for line in dataLines:
+			if "snp_ref.cgi?geneId" in line:
+				fields = line.split(">")
+				for field in fields:
+					if "snp_ref.cgi?geneId" in field:
+						field = field.replace("<a href=\"", baseUrl2)
+						field = field.replace("\"", "")
+						print field
+		
 geneList.close()
