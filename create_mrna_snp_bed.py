@@ -21,6 +21,10 @@ for url in urlList:
 	htmlPage = response.read()
 	htmlLines = htmlPage.split("\n")
 
+	accession = ""
+	mRnaPos = ""
+	rsID = ""
+
 	for line in htmlLines:
 		if "currently shown" in line:
 			accession = re.sub(r'^.*?nuccore/', '', line)
@@ -32,6 +36,6 @@ for url in urlList:
 			rsID = re.sub(r'^.*snp_ref.cgi\?rs=', 'rs', line)
 			rsID = re.sub(r'\".*$', '', rsID)
 
-			print(accession + "\t" + rsID + "\t" + mRnaPos)
+			print(accession + "\t" + mRnaPos + "\t" + rsID)
 
 urlList.close()
