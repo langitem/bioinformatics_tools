@@ -21,13 +21,16 @@ for url in urlList:
 	htmlPage = response.read()
 	htmlLines = htmlPage.split("\n")
 
-	accession = ""
-	mRnaPos = ""
-	rsID = ""
+	#accession = ""
+	#mRnaPos = ""
+	#rsID = ""
 
 	for line in htmlLines:
 		if "currently shown" in line:
-			accession = re.sub(r'^.*?nuccore/', '', line)
+			#accession = re.sub(r'^.*?nuccore/', '', line)
+			#accession = re.sub(r'\".*$', '', accession)
+			accession = re.sub(r'^.*?bgcolor=\"yellow', '', line)
+			accession = re.sub(r'^.*?nuccore/', '', accession)
 			accession = re.sub(r'\".*$', '', accession)
 			# print accession
 		if "snp_ref.cgi?rs=" in line:
