@@ -36,6 +36,7 @@ for url in urlList:
 		if "snp_ref.cgi?rs=" in line:
 			mRnaSnpPos = re.sub(r'^.*currpage=1\">', '', line)
 			mRnaSnpPos = re.sub(r'<.*', '', mRnaSnpPos)
+			mRnaSnpPos -=1
 			rsID = re.sub(r'^.*snp_ref.cgi\?rs=', 'rs', line)
 			rsID = re.sub(r'\".*$', '', rsID)
 
