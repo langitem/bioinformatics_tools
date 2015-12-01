@@ -22,7 +22,7 @@ for url in urlList:
 	htmlLines = htmlPage.split("\n")
 
 	#accession = ""
-	#mRnaPos = ""
+	#mRnaSnpPos = ""
 	#rsID = ""
 
 	for line in htmlLines:
@@ -34,11 +34,11 @@ for url in urlList:
 			accession = re.sub(r'\".*$', '', accession)
 			# print accession
 		if "snp_ref.cgi?rs=" in line:
-			mRnaPos = re.sub(r'^.*currpage=1\">', '', line)
-			mRnaPos = re.sub(r'<.*', '', mRnaPos)
+			mRnaSnpPos = re.sub(r'^.*currpage=1\">', '', line)
+			mRnaSnpPos = re.sub(r'<.*', '', mRnaSnpPos)
 			rsID = re.sub(r'^.*snp_ref.cgi\?rs=', 'rs', line)
 			rsID = re.sub(r'\".*$', '', rsID)
 
-			print(accession + "\t" + mRnaPos + "\t" + rsID)
+			print(accession + "\t" + mRnaSnpPos + "\t" + rsID)
 
 urlList.close()
