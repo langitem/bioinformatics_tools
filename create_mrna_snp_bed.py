@@ -36,10 +36,11 @@ for url in urlList:
 		if "snp_ref.cgi?rs=" in line:
 			mRnaSnpPos = re.sub(r'^.*currpage=1\">', '', line)
 			mRnaSnpPos = re.sub(r'<.*', '', mRnaSnpPos)
+			mRnaSnpPos = int(mRnaSnpPos)
 			mRnaSnpPos -=1
 			rsID = re.sub(r'^.*snp_ref.cgi\?rs=', 'rs', line)
 			rsID = re.sub(r'\".*$', '', rsID)
 
-			print(accession + "\t" + mRnaSnpPos + "\t" + rsID)
+			print(accession + "\t" + str(mRnaSnpPos) + "\t" + rsID)
 
 urlList.close()
