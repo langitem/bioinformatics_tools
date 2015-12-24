@@ -54,7 +54,15 @@ for url in urlList:
 			referenceAllele = re.sub(r'^.*contig reference<\/td>', '', line)
 			referenceAllele = re.sub(r'^.*?>', '', referenceAllele)
 			referenceAllele = re.sub(r'<.*$', '', referenceAllele)
-			print(accession + "\t" + str(mRnaSnpPos) + "\t" + referenceAllele + "\t" + rsID)
+
+			if "bp)" in referenceAllele:
+				referenceAlleleLength = re.sub(r'\(', '', referenceAllele)
+				referenceAlleleLength = re.sub(r'bp\)', '', referenceAlleleLength)
+			else:
+				referenceAlleleLength = len(referenceAllele)
+				referenceAlleleLength = str(referenceAlleleLength)
+
+			print(accession + "\t" + str(mRnaSnpPos) + "\t" + referenceAlleleLength + "\t" + rsID)
 			
 
 
