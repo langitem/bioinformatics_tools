@@ -22,7 +22,7 @@ for url in urlList:
 	htmlLines = htmlPage.split("\n")
 
 	#accession = ""
-	#mRnaSnpPos = ""
+	#snpStartPos = ""
 	#rsID = ""
 
 	for line in htmlLines:
@@ -37,18 +37,18 @@ for url in urlList:
 		# if the line contains an RS ID:
 		#	assign the number in the mRNA column
 		if "snp_ref.cgi?rs=" in line:
-			mRnaSnpPos = re.sub(r'^.*currpage=1\">', '', line)
-			mRnaSnpPos = re.sub(r'<.*', '', mRnaSnpPos)
-			mRnaSnpPos = int(mRnaSnpPos)
-			mRnaSnpPos -=1
+			snpStartPos = re.sub(r'^.*currpage=1\">', '', line)
+			snpStartPos = re.sub(r'<.*', '', snpStartPos)
+			snpStartPos = int(snpStartPos)
+			snpStartPos -=1
 			rsID = re.sub(r'^.*snp_ref.cgi\?rs=', 'rs', line)
 			rsID = re.sub(r'\".*$', '', rsID)
 
-			# print(accession + "\t" + str(mRnaSnpPos) + "\t" + rsID)
+			# print(accession + "\t" + str(snpStartPos) + "\t" + rsID)
 
 		
 		# if the line contains "contig reference":
-		#	print accession, mRnaSnpPos, and the length of the string
+		#	print accession, snpStartPos, and the length of the string
 		#	in the dbSNP allele column
 		if "contig reference" in line:
 			referenceAllele = re.sub(r'^.*contig reference<\/td>', '', line)
@@ -62,7 +62,7 @@ for url in urlList:
 				referenceAlleleLength = len(referenceAllele)
 				referenceAlleleLength = str(referenceAlleleLength)
 
-			print(accession + "\t" + str(mRnaSnpPos) + "\t" + referenceAlleleLength + "\t" + rsID)
+			print(accession + "\t" + str(snpStartPos) + "\t" + referenceAlleleLength + "\t" + rsID)
 			
 
 
