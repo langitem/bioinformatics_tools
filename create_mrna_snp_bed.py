@@ -62,7 +62,8 @@ for url in urlList:
 				referenceAlleleLength = len(referenceAllele)
 				referenceAlleleLength = str(referenceAlleleLength)
 
-			print(accession + "\t" + str(snpStartPos) + "\t" + referenceAlleleLength + "\t" + rsID)
+			snpStopPos = snpStartPos + int(referenceAlleleLength)
+			print(accession + "\t" + str(snpStartPos) + "\t" + str(snpStopPos) + "\t" + rsID)
 			
 
 
