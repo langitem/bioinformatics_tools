@@ -26,8 +26,12 @@ for line in args.inputFile:
 args.inputFile.close()
 
 
-def removeLastColumnIfEmpty(myList):
+def get_maf(myList):
 	listSize = len(myList)
-	for element in myList:
-		
+
+	# Use loop and start at last element of the list.
+	# If the element is has no value (""), then keep going back until
+	# it does have value. This is done because the file from UCSC has empty
+	# elements in its tab-delimitted file.
+
 	return
