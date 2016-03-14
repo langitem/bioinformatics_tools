@@ -1,0 +1,4302 @@
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	2</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XM_011527148.1"
+28	XM_011527148.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	plus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/XP_011525450.1"
+34	XP_011525450.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	forward</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011109.17</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  class="gm_mrna"
+51	<a href="/nuccore/NM_020813.2"
+52	NM_020813.2</a
+53	</td
+54	<td 
+55	plus strand</td
+56	<td  class="gm_protein"
+57	<a href="/protein/NP_065864.2"
+58	NP_065864.2</a
+59	</td
+60	<td 
+61	forward</td
+62	<td  class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_011109.17</a
+65	</td
+66	<td 
+67	GRCh38.p2</td
+68	<td 
+69	<a href="snp_ref.cgi?geneId=57573&ctg=NT_011109.17&mrna=NM_020813.2&prot=NP_065864.2&orien=forward"
+70	View snp on GeneModel</a
+71	</td
+72	</TR
+73	</TABLE
+74	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	9</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XM_006724347.1"
+28	XM_006724347.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	minus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/XP_006724410.1"
+34	XP_006724410.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	reverse</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011520.13</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  class="gm_mrna"
+51	<a href="/nuccore/XM_005261801.2"
+52	XM_005261801.2</a
+53	</td
+54	<td 
+55	minus strand</td
+56	<td  class="gm_protein"
+57	<a href="/protein/XP_005261858.1"
+58	XP_005261858.1</a
+59	</td
+60	<td 
+61	reverse</td
+62	<td  class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_011520.13</a
+65	</td
+66	<td 
+67	GRCh38.p2</td
+68	<td 
+69	<a href="snp_ref.cgi?geneId=8563&ctg=NT_011520.13&mrna=XM_005261801.2&prot=XP_005261858.1&orien=reverse"
+70	View snp on GeneModel</a
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/XM_005261799.1"
+76	XM_005261799.1</a
+77	</td
+78	<td 
+79	minus strand</td
+80	<td  class="gm_protein"
+81	<a href="/protein/XP_005261856.1"
+82	XP_005261856.1</a
+83	</td
+84	<td 
+85	reverse</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_011520.13</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=8563&ctg=NT_011520.13&mrna=XM_005261799.1&prot=XP_005261856.1&orien=reverse"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/XM_005261798.1"
+100	XM_005261798.1</a
+101	</td
+102	<td 
+103	minus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/XP_005261855.1"
+106	XP_005261855.1</a
+107	</td
+108	<td 
+109	reverse</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_011520.13</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=8563&ctg=NT_011520.13&mrna=XM_005261798.1&prot=XP_005261855.1&orien=reverse"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	<TR  align="left"
+122	<td  class="gm_mrna"
+123	<a href="/nuccore/XM_005261797.1"
+124	XM_005261797.1</a
+125	</td
+126	<td 
+127	minus strand</td
+128	<td  class="gm_protein"
+129	<a href="/protein/XP_005261854.1"
+130	XP_005261854.1</a
+131	</td
+132	<td 
+133	reverse</td
+134	<td  class="gm_contig"
+135	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+136	NT_011520.13</a
+137	</td
+138	<td 
+139	GRCh38.p2</td
+140	<td 
+141	<a href="snp_ref.cgi?geneId=8563&ctg=NT_011520.13&mrna=XM_005261797.1&prot=XP_005261854.1&orien=reverse"
+142	View snp on GeneModel</a
+143	</td
+144	</TR
+145	<TR  align="left"
+146	<td  class="gm_mrna"
+147	<a href="/nuccore/NM_003678.4"
+148	NM_003678.4</a
+149	</td
+150	<td 
+151	minus strand</td
+152	<td  class="gm_protein"
+153	<a href="/protein/NP_003669.4"
+154	NP_003669.4</a
+155	</td
+156	<td 
+157	reverse</td
+158	<td  class="gm_contig"
+159	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+160	NT_011520.13</a
+161	</td
+162	<td 
+163	GRCh38.p2</td
+164	<td 
+165	<a href="snp_ref.cgi?geneId=8563&ctg=NT_011520.13&mrna=NM_003678.4&prot=NP_003669.4&orien=reverse"
+166	View snp on GeneModel</a
+167	</td
+168	</TR
+169	<TR  align="left"
+170	<td  class="gm_mrna"
+171	<a href="/nuccore/NM_001002879.1"
+172	NM_001002879.1</a
+173	</td
+174	<td 
+175	minus strand</td
+176	<td  class="gm_protein"
+177	<a href="/protein/NP_001002879.1"
+178	NP_001002879.1</a
+179	</td
+180	<td 
+181	reverse</td
+182	<td  class="gm_contig"
+183	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+184	NT_011520.13</a
+185	</td
+186	<td 
+187	GRCh38.p2</td
+188	<td 
+189	<a href="snp_ref.cgi?geneId=8563&ctg=NT_011520.13&mrna=NM_001002879.1&prot=NP_001002879.1&orien=reverse"
+190	View snp on GeneModel</a
+191	</td
+192	</TR
+193	<TR  align="left"
+194	<td  class="gm_mrna"
+195	<a href="/nuccore/NM_001002878.1"
+196	NM_001002878.1</a
+197	</td
+198	<td 
+199	minus strand</td
+200	<td  class="gm_protein"
+201	<a href="/protein/NP_001002878.1"
+202	NP_001002878.1</a
+203	</td
+204	<td 
+205	reverse</td
+206	<td  class="gm_contig"
+207	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+208	NT_011520.13</a
+209	</td
+210	<td 
+211	GRCh38.p2</td
+212	<td 
+213	<a href="snp_ref.cgi?geneId=8563&ctg=NT_011520.13&mrna=NM_001002878.1&prot=NP_001002878.1&orien=reverse"
+214	View snp on GeneModel</a
+215	</td
+216	</TR
+217	<TR  align="left"
+218	<td  class="gm_mrna"
+219	<a href="/nuccore/NM_001002877.1"
+220	NM_001002877.1</a
+221	</td
+222	<td 
+223	minus strand</td
+224	<td  class="gm_protein"
+225	<a href="/protein/NP_001002877.1"
+226	NP_001002877.1</a
+227	</td
+228	<td 
+229	reverse</td
+230	<td  class="gm_contig"
+231	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+232	NT_011520.13</a
+233	</td
+234	<td 
+235	GRCh38.p2</td
+236	<td 
+237	<a href="snp_ref.cgi?geneId=8563&ctg=NT_011520.13&mrna=NM_001002877.1&prot=NP_001002877.1&orien=reverse"
+238	View snp on GeneModel</a
+239	</td
+240	</TR
+241	</TABLE
+242	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	6</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_935980.1"
+28	XR_935980.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011109.17</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_935980.1"
+52	XR_935980.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	plus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	forward</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_011109.17</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/XR_935979.1"
+76	XR_935979.1</a
+77	</td
+78	<td 
+79	</td
+80	<td  class="gm_protein"
+81	<a href="/protein/."
+82	.</a
+83	</td
+84	<td 
+85	-</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_011109.17</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=105372411&ctg=NT_011109.17&mrna=XR_935979.1&prot=.&orien=-"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/XR_935979.1"
+100	XR_935979.1</a
+101	</td
+102	<td 
+103	plus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/."
+106	.</a
+107	</td
+108	<td 
+109	forward</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_011109.17</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=105372411&ctg=NT_011109.17&mrna=XR_935979.1&prot=.&orien=forward"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	<TR  align="left"
+122	<td  class="gm_mrna"
+123	<a href="/nuccore/XR_935978.1"
+124	XR_935978.1</a
+125	</td
+126	<td 
+127	</td
+128	<td  class="gm_protein"
+129	<a href="/protein/."
+130	.</a
+131	</td
+132	<td 
+133	-</td
+134	<td  class="gm_contig"
+135	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+136	NT_011109.17</a
+137	</td
+138	<td 
+139	GRCh38.p2</td
+140	<td 
+141	<a href="snp_ref.cgi?geneId=105372411&ctg=NT_011109.17&mrna=XR_935978.1&prot=.&orien=-"
+142	View snp on GeneModel</a
+143	</td
+144	</TR
+145	<TR  align="left"
+146	<td  class="gm_mrna"
+147	<a href="/nuccore/XR_935978.1"
+148	XR_935978.1</a
+149	</td
+150	<td 
+151	plus strand</td
+152	<td  class="gm_protein"
+153	<a href="/protein/."
+154	.</a
+155	</td
+156	<td 
+157	forward</td
+158	<td  class="gm_contig"
+159	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+160	NT_011109.17</a
+161	</td
+162	<td 
+163	GRCh38.p2</td
+164	<td 
+165	<a href="snp_ref.cgi?geneId=105372411&ctg=NT_011109.17&mrna=XR_935978.1&prot=.&orien=forward"
+166	View snp on GeneModel</a
+167	</td
+168	</TR
+169	</TABLE
+170	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	2</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_931671.1"
+28	XR_931671.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_009952.15&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_009952.15</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_931671.1"
+52	XR_931671.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	plus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	forward</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_009952.15&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_009952.15</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	</TABLE
+74	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	1</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/NM_001080409.2"
+28	NM_001080409.2</a
+29	</td
+30	<td  bgcolor="yellow"
+31	minus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/NP_001073878.2"
+34	NP_001073878.2</a
+35	</td
+36	<td  bgcolor="yellow"
+37	reverse</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011295.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011295.12</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	</TABLE
+50	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	2</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_942079.1"
+28	XR_942079.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_024524.15&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_024524.15</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_942079.1"
+52	XR_942079.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	minus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	reverse</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_024524.15&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_024524.15</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	</TABLE
+74	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	1</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XM_011525589.1"
+28	XM_011525589.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	minus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/XP_011523891.1"
+34	XP_011523891.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	reverse</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010783.16&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_010783.16</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	</TABLE
+50	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	8</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/NM_004380.2"
+28	NM_004380.2</a
+29	</td
+30	<td  bgcolor="yellow"
+31	minus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/NP_004371.2"
+34	NP_004371.2</a
+35	</td
+36	<td  bgcolor="yellow"
+37	reverse</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010393.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_010393.17</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  class="gm_mrna"
+51	<a href="/nuccore/XM_011522382.1"
+52	XM_011522382.1</a
+53	</td
+54	<td 
+55	minus strand</td
+56	<td  class="gm_protein"
+57	<a href="/protein/XP_011520684.1"
+58	XP_011520684.1</a
+59	</td
+60	<td 
+61	reverse</td
+62	<td  class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010393.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_010393.17</a
+65	</td
+66	<td 
+67	GRCh38.p2</td
+68	<td 
+69	<a href="snp_ref.cgi?geneId=1387&ctg=NT_010393.17&mrna=XM_011522382.1&prot=XP_011520684.1&orien=reverse"
+70	View snp on GeneModel</a
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/XM_011522381.1"
+76	XM_011522381.1</a
+77	</td
+78	<td 
+79	minus strand</td
+80	<td  class="gm_protein"
+81	<a href="/protein/XP_011520683.1"
+82	XP_011520683.1</a
+83	</td
+84	<td 
+85	reverse</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010393.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_010393.17</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=1387&ctg=NT_010393.17&mrna=XM_011522381.1&prot=XP_011520683.1&orien=reverse"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/XM_011522380.1"
+100	XM_011522380.1</a
+101	</td
+102	<td 
+103	minus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/XP_011520682.1"
+106	XP_011520682.1</a
+107	</td
+108	<td 
+109	reverse</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010393.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_010393.17</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=1387&ctg=NT_010393.17&mrna=XM_011522380.1&prot=XP_011520682.1&orien=reverse"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	<TR  align="left"
+122	<td  class="gm_mrna"
+123	<a href="/nuccore/XM_006720848.2"
+124	XM_006720848.2</a
+125	</td
+126	<td 
+127	minus strand</td
+128	<td  class="gm_protein"
+129	<a href="/protein/XP_006720911.1"
+130	XP_006720911.1</a
+131	</td
+132	<td 
+133	reverse</td
+134	<td  class="gm_contig"
+135	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010393.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+136	NT_010393.17</a
+137	</td
+138	<td 
+139	GRCh38.p2</td
+140	<td 
+141	<a href="snp_ref.cgi?geneId=1387&ctg=NT_010393.17&mrna=XM_006720848.2&prot=XP_006720911.1&orien=reverse"
+142	View snp on GeneModel</a
+143	</td
+144	</TR
+145	<TR  align="left"
+146	<td  class="gm_mrna"
+147	<a href="/nuccore/XM_005255125.3"
+148	XM_005255125.3</a
+149	</td
+150	<td 
+151	minus strand</td
+152	<td  class="gm_protein"
+153	<a href="/protein/XP_005255182.1"
+154	XP_005255182.1</a
+155	</td
+156	<td 
+157	reverse</td
+158	<td  class="gm_contig"
+159	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010393.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+160	NT_010393.17</a
+161	</td
+162	<td 
+163	GRCh38.p2</td
+164	<td 
+165	<a href="snp_ref.cgi?geneId=1387&ctg=NT_010393.17&mrna=XM_005255125.3&prot=XP_005255182.1&orien=reverse"
+166	View snp on GeneModel</a
+167	</td
+168	</TR
+169	<TR  align="left"
+170	<td  class="gm_mrna"
+171	<a href="/nuccore/XM_005255124.3"
+172	XM_005255124.3</a
+173	</td
+174	<td 
+175	minus strand</td
+176	<td  class="gm_protein"
+177	<a href="/protein/XP_005255181.1"
+178	XP_005255181.1</a
+179	</td
+180	<td 
+181	reverse</td
+182	<td  class="gm_contig"
+183	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010393.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+184	NT_010393.17</a
+185	</td
+186	<td 
+187	GRCh38.p2</td
+188	<td 
+189	<a href="snp_ref.cgi?geneId=1387&ctg=NT_010393.17&mrna=XM_005255124.3&prot=XP_005255181.1&orien=reverse"
+190	View snp on GeneModel</a
+191	</td
+192	</TR
+193	<TR  align="left"
+194	<td  class="gm_mrna"
+195	<a href="/nuccore/NM_001079846.1"
+196	NM_001079846.1</a
+197	</td
+198	<td 
+199	minus strand</td
+200	<td  class="gm_protein"
+201	<a href="/protein/NP_001073315.1"
+202	NP_001073315.1</a
+203	</td
+204	<td 
+205	reverse</td
+206	<td  class="gm_contig"
+207	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010393.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+208	NT_010393.17</a
+209	</td
+210	<td 
+211	GRCh38.p2</td
+212	<td 
+213	<a href="snp_ref.cgi?geneId=1387&ctg=NT_010393.17&mrna=NM_001079846.1&prot=NP_001073315.1&orien=reverse"
+214	View snp on GeneModel</a
+215	</td
+216	</TR
+217	</TABLE
+218	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	8</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_948135.1"
+28	XR_948135.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_033899.9&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_033899.9</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_948135.1"
+52	XR_948135.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	minus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	reverse</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_033899.9&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_033899.9</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/XR_948134.1"
+76	XR_948134.1</a
+77	</td
+78	<td 
+79	</td
+80	<td  class="gm_protein"
+81	<a href="/protein/."
+82	.</a
+83	</td
+84	<td 
+85	-</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_033899.9&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_033899.9</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=105369547&ctg=NT_033899.9&mrna=XR_948134.1&prot=.&orien=-"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/XR_948134.1"
+100	XR_948134.1</a
+101	</td
+102	<td 
+103	minus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/."
+106	.</a
+107	</td
+108	<td 
+109	reverse</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_033899.9&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_033899.9</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=105369547&ctg=NT_033899.9&mrna=XR_948134.1&prot=.&orien=reverse"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	<TR  align="left"
+122	<td  class="gm_mrna"
+123	<a href="/nuccore/XR_948133.1"
+124	XR_948133.1</a
+125	</td
+126	<td 
+127	</td
+128	<td  class="gm_protein"
+129	<a href="/protein/."
+130	.</a
+131	</td
+132	<td 
+133	-</td
+134	<td  class="gm_contig"
+135	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_033899.9&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+136	NT_033899.9</a
+137	</td
+138	<td 
+139	GRCh38.p2</td
+140	<td 
+141	<a href="snp_ref.cgi?geneId=105369547&ctg=NT_033899.9&mrna=XR_948133.1&prot=.&orien=-"
+142	View snp on GeneModel</a
+143	</td
+144	</TR
+145	<TR  align="left"
+146	<td  class="gm_mrna"
+147	<a href="/nuccore/XR_948133.1"
+148	XR_948133.1</a
+149	</td
+150	<td 
+151	minus strand</td
+152	<td  class="gm_protein"
+153	<a href="/protein/."
+154	.</a
+155	</td
+156	<td 
+157	reverse</td
+158	<td  class="gm_contig"
+159	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_033899.9&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+160	NT_033899.9</a
+161	</td
+162	<td 
+163	GRCh38.p2</td
+164	<td 
+165	<a href="snp_ref.cgi?geneId=105369547&ctg=NT_033899.9&mrna=XR_948133.1&prot=.&orien=reverse"
+166	View snp on GeneModel</a
+167	</td
+168	</TR
+169	<TR  align="left"
+170	<td  class="gm_mrna"
+171	<a href="/nuccore/XR_948132.1"
+172	XR_948132.1</a
+173	</td
+174	<td 
+175	</td
+176	<td  class="gm_protein"
+177	<a href="/protein/."
+178	.</a
+179	</td
+180	<td 
+181	-</td
+182	<td  class="gm_contig"
+183	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_033899.9&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+184	NT_033899.9</a
+185	</td
+186	<td 
+187	GRCh38.p2</td
+188	<td 
+189	<a href="snp_ref.cgi?geneId=105369547&ctg=NT_033899.9&mrna=XR_948132.1&prot=.&orien=-"
+190	View snp on GeneModel</a
+191	</td
+192	</TR
+193	<TR  align="left"
+194	<td  class="gm_mrna"
+195	<a href="/nuccore/XR_948132.1"
+196	XR_948132.1</a
+197	</td
+198	<td 
+199	minus strand</td
+200	<td  class="gm_protein"
+201	<a href="/protein/."
+202	.</a
+203	</td
+204	<td 
+205	reverse</td
+206	<td  class="gm_contig"
+207	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_033899.9&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+208	NT_033899.9</a
+209	</td
+210	<td 
+211	GRCh38.p2</td
+212	<td 
+213	<a href="snp_ref.cgi?geneId=105369547&ctg=NT_033899.9&mrna=XR_948132.1&prot=.&orien=reverse"
+214	View snp on GeneModel</a
+215	</td
+216	</TR
+217	</TABLE
+218	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	26</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_943057.1"
+28	XR_943057.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_025741.16</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_943057.1"
+52	XR_943057.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	plus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	forward</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_025741.16</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/XR_943056.1"
+76	XR_943056.1</a
+77	</td
+78	<td 
+79	</td
+80	<td  class="gm_protein"
+81	<a href="/protein/."
+82	.</a
+83	</td
+84	<td 
+85	-</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_025741.16</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943056.1&prot=.&orien=-"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/XR_943056.1"
+100	XR_943056.1</a
+101	</td
+102	<td 
+103	plus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/."
+106	.</a
+107	</td
+108	<td 
+109	forward</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_025741.16</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943056.1&prot=.&orien=forward"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	<TR  align="left"
+122	<td  class="gm_mrna"
+123	<a href="/nuccore/XR_943055.1"
+124	XR_943055.1</a
+125	</td
+126	<td 
+127	</td
+128	<td  class="gm_protein"
+129	<a href="/protein/."
+130	.</a
+131	</td
+132	<td 
+133	-</td
+134	<td  class="gm_contig"
+135	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+136	NT_025741.16</a
+137	</td
+138	<td 
+139	GRCh38.p2</td
+140	<td 
+141	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943055.1&prot=.&orien=-"
+142	View snp on GeneModel</a
+143	</td
+144	</TR
+145	<TR  align="left"
+146	<td  class="gm_mrna"
+147	<a href="/nuccore/XR_943055.1"
+148	XR_943055.1</a
+149	</td
+150	<td 
+151	plus strand</td
+152	<td  class="gm_protein"
+153	<a href="/protein/."
+154	.</a
+155	</td
+156	<td 
+157	forward</td
+158	<td  class="gm_contig"
+159	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+160	NT_025741.16</a
+161	</td
+162	<td 
+163	GRCh38.p2</td
+164	<td 
+165	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943055.1&prot=.&orien=forward"
+166	View snp on GeneModel</a
+167	</td
+168	</TR
+169	<TR  align="left"
+170	<td  class="gm_mrna"
+171	<a href="/nuccore/XR_943054.1"
+172	XR_943054.1</a
+173	</td
+174	<td 
+175	</td
+176	<td  class="gm_protein"
+177	<a href="/protein/."
+178	.</a
+179	</td
+180	<td 
+181	-</td
+182	<td  class="gm_contig"
+183	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+184	NT_025741.16</a
+185	</td
+186	<td 
+187	GRCh38.p2</td
+188	<td 
+189	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943054.1&prot=.&orien=-"
+190	View snp on GeneModel</a
+191	</td
+192	</TR
+193	<TR  align="left"
+194	<td  class="gm_mrna"
+195	<a href="/nuccore/XR_943054.1"
+196	XR_943054.1</a
+197	</td
+198	<td 
+199	plus strand</td
+200	<td  class="gm_protein"
+201	<a href="/protein/."
+202	.</a
+203	</td
+204	<td 
+205	forward</td
+206	<td  class="gm_contig"
+207	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+208	NT_025741.16</a
+209	</td
+210	<td 
+211	GRCh38.p2</td
+212	<td 
+213	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943054.1&prot=.&orien=forward"
+214	View snp on GeneModel</a
+215	</td
+216	</TR
+217	<TR  align="left"
+218	<td  class="gm_mrna"
+219	<a href="/nuccore/XR_943053.1"
+220	XR_943053.1</a
+221	</td
+222	<td 
+223	</td
+224	<td  class="gm_protein"
+225	<a href="/protein/."
+226	.</a
+227	</td
+228	<td 
+229	-</td
+230	<td  class="gm_contig"
+231	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+232	NT_025741.16</a
+233	</td
+234	<td 
+235	GRCh38.p2</td
+236	<td 
+237	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943053.1&prot=.&orien=-"
+238	View snp on GeneModel</a
+239	</td
+240	</TR
+241	<TR  align="left"
+242	<td  class="gm_mrna"
+243	<a href="/nuccore/XR_943053.1"
+244	XR_943053.1</a
+245	</td
+246	<td 
+247	plus strand</td
+248	<td  class="gm_protein"
+249	<a href="/protein/."
+250	.</a
+251	</td
+252	<td 
+253	forward</td
+254	<td  class="gm_contig"
+255	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+256	NT_025741.16</a
+257	</td
+258	<td 
+259	GRCh38.p2</td
+260	<td 
+261	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943053.1&prot=.&orien=forward"
+262	View snp on GeneModel</a
+263	</td
+264	</TR
+265	<TR  align="left"
+266	<td  class="gm_mrna"
+267	<a href="/nuccore/XR_943052.1"
+268	XR_943052.1</a
+269	</td
+270	<td 
+271	</td
+272	<td  class="gm_protein"
+273	<a href="/protein/."
+274	.</a
+275	</td
+276	<td 
+277	-</td
+278	<td  class="gm_contig"
+279	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+280	NT_025741.16</a
+281	</td
+282	<td 
+283	GRCh38.p2</td
+284	<td 
+285	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943052.1&prot=.&orien=-"
+286	View snp on GeneModel</a
+287	</td
+288	</TR
+289	<TR  align="left"
+290	<td  class="gm_mrna"
+291	<a href="/nuccore/XR_943052.1"
+292	XR_943052.1</a
+293	</td
+294	<td 
+295	plus strand</td
+296	<td  class="gm_protein"
+297	<a href="/protein/."
+298	.</a
+299	</td
+300	<td 
+301	forward</td
+302	<td  class="gm_contig"
+303	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+304	NT_025741.16</a
+305	</td
+306	<td 
+307	GRCh38.p2</td
+308	<td 
+309	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943052.1&prot=.&orien=forward"
+310	View snp on GeneModel</a
+311	</td
+312	</TR
+313	<TR  align="left"
+314	<td  class="gm_mrna"
+315	<a href="/nuccore/XR_943051.1"
+316	XR_943051.1</a
+317	</td
+318	<td 
+319	</td
+320	<td  class="gm_protein"
+321	<a href="/protein/."
+322	.</a
+323	</td
+324	<td 
+325	-</td
+326	<td  class="gm_contig"
+327	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+328	NT_025741.16</a
+329	</td
+330	<td 
+331	GRCh38.p2</td
+332	<td 
+333	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943051.1&prot=.&orien=-"
+334	View snp on GeneModel</a
+335	</td
+336	</TR
+337	<TR  align="left"
+338	<td  class="gm_mrna"
+339	<a href="/nuccore/XR_943051.1"
+340	XR_943051.1</a
+341	</td
+342	<td 
+343	plus strand</td
+344	<td  class="gm_protein"
+345	<a href="/protein/."
+346	.</a
+347	</td
+348	<td 
+349	forward</td
+350	<td  class="gm_contig"
+351	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+352	NT_025741.16</a
+353	</td
+354	<td 
+355	GRCh38.p2</td
+356	<td 
+357	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943051.1&prot=.&orien=forward"
+358	View snp on GeneModel</a
+359	</td
+360	</TR
+361	<TR  align="left"
+362	<td  class="gm_mrna"
+363	<a href="/nuccore/XR_943049.1"
+364	XR_943049.1</a
+365	</td
+366	<td 
+367	</td
+368	<td  class="gm_protein"
+369	<a href="/protein/."
+370	.</a
+371	</td
+372	<td 
+373	-</td
+374	<td  class="gm_contig"
+375	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+376	NT_025741.16</a
+377	</td
+378	<td 
+379	GRCh38.p2</td
+380	<td 
+381	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943049.1&prot=.&orien=-"
+382	View snp on GeneModel</a
+383	</td
+384	</TR
+385	<TR  align="left"
+386	<td  class="gm_mrna"
+387	<a href="/nuccore/XR_943049.1"
+388	XR_943049.1</a
+389	</td
+390	<td 
+391	plus strand</td
+392	<td  class="gm_protein"
+393	<a href="/protein/."
+394	.</a
+395	</td
+396	<td 
+397	forward</td
+398	<td  class="gm_contig"
+399	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+400	NT_025741.16</a
+401	</td
+402	<td 
+403	GRCh38.p2</td
+404	<td 
+405	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943049.1&prot=.&orien=forward"
+406	View snp on GeneModel</a
+407	</td
+408	</TR
+409	<TR  align="left"
+410	<td  class="gm_mrna"
+411	<a href="/nuccore/XR_943048.1"
+412	XR_943048.1</a
+413	</td
+414	<td 
+415	</td
+416	<td  class="gm_protein"
+417	<a href="/protein/."
+418	.</a
+419	</td
+420	<td 
+421	-</td
+422	<td  class="gm_contig"
+423	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+424	NT_025741.16</a
+425	</td
+426	<td 
+427	GRCh38.p2</td
+428	<td 
+429	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943048.1&prot=.&orien=-"
+430	View snp on GeneModel</a
+431	</td
+432	</TR
+433	<TR  align="left"
+434	<td  class="gm_mrna"
+435	<a href="/nuccore/XR_943048.1"
+436	XR_943048.1</a
+437	</td
+438	<td 
+439	plus strand</td
+440	<td  class="gm_protein"
+441	<a href="/protein/."
+442	.</a
+443	</td
+444	<td 
+445	forward</td
+446	<td  class="gm_contig"
+447	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+448	NT_025741.16</a
+449	</td
+450	<td 
+451	GRCh38.p2</td
+452	<td 
+453	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943048.1&prot=.&orien=forward"
+454	View snp on GeneModel</a
+455	</td
+456	</TR
+457	<TR  align="left"
+458	<td  class="gm_mrna"
+459	<a href="/nuccore/XR_943047.1"
+460	XR_943047.1</a
+461	</td
+462	<td 
+463	</td
+464	<td  class="gm_protein"
+465	<a href="/protein/."
+466	.</a
+467	</td
+468	<td 
+469	-</td
+470	<td  class="gm_contig"
+471	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+472	NT_025741.16</a
+473	</td
+474	<td 
+475	GRCh38.p2</td
+476	<td 
+477	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943047.1&prot=.&orien=-"
+478	View snp on GeneModel</a
+479	</td
+480	</TR
+481	<TR  align="left"
+482	<td  class="gm_mrna"
+483	<a href="/nuccore/XR_943047.1"
+484	XR_943047.1</a
+485	</td
+486	<td 
+487	plus strand</td
+488	<td  class="gm_protein"
+489	<a href="/protein/."
+490	.</a
+491	</td
+492	<td 
+493	forward</td
+494	<td  class="gm_contig"
+495	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+496	NT_025741.16</a
+497	</td
+498	<td 
+499	GRCh38.p2</td
+500	<td 
+501	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943047.1&prot=.&orien=forward"
+502	View snp on GeneModel</a
+503	</td
+504	</TR
+505	<TR  align="left"
+506	<td  class="gm_mrna"
+507	<a href="/nuccore/XR_943046.1"
+508	XR_943046.1</a
+509	</td
+510	<td 
+511	</td
+512	<td  class="gm_protein"
+513	<a href="/protein/."
+514	.</a
+515	</td
+516	<td 
+517	-</td
+518	<td  class="gm_contig"
+519	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+520	NT_025741.16</a
+521	</td
+522	<td 
+523	GRCh38.p2</td
+524	<td 
+525	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943046.1&prot=.&orien=-"
+526	View snp on GeneModel</a
+527	</td
+528	</TR
+529	<TR  align="left"
+530	<td  class="gm_mrna"
+531	<a href="/nuccore/XR_943046.1"
+532	XR_943046.1</a
+533	</td
+534	<td 
+535	plus strand</td
+536	<td  class="gm_protein"
+537	<a href="/protein/."
+538	.</a
+539	</td
+540	<td 
+541	forward</td
+542	<td  class="gm_contig"
+543	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+544	NT_025741.16</a
+545	</td
+546	<td 
+547	GRCh38.p2</td
+548	<td 
+549	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943046.1&prot=.&orien=forward"
+550	View snp on GeneModel</a
+551	</td
+552	</TR
+553	<TR  align="left"
+554	<td  class="gm_mrna"
+555	<a href="/nuccore/XR_943045.1"
+556	XR_943045.1</a
+557	</td
+558	<td 
+559	</td
+560	<td  class="gm_protein"
+561	<a href="/protein/."
+562	.</a
+563	</td
+564	<td 
+565	-</td
+566	<td  class="gm_contig"
+567	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+568	NT_025741.16</a
+569	</td
+570	<td 
+571	GRCh38.p2</td
+572	<td 
+573	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943045.1&prot=.&orien=-"
+574	View snp on GeneModel</a
+575	</td
+576	</TR
+577	<TR  align="left"
+578	<td  class="gm_mrna"
+579	<a href="/nuccore/XR_943045.1"
+580	XR_943045.1</a
+581	</td
+582	<td 
+583	plus strand</td
+584	<td  class="gm_protein"
+585	<a href="/protein/."
+586	.</a
+587	</td
+588	<td 
+589	forward</td
+590	<td  class="gm_contig"
+591	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+592	NT_025741.16</a
+593	</td
+594	<td 
+595	GRCh38.p2</td
+596	<td 
+597	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943045.1&prot=.&orien=forward"
+598	View snp on GeneModel</a
+599	</td
+600	</TR
+601	<TR  align="left"
+602	<td  class="gm_mrna"
+603	<a href="/nuccore/XR_943044.1"
+604	XR_943044.1</a
+605	</td
+606	<td 
+607	</td
+608	<td  class="gm_protein"
+609	<a href="/protein/."
+610	.</a
+611	</td
+612	<td 
+613	-</td
+614	<td  class="gm_contig"
+615	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+616	NT_025741.16</a
+617	</td
+618	<td 
+619	GRCh38.p2</td
+620	<td 
+621	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943044.1&prot=.&orien=-"
+622	View snp on GeneModel</a
+623	</td
+624	</TR
+625	<TR  align="left"
+626	<td  class="gm_mrna"
+627	<a href="/nuccore/XR_943044.1"
+628	XR_943044.1</a
+629	</td
+630	<td 
+631	plus strand</td
+632	<td  class="gm_protein"
+633	<a href="/protein/."
+634	.</a
+635	</td
+636	<td 
+637	forward</td
+638	<td  class="gm_contig"
+639	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_025741.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+640	NT_025741.16</a
+641	</td
+642	<td 
+643	GRCh38.p2</td
+644	<td 
+645	<a href="snp_ref.cgi?geneId=102723633&ctg=NT_025741.16&mrna=XR_943044.1&prot=.&orien=forward"
+646	View snp on GeneModel</a
+647	</td
+648	</TR
+649	</TABLE
+650	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	4</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_926762.1"
+28	XR_926762.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_007592.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_007592.16</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_926762.1"
+52	XR_926762.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	minus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	reverse</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_007592.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_007592.16</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/XR_926761.1"
+76	XR_926761.1</a
+77	</td
+78	<td 
+79	</td
+80	<td  class="gm_protein"
+81	<a href="/protein/."
+82	.</a
+83	</td
+84	<td 
+85	-</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_007592.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_007592.16</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=105375040&ctg=NT_007592.16&mrna=XR_926761.1&prot=.&orien=-"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/XR_926761.1"
+100	XR_926761.1</a
+101	</td
+102	<td 
+103	minus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/."
+106	.</a
+107	</td
+108	<td 
+109	reverse</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_007592.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_007592.16</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=105375040&ctg=NT_007592.16&mrna=XR_926761.1&prot=.&orien=reverse"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	</TABLE
+122	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	4</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/NM_173510.3"
+28	NM_173510.3</a
+29	</td
+30	<td  bgcolor="yellow"
+31	plus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/NP_775781.1"
+34	NP_775781.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	forward</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011520.13</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  class="gm_mrna"
+51	<a href="/nuccore/NM_001284265.1"
+52	NM_001284265.1</a
+53	</td
+54	<td 
+55	plus strand</td
+56	<td  class="gm_protein"
+57	<a href="/protein/NP_001271194.1"
+58	NP_001271194.1</a
+59	</td
+60	<td 
+61	forward</td
+62	<td  class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_011520.13</a
+65	</td
+66	<td 
+67	GRCh38.p2</td
+68	<td 
+69	<a href="snp_ref.cgi?geneId=150275&ctg=NT_011520.13&mrna=NM_001284265.1&prot=NP_001271194.1&orien=forward"
+70	View snp on GeneModel</a
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/NM_001284264.1"
+76	NM_001284264.1</a
+77	</td
+78	<td 
+79	plus strand</td
+80	<td  class="gm_protein"
+81	<a href="/protein/NP_001271193.1"
+82	NP_001271193.1</a
+83	</td
+84	<td 
+85	forward</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_011520.13</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=150275&ctg=NT_011520.13&mrna=NM_001284264.1&prot=NP_001271193.1&orien=forward"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/NM_001284263.1"
+100	NM_001284263.1</a
+101	</td
+102	<td 
+103	plus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/NP_001271192.1"
+106	NP_001271192.1</a
+107	</td
+108	<td 
+109	forward</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011520.13&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_011520.13</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=150275&ctg=NT_011520.13&mrna=NM_001284263.1&prot=NP_001271192.1&orien=forward"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	</TABLE
+122	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	5</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/NM_001005361.2"
+28	NM_001005361.2</a
+29	</td
+30	<td  bgcolor="yellow"
+31	plus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/NP_001005361.1"
+34	NP_001005361.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	forward</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011295.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011295.12</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  class="gm_mrna"
+51	<a href="/nuccore/NM_001005360.2"
+52	NM_001005360.2</a
+53	</td
+54	<td 
+55	plus strand</td
+56	<td  class="gm_protein"
+57	<a href="/protein/NP_001005360.1"
+58	NP_001005360.1</a
+59	</td
+60	<td 
+61	forward</td
+62	<td  class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011295.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_011295.12</a
+65	</td
+66	<td 
+67	GRCh38.p2</td
+68	<td 
+69	<a href="snp_ref.cgi?geneId=1785&ctg=NT_011295.12&mrna=NM_001005360.2&prot=NP_001005360.1&orien=forward"
+70	View snp on GeneModel</a
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/NM_004945.3"
+76	NM_004945.3</a
+77	</td
+78	<td 
+79	plus strand</td
+80	<td  class="gm_protein"
+81	<a href="/protein/NP_004936.2"
+82	NP_004936.2</a
+83	</td
+84	<td 
+85	forward</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011295.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_011295.12</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=1785&ctg=NT_011295.12&mrna=NM_004945.3&prot=NP_004936.2&orien=forward"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/NM_001190716.1"
+100	NM_001190716.1</a
+101	</td
+102	<td 
+103	plus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/NP_001177645.1"
+106	NP_001177645.1</a
+107	</td
+108	<td 
+109	forward</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011295.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_011295.12</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=1785&ctg=NT_011295.12&mrna=NM_001190716.1&prot=NP_001177645.1&orien=forward"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	<TR  align="left"
+122	<td  class="gm_mrna"
+123	<a href="/nuccore/NM_001005362.2"
+124	NM_001005362.2</a
+125	</td
+126	<td 
+127	plus strand</td
+128	<td  class="gm_protein"
+129	<a href="/protein/NP_001005362.1"
+130	NP_001005362.1</a
+131	</td
+132	<td 
+133	forward</td
+134	<td  class="gm_contig"
+135	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011295.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+136	NT_011295.12</a
+137	</td
+138	<td 
+139	GRCh38.p2</td
+140	<td 
+141	<a href="snp_ref.cgi?geneId=1785&ctg=NT_011295.12&mrna=NM_001005362.2&prot=NP_001005362.1&orien=forward"
+142	View snp on GeneModel</a
+143	</td
+144	</TR
+145	</TABLE
+146	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	1</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/NM_004794.2"
+28	NM_004794.2</a
+29	</td
+30	<td  bgcolor="yellow"
+31	plus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/NP_004785.1"
+34	NP_004785.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	forward</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011786.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011786.17</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	</TABLE
+50	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	8</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XM_011527026.1"
+28	XM_011527026.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	plus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/XP_011525328.1"
+34	XP_011525328.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	forward</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011109.17</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  class="gm_mrna"
+51	<a href="/nuccore/XM_005258982.1"
+52	XM_005258982.1</a
+53	</td
+54	<td 
+55	plus strand</td
+56	<td  class="gm_protein"
+57	<a href="/protein/XP_005259039.1"
+58	XP_005259039.1</a
+59	</td
+60	<td 
+61	forward</td
+62	<td  class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_011109.17</a
+65	</td
+66	<td 
+67	GRCh38.p2</td
+68	<td 
+69	<a href="snp_ref.cgi?geneId=51599&ctg=NT_011109.17&mrna=XM_005258982.1&prot=XP_005259039.1&orien=forward"
+70	View snp on GeneModel</a
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/XM_005258980.1"
+76	XM_005258980.1</a
+77	</td
+78	<td 
+79	plus strand</td
+80	<td  class="gm_protein"
+81	<a href="/protein/XP_005259037.1"
+82	XP_005259037.1</a
+83	</td
+84	<td 
+85	forward</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_011109.17</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=51599&ctg=NT_011109.17&mrna=XM_005258980.1&prot=XP_005259037.1&orien=forward"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/NM_205835.3"
+100	NM_205835.3</a
+101	</td
+102	<td 
+103	plus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/NP_991404.1"
+106	NP_991404.1</a
+107	</td
+108	<td 
+109	forward</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_011109.17</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=51599&ctg=NT_011109.17&mrna=NM_205835.3&prot=NP_991404.1&orien=forward"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	<TR  align="left"
+122	<td  class="gm_mrna"
+123	<a href="/nuccore/NM_205834.3"
+124	NM_205834.3</a
+125	</td
+126	<td 
+127	plus strand</td
+128	<td  class="gm_protein"
+129	<a href="/protein/NP_991403.1"
+130	NP_991403.1</a
+131	</td
+132	<td 
+133	forward</td
+134	<td  class="gm_contig"
+135	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+136	NT_011109.17</a
+137	</td
+138	<td 
+139	GRCh38.p2</td
+140	<td 
+141	<a href="snp_ref.cgi?geneId=51599&ctg=NT_011109.17&mrna=NM_205834.3&prot=NP_991403.1&orien=forward"
+142	View snp on GeneModel</a
+143	</td
+144	</TR
+145	<TR  align="left"
+146	<td  class="gm_mrna"
+147	<a href="/nuccore/NM_015925.6"
+148	NM_015925.6</a
+149	</td
+150	<td 
+151	plus strand</td
+152	<td  class="gm_protein"
+153	<a href="/protein/NP_057009.3"
+154	NP_057009.3</a
+155	</td
+156	<td 
+157	forward</td
+158	<td  class="gm_contig"
+159	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+160	NT_011109.17</a
+161	</td
+162	<td 
+163	GRCh38.p2</td
+164	<td 
+165	<a href="snp_ref.cgi?geneId=51599&ctg=NT_011109.17&mrna=NM_015925.6&prot=NP_057009.3&orien=forward"
+166	View snp on GeneModel</a
+167	</td
+168	</TR
+169	<TR  align="left"
+170	<td  class="gm_mrna"
+171	<a href="/nuccore/NM_001260490.1"
+172	NM_001260490.1</a
+173	</td
+174	<td 
+175	plus strand</td
+176	<td  class="gm_protein"
+177	<a href="/protein/NP_001247419.1"
+178	NP_001247419.1</a
+179	</td
+180	<td 
+181	forward</td
+182	<td  class="gm_contig"
+183	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+184	NT_011109.17</a
+185	</td
+186	<td 
+187	GRCh38.p2</td
+188	<td 
+189	<a href="snp_ref.cgi?geneId=51599&ctg=NT_011109.17&mrna=NM_001260490.1&prot=NP_001247419.1&orien=forward"
+190	View snp on GeneModel</a
+191	</td
+192	</TR
+193	<TR  align="left"
+194	<td  class="gm_mrna"
+195	<a href="/nuccore/NM_001260489.1"
+196	NM_001260489.1</a
+197	</td
+198	<td 
+199	plus strand</td
+200	<td  class="gm_protein"
+201	<a href="/protein/NP_001247418.1"
+202	NP_001247418.1</a
+203	</td
+204	<td 
+205	forward</td
+206	<td  class="gm_contig"
+207	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011109.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+208	NT_011109.17</a
+209	</td
+210	<td 
+211	GRCh38.p2</td
+212	<td 
+213	<a href="snp_ref.cgi?geneId=51599&ctg=NT_011109.17&mrna=NM_001260489.1&prot=NP_001247418.1&orien=forward"
+214	View snp on GeneModel</a
+215	</td
+216	</TR
+217	</TABLE
+218	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	2</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_930640.1"
+28	XR_930640.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_008705.17&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_008705.17</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_930640.1"
+52	XR_930640.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	plus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	forward</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_008705.17&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_008705.17</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	</TABLE
+74	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	2</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_936699.1"
+28	XR_936699.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011362.11&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011362.11</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_936699.1"
+52	XR_936699.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	minus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	reverse</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011362.11&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_011362.11</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	</TABLE
+74	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	2</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_932641.1"
+28	XR_932641.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010194.18&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_010194.18</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_932641.1"
+52	XR_932641.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	minus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	reverse</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010194.18&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_010194.18</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	</TABLE
+74	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	2</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_938883.1"
+28	XR_938883.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_016354.20&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_016354.20</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_938883.1"
+52	XR_938883.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	plus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	forward</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_016354.20&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_016354.20</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	</TABLE
+74	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	2</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/NM_001044.4"
+28	NM_001044.4</a
+29	</td
+30	<td  bgcolor="yellow"
+31	minus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/NP_001035.1"
+34	NP_001035.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	reverse</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_006576.17&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_006576.17</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  class="gm_mrna"
+51	<a href="/nuccore/NM_001044.4"
+52	NM_001044.4</a
+53	</td
+54	<td 
+55	plus strand</td
+56	<td  class="gm_protein"
+57	<a href="/protein/NP_001035.1"
+58	NP_001035.1</a
+59	</td
+60	<td 
+61	forward</td
+62	<td  class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_187547.1&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_187547.1</a
+65	</td
+66	<td 
+67	GRCh38.p2</td
+68	<td 
+69	<a href="snp_ref.cgi?geneId=6531&ctg=NT_187547.1&mrna=NM_001044.4&prot=NP_001035.1&orien=forward"
+70	View snp on GeneModel</a
+71	</td
+72	</TR
+73	</TABLE
+74	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	1</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/NM_003222.3"
+28	NM_003222.3</a
+29	</td
+30	<td  bgcolor="yellow"
+31	plus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/NP_003213.1"
+34	NP_003213.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	forward</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011362.11&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011362.11</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	</TABLE
+50	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	6</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_937775.1"
+28	XR_937775.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011512.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011512.12</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_937775.1"
+52	XR_937775.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	minus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	reverse</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011512.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_011512.12</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/XR_937774.1"
+76	XR_937774.1</a
+77	</td
+78	<td 
+79	</td
+80	<td  class="gm_protein"
+81	<a href="/protein/."
+82	.</a
+83	</td
+84	<td 
+85	-</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011512.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_011512.12</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=105377137&ctg=NT_011512.12&mrna=XR_937774.1&prot=.&orien=-"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/XR_937774.1"
+100	XR_937774.1</a
+101	</td
+102	<td 
+103	minus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/."
+106	.</a
+107	</td
+108	<td 
+109	reverse</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011512.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_011512.12</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=105377137&ctg=NT_011512.12&mrna=XR_937774.1&prot=.&orien=reverse"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	<TR  align="left"
+122	<td  class="gm_mrna"
+123	<a href="/nuccore/XR_937773.1"
+124	XR_937773.1</a
+125	</td
+126	<td 
+127	</td
+128	<td  class="gm_protein"
+129	<a href="/protein/."
+130	.</a
+131	</td
+132	<td 
+133	-</td
+134	<td  class="gm_contig"
+135	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011512.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+136	NT_011512.12</a
+137	</td
+138	<td 
+139	GRCh38.p2</td
+140	<td 
+141	<a href="snp_ref.cgi?geneId=105377137&ctg=NT_011512.12&mrna=XR_937773.1&prot=.&orien=-"
+142	View snp on GeneModel</a
+143	</td
+144	</TR
+145	<TR  align="left"
+146	<td  class="gm_mrna"
+147	<a href="/nuccore/XR_937773.1"
+148	XR_937773.1</a
+149	</td
+150	<td 
+151	minus strand</td
+152	<td  class="gm_protein"
+153	<a href="/protein/."
+154	.</a
+155	</td
+156	<td 
+157	reverse</td
+158	<td  class="gm_contig"
+159	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011512.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+160	NT_011512.12</a
+161	</td
+162	<td 
+163	GRCh38.p2</td
+164	<td 
+165	<a href="snp_ref.cgi?geneId=105377137&ctg=NT_011512.12&mrna=XR_937773.1&prot=.&orien=reverse"
+166	View snp on GeneModel</a
+167	</td
+168	</TR
+169	</TABLE
+170	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	2</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_939751.1"
+28	XR_939751.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_022184.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_022184.16</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_939751.1"
+52	XR_939751.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	minus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	reverse</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_022184.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_022184.16</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	</TABLE
+74	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	3</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/NM_015488.4"
+28	NM_015488.4</a
+29	</td
+30	<td  bgcolor="yellow"
+31	plus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/NP_056303.3"
+34	NP_056303.3</a
+35	</td
+36	<td  bgcolor="yellow"
+37	forward</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_005403.18&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_005403.18</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  class="gm_mrna"
+51	<a href="/nuccore/NM_022572.4"
+52	NM_022572.4</a
+53	</td
+54	<td 
+55	plus strand</td
+56	<td  class="gm_protein"
+57	<a href="/protein/NP_072094.1"
+58	NP_072094.1</a
+59	</td
+60	<td 
+61	forward</td
+62	<td  class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_005403.18&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_005403.18</a
+65	</td
+66	<td 
+67	GRCh38.p2</td
+68	<td 
+69	<a href="snp_ref.cgi?geneId=25953&ctg=NT_005403.18&mrna=NM_022572.4&prot=NP_072094.1&orien=forward"
+70	View snp on GeneModel</a
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/NM_001077399.2"
+76	NM_001077399.2</a
+77	</td
+78	<td 
+79	plus strand</td
+80	<td  class="gm_protein"
+81	<a href="/protein/NP_001070867.1"
+82	NP_001070867.1</a
+83	</td
+84	<td 
+85	forward</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_005403.18&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_005403.18</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=25953&ctg=NT_005403.18&mrna=NM_001077399.2&prot=NP_001070867.1&orien=forward"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	</TABLE
+98	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	4</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_947130.1"
+28	XR_947130.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_032977.10&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_032977.10</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_947130.1"
+52	XR_947130.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	plus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	forward</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_032977.10&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_032977.10</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/XR_947129.1"
+76	XR_947129.1</a
+77	</td
+78	<td 
+79	</td
+80	<td  class="gm_protein"
+81	<a href="/protein/."
+82	.</a
+83	</td
+84	<td 
+85	-</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_032977.10&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_032977.10</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=105378618&ctg=NT_032977.10&mrna=XR_947129.1&prot=.&orien=-"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/XR_947129.1"
+100	XR_947129.1</a
+101	</td
+102	<td 
+103	plus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/."
+106	.</a
+107	</td
+108	<td 
+109	forward</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_032977.10&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_032977.10</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=105378618&ctg=NT_032977.10&mrna=XR_947129.1&prot=.&orien=forward"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	</TABLE
+122	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	4</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_937364.1"
+28	XR_937364.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011387.9&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011387.9</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_937364.1"
+52	XR_937364.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	plus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	forward</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011387.9&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_011387.9</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/XR_937363.1"
+76	XR_937363.1</a
+77	</td
+78	<td 
+79	</td
+80	<td  class="gm_protein"
+81	<a href="/protein/."
+82	.</a
+83	</td
+84	<td 
+85	-</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011387.9&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_011387.9</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=105372569&ctg=NT_011387.9&mrna=XR_937363.1&prot=.&orien=-"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/XR_937363.1"
+100	XR_937363.1</a
+101	</td
+102	<td 
+103	plus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/."
+106	.</a
+107	</td
+108	<td 
+109	forward</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011387.9&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_011387.9</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=105372569&ctg=NT_011387.9&mrna=XR_937363.1&prot=.&orien=forward"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	</TABLE
+122	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	2</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_928381.1"
+28	XR_928381.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_008046.17&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_008046.17</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_928381.1"
+52	XR_928381.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	minus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	reverse</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_008046.17&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_008046.17</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	</TABLE
+74	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	1</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/NM_033187.1"
+28	NM_033187.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	minus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/NP_149443.1"
+34	NP_149443.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	reverse</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010783.16&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_010783.16</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	</TABLE
+50	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	3</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/NM_001127628.1"
+28	NM_001127628.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	minus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/NP_001121100.1"
+34	NP_001121100.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	reverse</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_008470.20&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_008470.20</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  class="gm_mrna"
+51	<a href="/nuccore/XM_006717005.2"
+52	XM_006717005.2</a
+53	</td
+54	<td 
+55	minus strand</td
+56	<td  class="gm_protein"
+57	<a href="/protein/XP_006717068.1"
+58	XP_006717068.1</a
+59	</td
+60	<td 
+61	reverse</td
+62	<td  class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_008470.20&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_008470.20</a
+65	</td
+66	<td 
+67	GRCh38.p2</td
+68	<td 
+69	<a href="snp_ref.cgi?geneId=2203&ctg=NT_008470.20&mrna=XM_006717005.2&prot=XP_006717068.1&orien=reverse"
+70	View snp on GeneModel</a
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/NM_000507.3"
+76	NM_000507.3</a
+77	</td
+78	<td 
+79	minus strand</td
+80	<td  class="gm_protein"
+81	<a href="/protein/NP_000498.2"
+82	NP_000498.2</a
+83	</td
+84	<td 
+85	reverse</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_008470.20&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_008470.20</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=2203&ctg=NT_008470.20&mrna=NM_000507.3&prot=NP_000498.2&orien=reverse"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	</TABLE
+98	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	6</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XR_947490.1"
+28	XR_947490.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_032977.10&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_032977.10</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  bgcolor="yellow" class="gm_mrna"
+51	<a href="/nuccore/XR_947490.1"
+52	XR_947490.1</a
+53	</td
+54	<td  bgcolor="yellow"
+55	plus strand</td
+56	<td  bgcolor="yellow" class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td  bgcolor="yellow"
+61	forward</td
+62	<td  bgcolor="yellow" class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_032977.10&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_032977.10</a
+65	</td
+66	<td  bgcolor="yellow"
+67	GRCh38.p2</td
+68	<td  bgcolor="yellow"
+69	<strong
+70	<- currently shown</strong
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/XR_947489.1"
+76	XR_947489.1</a
+77	</td
+78	<td 
+79	</td
+80	<td  class="gm_protein"
+81	<a href="/protein/."
+82	.</a
+83	</td
+84	<td 
+85	-</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_032977.10&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_032977.10</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=105378789&ctg=NT_032977.10&mrna=XR_947489.1&prot=.&orien=-"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/XR_947489.1"
+100	XR_947489.1</a
+101	</td
+102	<td 
+103	plus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/."
+106	.</a
+107	</td
+108	<td 
+109	forward</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_032977.10&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_032977.10</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=105378789&ctg=NT_032977.10&mrna=XR_947489.1&prot=.&orien=forward"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	<TR  align="left"
+122	<td  class="gm_mrna"
+123	<a href="/nuccore/XR_947488.1"
+124	XR_947488.1</a
+125	</td
+126	<td 
+127	</td
+128	<td  class="gm_protein"
+129	<a href="/protein/."
+130	.</a
+131	</td
+132	<td 
+133	-</td
+134	<td  class="gm_contig"
+135	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_032977.10&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+136	NT_032977.10</a
+137	</td
+138	<td 
+139	GRCh38.p2</td
+140	<td 
+141	<a href="snp_ref.cgi?geneId=105378789&ctg=NT_032977.10&mrna=XR_947488.1&prot=.&orien=-"
+142	View snp on GeneModel</a
+143	</td
+144	</TR
+145	<TR  align="left"
+146	<td  class="gm_mrna"
+147	<a href="/nuccore/XR_947488.1"
+148	XR_947488.1</a
+149	</td
+150	<td 
+151	plus strand</td
+152	<td  class="gm_protein"
+153	<a href="/protein/."
+154	.</a
+155	</td
+156	<td 
+157	forward</td
+158	<td  class="gm_contig"
+159	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_032977.10&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+160	NT_032977.10</a
+161	</td
+162	<td 
+163	GRCh38.p2</td
+164	<td 
+165	<a href="snp_ref.cgi?geneId=105378789&ctg=NT_032977.10&mrna=XR_947488.1&prot=.&orien=forward"
+166	View snp on GeneModel</a
+167	</td
+168	</TR
+169	</TABLE
+170	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	4</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XM_006725375.2"
+28	XM_006725375.2</a
+29	</td
+30	<td  bgcolor="yellow"
+31	</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/."
+34	.</a
+35	</td
+36	<td  bgcolor="yellow"
+37	-</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010783.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_010783.16</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  class="gm_mrna"
+51	<a href="/nuccore/XM_006725375.2"
+52	XM_006725375.2</a
+53	</td
+54	<td 
+55	</td
+56	<td  class="gm_protein"
+57	<a href="/protein/."
+58	.</a
+59	</td
+60	<td 
+61	-</td
+62	<td  class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_187614.1&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_187614.1</a
+65	</td
+66	<td 
+67	GRCh38.p2</td
+68	<td 
+69	<a href="snp_ref.cgi?geneId=101060321&ctg=NT_187614.1&mrna=XM_006725375.2&prot=.&orien=-"
+70	View snp on GeneModel</a
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/XM_005276914.3"
+76	XM_005276914.3</a
+77	</td
+78	<td 
+79	</td
+80	<td  class="gm_protein"
+81	<a href="/protein/."
+82	.</a
+83	</td
+84	<td 
+85	-</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010783.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_010783.16</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=101060321&ctg=NT_010783.16&mrna=XM_005276914.3&prot=.&orien=-"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/NM_001291462.1"
+100	NM_001291462.1</a
+101	</td
+102	<td 
+103	</td
+104	<td  class="gm_protein"
+105	<a href="/protein/."
+106	.</a
+107	</td
+108	<td 
+109	-</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_010783.16&uids=&dopt=gbwithparts&dispmax=5&from=2147483647&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_010783.16</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=101060321&ctg=NT_010783.16&mrna=NM_001291462.1&prot=.&orien=-"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	</TABLE
+122	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	1</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/NM_175857.3"
+28	NM_175857.3</a
+29	</td
+30	<td  bgcolor="yellow"
+31	minus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/NP_787053.1"
+34	NP_787053.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	reverse</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_011512.12&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_011512.12</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	</TABLE
+50	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	4</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/NM_052931.4"
+28	NM_052931.4</a
+29	</td
+30	<td  bgcolor="yellow"
+31	minus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/NP_443163.1"
+34	NP_443163.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	reverse</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_004487.20&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_004487.20</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  class="gm_mrna"
+51	<a href="/nuccore/NM_001184716.1"
+52	NM_001184716.1</a
+53	</td
+54	<td 
+55	minus strand</td
+56	<td  class="gm_protein"
+57	<a href="/protein/NP_001171645.1"
+58	NP_001171645.1</a
+59	</td
+60	<td 
+61	reverse</td
+62	<td  class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_004487.20&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_004487.20</a
+65	</td
+66	<td 
+67	GRCh38.p2</td
+68	<td 
+69	<a href="snp_ref.cgi?geneId=114836&ctg=NT_004487.20&mrna=NM_001184716.1&prot=NP_001171645.1&orien=reverse"
+70	View snp on GeneModel</a
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/NM_001184715.1"
+76	NM_001184715.1</a
+77	</td
+78	<td 
+79	minus strand</td
+80	<td  class="gm_protein"
+81	<a href="/protein/NP_001171644.1"
+82	NP_001171644.1</a
+83	</td
+84	<td 
+85	reverse</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_004487.20&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_004487.20</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=114836&ctg=NT_004487.20&mrna=NM_001184715.1&prot=NP_001171644.1&orien=reverse"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	<TR  align="left"
+98	<td  class="gm_mrna"
+99	<a href="/nuccore/NM_001184714.1"
+100	NM_001184714.1</a
+101	</td
+102	<td 
+103	minus strand</td
+104	<td  class="gm_protein"
+105	<a href="/protein/NP_001171643.1"
+106	NP_001171643.1</a
+107	</td
+108	<td 
+109	reverse</td
+110	<td  class="gm_contig"
+111	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_004487.20&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+112	NT_004487.20</a
+113	</td
+114	<td 
+115	GRCh38.p2</td
+116	<td 
+117	<a href="snp_ref.cgi?geneId=114836&ctg=NT_004487.20&mrna=NM_001184714.1&prot=NP_001171643.1&orien=reverse"
+118	View snp on GeneModel</a
+119	</td
+120	</TR
+121	</TABLE
+122	<BR
+0	</TR
+1	</TABLE
+2	<TABLE  cellspacing="2"
+3	<TR  bgcolor="#CCCCFF"
+4	<TH  colspan="4"
+5	<strong
+6	 Total gene model (contig mRNA transcript): </strong
+7	</TH
+8	<TH 
+9	3</TH
+10	</TR
+11	<TH  bgcolor="silver"
+12	mrna</TH
+13	<TH  bgcolor="silver"
+14	transcript</TH
+15	<TH  bgcolor="silver"
+16	protein</TH
+17	<TH  bgcolor="silver"
+18	mrna orientation</TH
+19	<TH  bgcolor="silver"
+20	Contig</TH
+21	<TH  bgcolor="silver"
+22	Contig Label</TH
+23	<TH  bgcolor="silver"
+24	List SNP</TH
+25	<TR  align="left"
+26	<td  bgcolor="yellow" class="gm_mrna"
+27	<a href="/nuccore/XM_011519182.1"
+28	XM_011519182.1</a
+29	</td
+30	<td  bgcolor="yellow"
+31	plus strand</td
+32	<td  bgcolor="yellow" class="gm_protein"
+33	<a href="/protein/XP_011517484.1"
+34	XP_011517484.1</a
+35	</td
+36	<td  bgcolor="yellow"
+37	forward</td
+38	<td  bgcolor="yellow" class="gm_contig"
+39	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_008470.20&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+40	NT_008470.20</a
+41	</td
+42	<td  bgcolor="yellow"
+43	GRCh38.p2</td
+44	<td  bgcolor="yellow"
+45	<strong
+46	<- currently shown</strong
+47	</td
+48	</TR
+49	<TR  align="left"
+50	<td  class="gm_mrna"
+51	<a href="/nuccore/XM_006717317.2"
+52	XM_006717317.2</a
+53	</td
+54	<td 
+55	plus strand</td
+56	<td  class="gm_protein"
+57	<a href="/protein/XP_006717380.1"
+58	XP_006717380.1</a
+59	</td
+60	<td 
+61	forward</td
+62	<td  class="gm_contig"
+63	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_008470.20&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+64	NT_008470.20</a
+65	</td
+66	<td 
+67	GRCh38.p2</td
+68	<td 
+69	<a href="snp_ref.cgi?geneId=91373&ctg=NT_008470.20&mrna=XM_006717317.2&prot=XP_006717380.1&orien=forward"
+70	View snp on GeneModel</a
+71	</td
+72	</TR
+73	<TR  align="left"
+74	<td  class="gm_mrna"
+75	<a href="/nuccore/NM_207309.2"
+76	NM_207309.2</a
+77	</td
+78	<td 
+79	plus strand</td
+80	<td  class="gm_protein"
+81	<a href="/protein/NP_997192.2"
+82	NP_997192.2</a
+83	</td
+84	<td 
+85	forward</td
+86	<td  class="gm_contig"
+87	<a href="http://www.ncbi.nlm.nih.gov/entrez/viewer.fcgi?db=nucleotide&qty=1&&list_uids=NT_008470.20&uids=&dopt=gbwithparts&dispmax=5&from=&to=0&extrafeatpresent=1&ef_SNP=1"
+88	NT_008470.20</a
+89	</td
+90	<td 
+91	GRCh38.p2</td
+92	<td 
+93	<a href="snp_ref.cgi?geneId=91373&ctg=NT_008470.20&mrna=NM_207309.2&prot=NP_997192.2&orien=forward"
+94	View snp on GeneModel</a
+95	</td
+96	</TR
+97	</TABLE
+98	<BR

@@ -1,7 +1,16 @@
 #!/usr/bin/python
 
 class GeneIdWebPage:
-	def __init__(geneId):
-		self.geneId = geneId
+	"""
+	Class that represents a SNP webpage for a gene ID
+	"""
 
-class mRnaWebPage:
+	# geneIdWebPageUrl = ""
+
+	def __init__(self, geneId):
+		self.geneId = str(geneId)
+		self.geneIdWebPageUrl = "http://www.ncbi.nlm.nih.gov/SNP/snp_ref.cgi?locusId=" + geneId
+
+
+
+# class mRnaWebPage:
