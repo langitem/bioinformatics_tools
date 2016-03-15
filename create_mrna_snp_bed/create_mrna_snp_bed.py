@@ -25,8 +25,9 @@ class GeneIdWebPage:
 
 		for line in linesOfHtml: # for each line of HTML in the web page for this mRNA
 			if ("currently shown" or "View snp on GeneModel") in line:
-				fields = line.split(">")
+				fields = line.split("<TR  align=\"left\"><td  class=\"gm_mrna\"><a href=\"/nuccore/")
 				for field in fields:
+					print field
 					
 
 		return
